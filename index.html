@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <base href="/cabiplay/" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -25,15 +26,6 @@
 
   <!-- Hls.js fallback for HTTP Live Streaming (.m3u8) -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-  <!-- Dynamic base href for /cabiplay subdirectory deployment -->
-  <script>
-    if (window.location.pathname.startsWith('/cabiplay')) {
-      const b = document.createElement('base');
-      b.href = '/cabiplay/';
-      document.head.prepend(b);
-    }
-  </script>
 
   <link rel="stylesheet" href="style.css" />
 </head>

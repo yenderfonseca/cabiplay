@@ -191,8 +191,15 @@ function initMap() {
 // 2. Fetch Enriched Dataset
 async function loadStations() {
   try {
-    const res = await fetch("data/stations.json");
-    if (!res.ok) throw new Error("Error loading dataset");
+    let res;
+    try {
+      res = await fetch("data/stations.json");
+      if (!res.ok) throw new Error("Status " + res.status);
+    } catch (relErr) {
+      console.warn("Relative fetch for data/stations.json failed, trying /cabiplay/data/stations.json", relErr);
+      res = await fetch("/cabiplay/data/stations.json");
+    }
+    if (!res.ok) throw new Error("Error loading dataset: " + res.status);
     const rawStations = await res.json();
     
     // Prioritize stations that transmit in or serve Cabimas
