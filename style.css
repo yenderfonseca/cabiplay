@@ -1773,7 +1773,20 @@ body.view-map-only #map-pane {
   min-height: 580px;
 }
 
-/* RESPONSIVE DESIGN */
+/* MOBILE APP COMPONENTS (DESKTOP DEFAULT: HIDDEN) */
+.mobile-app-header {
+  display: none;
+}
+
+.mobile-category-carousel {
+  display: none;
+}
+
+.mobile-tab-bar {
+  display: none;
+}
+
+/* RESPONSIVE DESIGN: TABLET & DESKTOP MEDIUM */
 @media (max-width: 992px) {
   #sidebar {
     width: 200px;
@@ -1788,37 +1801,550 @@ body.view-map-only #map-pane {
   }
 }
 
+/* ==========================================================================
+   MOBILE NATIVE-APP EXPERIENCE (max-width: 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
+  :root {
+    --mobile-player-height: 64px;
+    --mobile-tab-height: 54px;
+  }
+
+  body {
+    height: 100dvh;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* 1. App Shell */
   #cabiplay-app {
     flex-direction: column;
+    height: calc(100dvh - var(--mobile-player-height) - var(--mobile-tab-height) - env(safe-area-inset-bottom) - 4px);
+    width: 100vw;
+    margin-top: 4px;
+    overflow: hidden;
   }
+
+  /* Desktop sidebar is fully replaced by mobile top & bottom app navigation */
   #sidebar {
-    width: 100%;
-    min-width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--surface-border);
-    padding: 8px 12px;
+    display: none !important;
   }
-  .sidebar-section, .sidebar-footer {
+
+  #main-content {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* 2. Mobile App Header */
+  .mobile-app-header {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 14px 6px;
+    background: #090d14;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+  }
+
+  .mobile-brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-brand-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-logo-accent {
+    color: var(--cabimas-celeste);
+  }
+
+  .mobile-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: var(--cabimas-sol);
+    background: rgba(255, 183, 3, 0.12);
+    border: 1px solid rgba(255, 183, 3, 0.4);
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+  }
+
+  .mobile-home-link {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .mobile-home-link:hover {
+    color: var(--cabimas-celeste);
+  }
+
+  /* 3. Top Search & Filter Bar */
+  #top-bar {
+    padding: 8px 14px 6px;
+    background: #090d14;
+    border-bottom: 1px solid var(--surface-border);
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .search-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .search-input-wrapper input {
+    height: 42px;
+    font-size: 0.88rem;
+    padding: 8px 12px 8px 36px;
+    border-radius: 6px;
+    background: #05080e;
+  }
+
+  .view-toggles {
+    display: none; /* Managed natively by the bottom mobile tab bar */
+  }
+
+  /* 4. Swipe-First Horizontal Category Pills */
+  .mobile-category-carousel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 0 6px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .mobile-category-carousel::-webkit-scrollbar {
     display: none;
   }
-  .sidebar-nav ul {
-    flex-direction: row;
-    overflow-x: auto;
+
+  .cat-pill {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    touch-action: manipulation;
   }
+
+  .cat-pill:hover,
+  .cat-pill.active {
+    background: var(--cabimas-celeste);
+    color: #000;
+    border-color: var(--cabimas-celeste);
+    font-weight: 800;
+    box-shadow: 0 2px 10px var(--cabimas-celeste-glow);
+  }
+
+  /* 5. Scrollable Content Body */
+  #content-body {
+    padding: 12px 12px 30px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /* 6. Frequency Tuner on Mobile */
+  .frequency-tuner {
+    margin-bottom: 16px;
+  }
+
+  .tuner-header-telemetry {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .tuner-dial-badge {
+    justify-content: space-between;
+  }
+
+  .tuner-lcd-cluster {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .tuner-digital-freq {
+    font-size: 1.75rem;
+  }
+
+  .tuner-seek-controls {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .tuner-seek-btn {
+    flex: 1;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 900;
+    border-radius: 6px;
+  }
+
+  .tuner-scale-viewport {
+    height: 72px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 7. Featured Broadcast Hero on Mobile */
+  .hero-broadcast {
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+
   .hero-content {
     flex-direction: column;
     text-align: center;
+    gap: 14px;
+    padding: 16px 14px;
   }
+
   .hero-art-box {
+    order: -1; /* GEMINI.md Rule 3: Hero image appears above headline */
+    width: 124px;
+    height: 124px;
+    min-width: 124px;
     margin: 0 auto;
+    border-radius: 8px;
   }
-  .hero-actions {
+
+  .hero-tags-row {
     justify-content: center;
+    gap: 6px;
   }
-  .player-right {
+
+  .hero-title {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .hero-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin-bottom: 14px;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-tune-btn {
+    width: 100%; /* GEMINI.md Rule 3: CTAs 100% width on mobile */
+    min-height: 48px; /* GEMINI.md Rule 3: At least 48px tall */
+    font-size: 0.95rem;
+    font-weight: 900;
+    border-radius: 8px;
+    justify-content: center;
+    box-shadow: 0 4px 16px var(--cabimas-celeste-glow);
+  }
+
+  .hero-fav-btn {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .hero-socials {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hero-socials .social-chip {
+    min-height: 38px;
+    padding: 8px 14px;
+    font-size: 0.75rem;
+  }
+
+  /* 8. Split Layout & Map Pane */
+  #split-layout {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #map-pane {
+    height: 320px;
+    min-height: 320px;
+  }
+
+  body.view-map-only #map-pane {
+    height: calc(100vh - 200px) !important;
+    min-height: calc(100vh - 200px) !important;
+  }
+
+  /* 9. Stations Grid on Mobile (2-column tactile layout) */
+  .tunein-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .station-card {
+    padding: 8px;
+    border-radius: 8px;
+    touch-action: manipulation;
+  }
+
+  .station-card:active {
+    transform: scale(0.97);
+  }
+
+  .card-art-wrap {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+
+  /* Always visible play button for touch screens */
+  .card-play-btn {
+    opacity: 1 !important;
+    transform: none !important;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    font-weight: 900;
+    padding: 0;
+    bottom: 6px;
+    right: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  }
+
+  .card-name-title {
+    font-size: 0.82rem;
+    line-height: 1.25;
+    margin-bottom: 2px;
+  }
+
+  .card-meta-line {
+    font-size: 0.68rem;
+  }
+
+  .card-footer-actions {
+    margin-top: 6px;
+  }
+
+  .card-page-link {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+
+  /* 10. Docked Mobile Audio Player Bar */
+  #now-playing-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: calc(var(--mobile-tab-height) + env(safe-area-inset-bottom));
+    height: var(--mobile-player-height);
+    background: rgba(11, 15, 23, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--surface-border);
+    padding: 0 12px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.6);
+  }
+
+  .player-left {
+    min-width: 0;
+    flex: 1;
+    max-width: none;
+    gap: 10px;
+  }
+
+  .player-station-avatar {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 6px;
+  }
+
+  .station-name-label {
+    font-size: 0.82rem;
+    max-width: 140px;
+  }
+
+  .station-freq-label {
+    font-size: 0.68rem;
+  }
+
+  .player-social-chips {
     display: none;
+  }
+
+  .player-center {
+    flex: 0 0 auto;
+    max-width: none;
+    gap: 0;
+  }
+
+  .console-controls {
+    gap: 6px;
+  }
+
+  #btn-shuffle {
+    display: none;
+  }
+
+  #btn-prev,
+  #btn-next {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    background: var(--surface-card);
+  }
+
+  .btn-tunein-play {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 900;
+    background: var(--cabimas-celeste);
+    box-shadow: 0 0 14px var(--cabimas-celeste-glow);
+  }
+
+  .broadcast-status-row {
+    display: none;
+  }
+
+  .player-right {
+    display: none !important;
+  }
+
+  /* 11. Mobile App Bottom Navigation Bar */
+  .mobile-tab-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--mobile-tab-height) + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    background: #070a12;
+    border-top: 1px solid #1a253a;
+    z-index: 1000;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .mobile-tab-btn {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    font-family: inherit;
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    position: relative;
+    touch-action: manipulation;
+  }
+
+  .tab-indicator-bar {
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-tab-btn.active {
+    color: #fff;
+  }
+
+  .mobile-tab-btn.active .tab-indicator-bar {
+    background: var(--cabimas-celeste);
+    box-shadow: 0 0 8px var(--cabimas-celeste-glow);
+  }
+
+  .mobile-tab-btn:active {
+    transform: scale(0.95);
+  }
+
+  .tab-counter {
+    position: absolute;
+    top: 6px;
+    right: 18px;
+    font-size: 0.55rem;
+    font-weight: 900;
+    background: var(--cabimas-sol);
+    color: #000;
+    padding: 1px 5px;
+    border-radius: 8px;
+    line-height: 1;
   }
 }
 

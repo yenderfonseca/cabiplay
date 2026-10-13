@@ -866,6 +866,8 @@ function toggleFavorite(stId) {
 
 function updateFavoritesBadge() {
   favCountBadge.textContent = favorites.length;
+  const mobCount = document.getElementById("mobile-fav-count");
+  if (mobCount) mobCount.textContent = favorites.length;
 }
 
 // 12. Navigation & Categories
@@ -933,7 +935,83 @@ function setViewMode(view) {
     // split
     if (map) setTimeout(() => map.invalidateSize(), 150);
   }
+
+  // Sync mobile bottom tab active state
+  document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
+    if (view === "map") {
+      btn.classList.toggle("active", btn.dataset.tab === "radar");
+    } else if (btn.dataset.tab === "radar") {
+      btn.classList.remove("active");
+    }
+  });
 }
+
+// 14. Mobile Swipe Category Carousel
+document.querySelectorAll(".cat-pill").forEach(pill => {
+  pill.addEventListener("click", () => {
+    document.querySelectorAll(".cat-pill").forEach(p => p.classList.remove("active"));
+    pill.classList.add("active");
+
+    if (pill.dataset.nav) {
+      currentNav = pill.dataset.nav;
+      currentCategory = null;
+      document.querySelectorAll(".nav-item").forEach(i => {
+        i.classList.toggle("active", i.dataset.nav === currentNav);
+      });
+      document.querySelectorAll(".genre-item").forEach(i => i.classList.remove("active"));
+    } else if (pill.dataset.category) {
+      currentCategory = pill.dataset.category;
+      currentNav = "all";
+      document.querySelectorAll(".genre-item").forEach(i => {
+        i.classList.toggle("active", i.dataset.category === currentCategory);
+      });
+      document.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+    }
+
+    applyFilters();
+    if (currentView === "map") {
+      setViewMode("split");
+    }
+  });
+});
+
+// 15. Mobile App Bottom Navigation Bar
+document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".mobile-tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const tab = btn.dataset.tab;
+
+    if (tab === "radio") {
+      setViewMode("split");
+      currentNav = "all";
+      currentCategory = null;
+      document.querySelectorAll(".cat-pill").forEach((p, idx) => p.classList.toggle("active", idx === 0));
+      applyFilters();
+      const splitEl = document.getElementById("split-layout");
+      if (splitEl) splitEl.scrollIntoView({ behavior: "smooth" });
+    } else if (tab === "tuner") {
+      setViewMode("split");
+      const tunerEl = document.getElementById("frequency-tuner");
+      if (tunerEl) tunerEl.scrollIntoView({ behavior: "smooth" });
+    } else if (tab === "radar") {
+      setViewMode("map");
+      if (map) {
+        setTimeout(() => {
+          map.invalidateSize();
+          map.setView(CABIMAS_CONFIG.center, CABIMAS_CONFIG.zoom);
+        }, 120);
+      }
+    } else if (tab === "favs") {
+      setViewMode("split");
+      currentNav = "favorites";
+      currentCategory = null;
+      applyFilters();
+      const splitEl = document.getElementById("split-layout");
+      if (splitEl) splitEl.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
 
 // App Entry Point
 window.addEventListener("DOMContentLoaded", () => {

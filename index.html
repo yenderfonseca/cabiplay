@@ -2,7 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="cabiplay" />
+  <meta name="theme-color" content="#090d14" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>cabiplay • Radio en Vivo Cabimas</title>
 
   <!-- Leaflet CSS & JS -->
@@ -121,6 +126,19 @@
 
     <!-- MAIN BROADCAST CONTENT -->
     <main id="main-content">
+      <!-- MOBILE APP HEADER (Visible <= 768px) -->
+      <div class="mobile-app-header">
+        <div class="mobile-brand-row">
+          <div class="mobile-brand-title">
+            <span class="mobile-logo-accent">cabi</span><span>play</span>
+            <span class="mobile-live-pill">
+              <span class="pulse-dot"></span> EN VIVO
+            </span>
+          </div>
+          <a href="/" class="mobile-home-link" title="Volver a yenderfonseca.com">yenderfonseca.com</a>
+        </div>
+      </div>
+
       <!-- TOP NAVIGATION BAR -->
       <header id="top-bar">
         <div class="search-container">
@@ -145,6 +163,19 @@
           <button class="view-btn" data-view="map" title="Ver solo Mapa de Cabimas">
             <span>Mapa Cabimas</span>
           </button>
+        </div>
+
+        <!-- MOBILE SWIPE-FIRST CATEGORY CAROUSEL (Scroll-snap-type: x mandatory) -->
+        <div class="mobile-category-carousel" id="mobile-categories" aria-label="Categorías de radio">
+          <button class="cat-pill active" data-nav="all">Todas</button>
+          <button class="cat-pill" data-nav="cabimas_centro">Casco Central</button>
+          <button class="cat-pill" data-nav="cabimas_norte">Ambrosio</button>
+          <button class="cat-pill" data-nav="cabimas_sur">La Rosa</button>
+          <button class="cat-pill" data-category="gaitas">Gaitas Zulianas</button>
+          <button class="cat-pill" data-category="urbano">Urbano</button>
+          <button class="cat-pill" data-category="tropical">Salsa & Tropical</button>
+          <button class="cat-pill" data-category="pop">Pop Latino</button>
+          <button class="cat-pill" data-category="noticias">Noticias</button>
         </div>
       </header>
 
@@ -359,6 +390,27 @@
       </div>
     </div>
   </footer>
+
+  <!-- MOBILE BOTTOM APP NAVIGATION BAR -->
+  <nav id="mobile-tab-bar" class="mobile-tab-bar" aria-label="Navegación móvil de Cabiplay">
+    <button class="mobile-tab-btn active" data-tab="radio">
+      <span class="tab-indicator-bar"></span>
+      <span class="tab-text">RADIO</span>
+    </button>
+    <button class="mobile-tab-btn" data-tab="tuner">
+      <span class="tab-indicator-bar"></span>
+      <span class="tab-text">DIAL FM</span>
+    </button>
+    <button class="mobile-tab-btn" data-tab="radar">
+      <span class="tab-indicator-bar"></span>
+      <span class="tab-text">RADAR MAPA</span>
+    </button>
+    <button class="mobile-tab-btn" data-tab="favs">
+      <span class="tab-indicator-bar"></span>
+      <span class="tab-text">FAVORITAS</span>
+      <span class="tab-counter" id="mobile-fav-count">0</span>
+    </button>
+  </nav>
 
   <audio id="audio-stream" preload="none"></audio>
   <script src="app.js"></script>
