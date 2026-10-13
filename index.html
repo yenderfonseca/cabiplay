@@ -259,6 +259,12 @@
                 <button class="hero-fav-btn" id="hero-fav-btn" title="Guardar Favorita">
                   <span>Favorita</span>
                 </button>
+                <button class="hero-cast-btn" id="hero-cast-btn" title="Transmitir (AirPlay / Chromecast / Auto)">
+                  <span class="cast-dot"></span> <span>AirPlay / Cast</span>
+                </button>
+                <button class="hero-share-btn" id="hero-share-btn" title="Compartir señal de radio">
+                  <span>Compartir</span>
+                </button>
                 <div class="hero-socials" id="hero-socials">
                   <!-- Social Links injected via JS -->
                 </div>
@@ -360,6 +366,9 @@
         <button id="btn-next" class="console-btn" title="Siguiente">
           Siguiente
         </button>
+        <button id="btn-player-cast" class="console-btn cast-btn" title="Transmitir señal (AirPlay / Chromecast / Auto)">
+          <span class="cast-dot"></span> Transmitir
+        </button>
       </div>
 
       <!-- BROADCAST SIGNAL BARS & STATUS -->
@@ -412,7 +421,7 @@
     </button>
   </nav>
 
-  <audio id="audio-stream" preload="none"></audio>
+  <audio id="audio-stream" preload="none" x-webkit-airplay="allow" webkit-playsinline playsinline></audio>
   <script src="app.js"></script>
 </body>
 </html>

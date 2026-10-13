@@ -615,12 +615,131 @@ function setHeroStation(station) {
   heroSocials.innerHTML += `<a href="${pageUrl}" class="social-chip chip-page">Ver Ficha Completa</a>`;
 
   heroPlayBtn.onclick = () => selectAndPlayStation(station);
+
+  // Wire Hero Cast & Share buttons
+  const heroCastBtn = document.getElementById("hero-cast-btn");
+  if (heroCastBtn) heroCastBtn.onclick = triggerAirPlayOrCast;
+  const heroShareBtn = document.getElementById("hero-share-btn");
+  if (heroShareBtn) heroShareBtn.onclick = shareStationFallback;
+}
+
+// 6.5. Apple CarPlay, Android Auto & System Media Controls (MediaSession API)
+function updateMediaSession(station) {
+  if (!("mediaSession" in navigator) || !station) return;
+
+  const dial = parseStationDial(station);
+  const freqStr = station.frequency || (dial.band === "FM" ? `${dial.num} FM` : dial.band);
+  const logoUrl = station.logo_local || station.logo || "assets/logos/" + (station.slug || "radio") + ".svg";
+
+  // Provide multi-resolution artwork for CarPlay, Android Auto, lockscreens, and wearables
+  const artworkList = [
+    { src: logoUrl, sizes: "96x96", type: "image/png" },
+    { src: logoUrl, sizes: "128x128", type: "image/png" },
+    { src: logoUrl, sizes: "192x192", type: "image/png" },
+    { src: logoUrl, sizes: "256x256", type: "image/png" },
+    { src: logoUrl, sizes: "512x512", type: "image/png" }
+  ];
+
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: station.name,
+    artist: `${freqStr} • ${station.sector || 'Cabimas, Zulia'}`,
+    album: "cabiplay • Radio Cabimas en Vivo",
+    artwork: artworkList
+  });
+
+  navigator.mediaSession.playbackState = audio.paused ? "paused" : "playing";
+}
+
+function initMediaSessionHandlers() {
+  if (!("mediaSession" in navigator)) return;
+
+  // CarPlay, Android Auto, Bluetooth car audio & Steering wheel controls
+  try {
+    navigator.mediaSession.setActionHandler("play", () => {
+      if (audio.paused && currentStation) {
+        audio.play().catch(handlePlaybackError);
+      }
+    });
+
+    navigator.mediaSession.setActionHandler("pause", () => {
+      if (!audio.paused) {
+        audio.pause();
+      }
+    });
+
+    navigator.mediaSession.setActionHandler("previoustrack", () => {
+      if (!filteredStations.length) return;
+      let idx = filteredStations.findIndex(s => (s.station_id || s.stream_url) === (currentStation && (currentStation.station_id || currentStation.stream_url)));
+      idx = (idx - 1 + filteredStations.length) % filteredStations.length;
+      selectAndPlayStation(filteredStations[idx]);
+    });
+
+    navigator.mediaSession.setActionHandler("nexttrack", () => {
+      if (!filteredStations.length) return;
+      let idx = filteredStations.findIndex(s => (s.station_id || s.stream_url) === (currentStation && (currentStation.station_id || currentStation.stream_url)));
+      idx = (idx + 1) % filteredStations.length;
+      selectAndPlayStation(filteredStations[idx]);
+    });
+
+    navigator.mediaSession.setActionHandler("stop", () => {
+      audio.pause();
+    });
+  } catch (e) {
+    console.warn("MediaSession action handler error:", e);
+  }
+}
+
+// 6.6. AirPlay, Google Cast (Remote Playback) & Native Share Sheet
+function triggerAirPlayOrCast() {
+  // 1. WebKit AirPlay API (iOS / iPadOS / macOS -> AirPlay Speakers / Apple TV / CarPlay)
+  if (typeof audio.webkitShowPlaybackTargetPicker === "function") {
+    try {
+      audio.webkitShowPlaybackTargetPicker();
+      return;
+    } catch (e) {
+      console.warn("WebKit AirPlay picker failed:", e);
+    }
+  }
+
+  // 2. W3C Remote Playback API (Android Chrome / Google Cast / Chromecast / Android Auto)
+  if (audio.remote && typeof audio.remote.prompt === "function") {
+    audio.remote.prompt().catch(err => {
+      console.warn("Remote playback prompt dismissed:", err);
+      shareStationFallback();
+    });
+    return;
+  }
+
+  // 3. Fallback: Native OS Share Sheet (AirDrop, Bluetooth, Car, Nearby Share)
+  shareStationFallback();
+}
+
+function shareStationFallback() {
+  const station = currentStation || allStations[0];
+  if (!station) return;
+  const dial = parseStationDial(station);
+  const shareData = {
+    title: `${station.name} - En Vivo en cabiplay`,
+    text: `Escucha ${station.name} (${dial.num} ${dial.band}) transmitiendo en directo desde Cabimas en cabiplay`,
+    url: window.location.href
+  };
+
+  if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+    navigator.share(shareData).catch(() => {});
+  } else if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert("Enlace de cabiplay copiado para transmitir o compartir");
+    }).catch(() => {});
+  }
 }
 
 // 7. Select & Play Station
 function selectAndPlayStation(station) {
   currentStation = station;
   setHeroStation(station);
+  updateMediaSession(station);
 
   // Update Player UI
   playerStationName.textContent = station.name;
@@ -770,6 +889,9 @@ audio.addEventListener("playing", () => {
   startTimer();
   startVuMeters();
   renderCards();
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.playbackState = "playing";
+  }
 });
 
 audio.addEventListener("pause", () => {
@@ -780,6 +902,9 @@ audio.addEventListener("pause", () => {
   stopTimer();
   stopVuMeters();
   renderCards();
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.playbackState = "paused";
+  }
 });
 
 audio.addEventListener("error", handlePlaybackError);
@@ -792,6 +917,12 @@ mainPlayBtn.addEventListener("click", () => {
     audio.pause();
   }
 });
+
+// Wire Player Cast Button
+const btnPlayerCast = document.getElementById("btn-player-cast");
+if (btnPlayerCast) {
+  btnPlayerCast.onclick = triggerAirPlayOrCast;
+}
 
 // 9. Shuffle, Next & Prev
 btnNext.addEventListener("click", () => {
@@ -1016,5 +1147,6 @@ document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
 // App Entry Point
 window.addEventListener("DOMContentLoaded", () => {
   initMap();
+  initMediaSessionHandlers();
   loadStations();
 });
