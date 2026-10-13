@@ -68,6 +68,23 @@ const heroSocials = document.getElementById("hero-socials");
 const heroArtSlot = document.getElementById("hero-art-slot");
 const playerThumbSlot = document.getElementById("player-thumb-slot");
 
+// Frequency Tuner Cache & Spectrum Constants
+const tunerDisplayFreq = document.getElementById("tuner-display-freq");
+const tunerDisplayCallsign = document.getElementById("tuner-display-callsign");
+const tunerDisplayMeta = document.getElementById("tuner-display-meta");
+const tunerLampOnAir = document.getElementById("tuner-lamp-onair");
+const tunerSeekPrev = document.getElementById("tuner-seek-prev");
+const tunerSeekNext = document.getElementById("tuner-seek-next");
+const tunerViewport = document.getElementById("tuner-viewport");
+const tunerTrack = document.getElementById("tuner-track");
+const tunerNeedle = document.getElementById("tuner-needle");
+const vuMeterL = document.getElementById("vu-meter-l");
+const vuMeterR = document.getElementById("vu-meter-r");
+let vuAnimationInterval = null;
+const FM_START = 88.0;
+const FM_END = 108.0;
+const FM_RANGE = FM_END - FM_START;
+
 // Dial & Band Parser for HTML Default Cover
 function parseStationDial(station) {
   const dial = String(station.dial || "").trim();
@@ -196,6 +213,7 @@ async function loadStations() {
 
   updateFavoritesBadge();
   applyFilters();
+  initFrequencyTuner();
 
   const featured = allStations.find(s => s.name.includes("Xtrema")) || allStations[0];
   if (featured) {
@@ -399,6 +417,159 @@ window.appPlayStation = function(stId) {
   if (st) selectAndPlayStation(st);
 };
 
+// 5.5. Analog Frequency Tuner Scale & Logic
+function initFrequencyTuner() {
+  if (!tunerTrack) return;
+  tunerTrack.innerHTML = "";
+
+  // Make sure needle is inside the track coordinate space
+  if (tunerNeedle) {
+    tunerTrack.appendChild(tunerNeedle);
+  }
+
+  // 1. Build tick marks from 88.0 to 108.0 MHz with 0.1 increments
+  const totalTicks = Math.round(FM_RANGE * 10); // 200 ticks
+  for (let i = 0; i <= totalTicks; i++) {
+    const freq = FM_START + (i * 0.1);
+    const pct = (i / totalTicks) * 100;
+    const isMajor = (i % 10 === 0);
+    const isMid = (i % 5 === 0 && !isMajor);
+
+    const tick = document.createElement("div");
+    tick.className = `tuner-tick ${isMajor ? 'major' : (isMid ? 'mid' : 'minor')}`;
+    tick.style.left = `${pct}%`;
+
+    if (isMajor) {
+      const label = document.createElement("span");
+      label.className = "tick-label";
+      label.textContent = freq.toFixed(0);
+      tick.appendChild(label);
+    }
+    tunerTrack.appendChild(tick);
+  }
+
+  // 2. Build station pips for all stations with FM frequency
+  allStations.forEach(station => {
+    const dialData = parseStationDial(station);
+    if (dialData.band === "FM") {
+      const freqNum = parseFloat(dialData.num);
+      if (!isNaN(freqNum) && freqNum >= FM_START && freqNum <= FM_END) {
+        const pct = ((freqNum - FM_START) / FM_RANGE) * 100;
+        const pip = document.createElement("div");
+        pip.className = "tuner-station-pip";
+        pip.style.left = `${pct}%`;
+        pip.dataset.stationId = station.station_id || station.stream_url;
+        pip.dataset.freq = freqNum.toFixed(1);
+
+        const shortName = station.name.split(" ")[0] || freqNum.toFixed(1);
+        pip.innerHTML = `
+          <span class="pip-tag">${dialData.num} ${shortName}</span>
+          <span class="pip-dot"></span>
+        `;
+
+        pip.addEventListener("click", (e) => {
+          e.stopPropagation();
+          selectAndPlayStation(station);
+        });
+
+        tunerTrack.appendChild(pip);
+      }
+    }
+  });
+
+  // 3. Viewport click seeking
+  if (tunerViewport) {
+    tunerViewport.addEventListener("click", (e) => {
+      const rect = tunerTrack.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const trackWidth = rect.width;
+      if (trackWidth <= 0) return;
+
+      const pct = Math.max(0, Math.min(1, clickX / trackWidth));
+      const targetFreq = FM_START + (pct * FM_RANGE);
+
+      // Find closest station with FM frequency
+      let closestStation = null;
+      let minDiff = Infinity;
+      allStations.forEach(st => {
+        const d = parseStationDial(st);
+        if (d.band === "FM") {
+          const fn = parseFloat(d.num);
+          if (!isNaN(fn)) {
+            const diff = Math.abs(fn - targetFreq);
+            if (diff < minDiff) {
+              minDiff = diff;
+              closestStation = st;
+            }
+          }
+        }
+      });
+
+      if (closestStation && minDiff <= 0.6) {
+        selectAndPlayStation(closestStation);
+      } else {
+        updateTunerNeedle(targetFreq, null);
+      }
+    });
+  }
+
+  // 4. Seek buttons
+  if (tunerSeekPrev) {
+    tunerSeekPrev.onclick = () => seekTunerStation(-1);
+  }
+  if (tunerSeekNext) {
+    tunerSeekNext.onclick = () => seekTunerStation(1);
+  }
+}
+
+function seekTunerStation(direction) {
+  const fmStations = allStations.filter(st => {
+    const d = parseStationDial(st);
+    return d.band === "FM" && !isNaN(parseFloat(d.num));
+  }).sort((a, b) => parseFloat(parseStationDial(a).num) - parseFloat(parseStationDial(b).num));
+
+  if (!fmStations.length) return;
+
+  let currentIdx = -1;
+  if (currentStation) {
+    currentIdx = fmStations.findIndex(s => (s.station_id || s.stream_url) === (currentStation.station_id || currentStation.stream_url));
+  }
+
+  let nextIdx = 0;
+  if (currentIdx >= 0) {
+    nextIdx = (currentIdx + direction + fmStations.length) % fmStations.length;
+  } else if (direction < 0) {
+    nextIdx = fmStations.length - 1;
+  }
+  selectAndPlayStation(fmStations[nextIdx]);
+}
+
+function updateTunerNeedle(freqNum, station) {
+  if (!tunerNeedle) return;
+  const clampedFreq = Math.max(FM_START, Math.min(FM_END, freqNum));
+  const pct = ((clampedFreq - FM_START) / FM_RANGE) * 100;
+
+  tunerNeedle.style.left = `${pct}%`;
+
+  if (tunerDisplayFreq) {
+    tunerDisplayFreq.textContent = clampedFreq.toFixed(1);
+  }
+
+  if (station) {
+    if (tunerDisplayCallsign) tunerDisplayCallsign.textContent = station.name;
+    if (tunerDisplayMeta) tunerDisplayMeta.textContent = `${station.sector || 'Cabimas, Zulia'} • ${station.category || 'En Vivo'}`;
+  } else {
+    if (tunerDisplayCallsign) tunerDisplayCallsign.textContent = `Búsqueda Libre ${clampedFreq.toFixed(1)} MHz`;
+    if (tunerDisplayMeta) tunerDisplayMeta.textContent = "Sintonía manual Cabimas";
+  }
+
+  // Update active state on pips
+  document.querySelectorAll(".tuner-station-pip").forEach(pip => {
+    const isCurrent = station && (pip.dataset.stationId === (station.station_id || station.stream_url));
+    pip.classList.toggle("active", Boolean(isCurrent));
+  });
+}
+
 // 6. Set Featured Hero Banner
 function setHeroStation(station) {
   heroTitle.textContent = station.name;
@@ -409,6 +580,17 @@ function setHeroStation(station) {
     heroArtSlot.innerHTML = renderStationArtMarkup(station, false, true);
   } else if (heroImg) {
     heroImg.src = station.logo_local || station.logo || "assets/logos/" + (station.slug || "radio") + ".svg";
+  }
+
+  // Update Tuner Needle & Telemetry
+  const dial = parseStationDial(station);
+  if (dial.band === "FM" && !isNaN(parseFloat(dial.num))) {
+    updateTunerNeedle(parseFloat(dial.num), station);
+  } else {
+    updateTunerNeedle(98.9, station);
+    if (tunerDisplayFreq) tunerDisplayFreq.textContent = dial.num;
+    if (tunerDisplayCallsign) tunerDisplayCallsign.textContent = station.name;
+    if (tunerDisplayMeta) tunerDisplayMeta.textContent = `${dial.band} • ${station.sector || 'Cabimas'}`;
   }
 
   const stId = station.station_id || station.stream_url;
@@ -526,6 +708,38 @@ function handlePlaybackError(err) {
   playerCoverBars.classList.remove("active");
   audioVisualizer.classList.remove("playing");
   stopTimer();
+  stopVuMeters();
+}
+
+// 7.8. Studio VU Meters Simulation
+function startVuMeters() {
+  stopVuMeters();
+  const leftPips = vuMeterL ? vuMeterL.querySelectorAll(".vu-pip") : [];
+  const rightPips = vuMeterR ? vuMeterR.querySelectorAll(".vu-pip") : [];
+  if (!leftPips.length || !rightPips.length) return;
+
+  vuAnimationInterval = setInterval(() => {
+    // Generate organic studio audio levels (nominal levels 4-7, peak 8-9)
+    const base = Math.floor(Math.random() * 4) + 4; // 4 to 7
+    const peakL = Math.min(9, Math.max(1, base + (Math.random() > 0.8 ? 2 : 0) - (Math.random() > 0.7 ? 1 : 0)));
+    const peakR = Math.min(9, Math.max(1, base + (Math.random() > 0.8 ? 2 : 0) - (Math.random() > 0.7 ? 1 : 0)));
+
+    leftPips.forEach((pip, idx) => {
+      pip.classList.toggle("lit", idx < peakL);
+    });
+    rightPips.forEach((pip, idx) => {
+      pip.classList.toggle("lit", idx < peakR);
+    });
+  }, 75);
+}
+
+function stopVuMeters() {
+  if (vuAnimationInterval) {
+    clearInterval(vuAnimationInterval);
+    vuAnimationInterval = null;
+  }
+  if (vuMeterL) vuMeterL.querySelectorAll(".vu-pip").forEach(p => p.classList.remove("lit"));
+  if (vuMeterR) vuMeterR.querySelectorAll(".vu-pip").forEach(p => p.classList.remove("lit"));
 }
 
 // 8. Playback Timer & Listeners
@@ -554,6 +768,7 @@ audio.addEventListener("playing", () => {
   playerCoverBars.classList.add("active");
   audioVisualizer.classList.add("playing");
   startTimer();
+  startVuMeters();
   renderCards();
 });
 
@@ -563,6 +778,7 @@ audio.addEventListener("pause", () => {
   playerCoverBars.classList.remove("active");
   audioVisualizer.classList.remove("playing");
   stopTimer();
+  stopVuMeters();
   renderCards();
 });
 

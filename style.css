@@ -399,6 +399,369 @@ body {
   padding: 20px 24px 40px;
 }
 
+/* 3.5. CONSOLA DE TRANSMISIÓN: ANALOG FREQUENCY TUNER DECK */
+.frequency-tuner {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.tuner-deck {
+  position: relative;
+  background: linear-gradient(180deg, #0e1624 0%, #080c14 100%);
+  border: 1px solid #1e2c44;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Studio rack screws in corners */
+.tuner-deck::before,
+.tuner-deck::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 1px solid #334155;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.8);
+  z-index: 5;
+  pointer-events: none;
+}
+.tuner-deck::before { left: 8px; }
+.tuner-deck::after { right: 8px; }
+
+/* Tuner Header & Telemetry */
+.tuner-header-telemetry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 10px 24px;
+  background: #070b12;
+  border-bottom: 1px solid #1a253a;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tuner-dial-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tuner-lamp-on-air {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: var(--cabimas-sol);
+  background: rgba(255, 183, 3, 0.12);
+  border: 1px solid rgba(255, 183, 3, 0.5);
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lamp-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cabimas-sol);
+  box-shadow: 0 0 8px var(--cabimas-sol);
+  animation: pulse-lamp 2s infinite ease-in-out;
+}
+
+@keyframes pulse-lamp {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.tuner-band-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--cabimas-celeste);
+  text-transform: uppercase;
+}
+
+/* LCD Frequency Cluster */
+.tuner-lcd-cluster {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.tuner-lcd-primary {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  background: #03060b;
+  padding: 4px 14px;
+  border-radius: 6px;
+  border: 1px solid #182335;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.tuner-digital-freq {
+  font-family: "SF Mono", Monaco, "Courier New", monospace;
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: var(--cabimas-sol);
+  text-shadow: 0 0 10px rgba(255, 183, 3, 0.65);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.tuner-band-unit {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--cabimas-celeste);
+}
+
+.tuner-stereo-badge {
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: var(--cabimas-verde);
+  background: rgba(0, 168, 89, 0.16);
+  border: 1px solid rgba(0, 168, 89, 0.4);
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+}
+
+.tuner-lcd-station {
+  display: flex;
+  flex-direction: column;
+}
+
+.tuner-station-callsign {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.tuner-station-meta {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+/* Tactile Seek Buttons */
+.tuner-seek-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.tuner-seek-btn {
+  background: linear-gradient(180deg, #182338 0%, #0e1524 100%);
+  border: 1px solid #2a3c5a;
+  color: #e2e8f0;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #05080e, 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.15s ease;
+}
+
+.tuner-seek-btn:hover {
+  background: linear-gradient(180deg, #22324e 0%, #121c2e 100%);
+  border-color: var(--cabimas-celeste);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.tuner-seek-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #05080e;
+}
+
+/* Tuner Scale Viewport & Glass */
+.tuner-scale-viewport {
+  position: relative;
+  height: 84px;
+  background: radial-gradient(circle at 50% 120%, rgba(0, 168, 232, 0.08), transparent 70%), linear-gradient(180deg, #05080e 0%, #090e18 50%, #05080e 100%);
+  border-top: 1px solid #141c2c;
+  border-bottom: 1px solid #141c2c;
+  cursor: crosshair;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Glass Reflection */
+.tuner-scale-viewport::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 45%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tuner-scale-track {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+}
+
+/* Ticks on Scale */
+.tuner-tick {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  background: rgba(148, 163, 184, 0.25);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.tuner-tick.minor {
+  height: 12px;
+}
+
+.tuner-tick.mid {
+  height: 22px;
+  background: rgba(148, 163, 184, 0.45);
+}
+
+.tuner-tick.major {
+  height: 36px;
+  width: 2px;
+  background: var(--cabimas-celeste);
+  box-shadow: 0 0 6px var(--cabimas-celeste-glow);
+}
+
+.tuner-tick.major .tick-label {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "SF Mono", Monaco, "Courier New", monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--cabimas-celeste);
+  letter-spacing: -0.02em;
+}
+
+/* Station Pips on Ruler */
+.tuner-station-pip {
+  position: absolute;
+  bottom: 40px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.15s ease;
+}
+
+.pip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cabimas-sol);
+  border: 1px solid #fff;
+  box-shadow: 0 0 6px var(--cabimas-sol);
+  transition: all 0.2s ease;
+}
+
+.pip-tag {
+  font-size: 0.58rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  background: rgba(10, 15, 25, 0.95);
+  border: 1px solid #23344d;
+  border-radius: 3px;
+  color: #cbd5e1;
+  white-space: nowrap;
+  margin-bottom: 2px;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: all 0.2s ease;
+}
+
+.tuner-station-pip:hover,
+.tuner-station-pip.active {
+  z-index: 25;
+}
+
+.tuner-station-pip:hover .pip-dot,
+.tuner-station-pip.active .pip-dot {
+  transform: scale(1.4);
+  background: #fff;
+  box-shadow: 0 0 10px #fff, 0 0 15px var(--cabimas-sol);
+}
+
+.tuner-station-pip:hover .pip-tag,
+.tuner-station-pip.active .pip-tag {
+  opacity: 1;
+  background: var(--cabimas-sol);
+  color: #000;
+  border-color: var(--cabimas-sol);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Sliding Golden Needle */
+.tuner-needle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 54.5%;
+  width: 2px;
+  pointer-events: none;
+  z-index: 30;
+  transform: translateX(-50%);
+  transition: left 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.15);
+}
+
+.needle-line {
+  width: 2px;
+  height: 100%;
+  background: var(--cabimas-sol);
+  box-shadow: 0 0 12px var(--cabimas-sol), 0 0 3px #fff;
+}
+
+.needle-head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--cabimas-sol);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+}
+
+/* Tuner Footer Legend */
+.tuner-footer-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  background: #060910;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.band-center {
+  color: var(--cabimas-verde);
+  opacity: 0.8;
+}
+
 /* 4. FEATURED BROADCAST HERO */
 .hero-broadcast {
   position: relative;
@@ -633,6 +996,103 @@ body {
 .player-chip-page {
   color: var(--cabimas-sol) !important;
   background: rgba(255, 183, 3, 0.2) !important;
+}
+
+/* STUDIO VU METERS PANEL */
+.hero-vu-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(4, 7, 12, 0.9);
+  border: 1px solid #1c2b42;
+  border-radius: 6px;
+  padding: 14px 18px;
+  min-width: 220px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.7), 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-left: auto;
+}
+
+.vu-meter-rack {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.vu-channel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vu-ch-label {
+  font-family: "SF Mono", Monaco, "Courier New", monospace;
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: var(--cabimas-celeste);
+  width: 32px;
+  letter-spacing: 0.05em;
+}
+
+.vu-leds-bar {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.vu-pip {
+  flex: 1;
+  height: 12px;
+  border-radius: 2px;
+  background: rgba(0, 168, 89, 0.15);
+  border: 1px solid rgba(0, 168, 89, 0.25);
+  transition: all 0.06s ease;
+}
+
+.vu-pip.amber {
+  background: rgba(255, 183, 3, 0.15);
+  border-color: rgba(255, 183, 3, 0.25);
+}
+
+.vu-pip.red {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* Lit state when audio plays */
+.vu-pip.lit {
+  background: var(--cabimas-verde);
+  border-color: #34d399;
+  box-shadow: 0 0 6px var(--cabimas-verde);
+}
+
+.vu-pip.amber.lit {
+  background: var(--cabimas-sol);
+  border-color: #fde047;
+  box-shadow: 0 0 8px var(--cabimas-sol);
+}
+
+.vu-pip.red.lit {
+  background: #ef4444;
+  border-color: #f87171;
+  box-shadow: 0 0 10px #ef4444;
+}
+
+.vu-scale-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 42px;
+  font-family: "SF Mono", Monaco, "Courier New", monospace;
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 992px) {
+  .hero-vu-panel {
+    display: none;
+  }
 }
 
 /* 5. SPLIT LAYOUT (GRID + MAP) */

@@ -131,7 +131,7 @@
               placeholder="Buscar emisora, dial (ej. 98.9), sector o género..."
               aria-label="Buscar emisora"
             />
-            <button id="search-clear-btn" class="search-clear" style="display:none;" title="Borrar">✕</button>
+            <button id="search-clear-btn" class="search-clear" style="display:none;" title="Borrar">&times;</button>
           </div>
         </div>
 
@@ -150,6 +150,54 @@
 
       <!-- SCROLLABLE BODY -->
       <div id="content-body">
+        <!-- ANALOG FREQUENCY TUNER TAPE (88.0 - 108.0 MHz) -->
+        <section id="frequency-tuner" class="tuner-deck">
+          <div class="tuner-glass-panel">
+            <div class="tuner-header-telemetry">
+              <div class="tuner-status-group">
+                <span class="tuner-lamp-on-air" id="tuner-lamp-onair">
+                  <span class="lamp-dot"></span> ON AIR
+                </span>
+                <span class="tuner-band-tag">FM BROADCAST CABIMAS</span>
+              </div>
+              <div class="tuner-lcd-cluster">
+                <div class="tuner-lcd-primary">
+                  <span class="tuner-digital-freq" id="tuner-display-freq">98.9</span>
+                  <span class="tuner-band-unit">MHz</span>
+                  <span class="tuner-stereo-badge" id="tuner-stereo-badge">STEREO LOCK</span>
+                </div>
+                <div class="tuner-lcd-station">
+                  <span class="tuner-station-callsign" id="tuner-display-callsign">Xtrema 98.9 FM</span>
+                  <span class="tuner-station-meta" id="tuner-display-meta">Casco Central • Cabimas</span>
+                </div>
+              </div>
+              <div class="tuner-seek-controls">
+                <button class="tuner-seek-btn" id="tuner-seek-prev" title="Escanear frecuencia anterior">
+                  <span>SCAN -</span>
+                </button>
+                <button class="tuner-seek-btn" id="tuner-seek-next" title="Escanear frecuencia siguiente">
+                  <span>SCAN +</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- The interactive scale tape -->
+            <div class="tuner-scale-viewport" id="tuner-viewport">
+              <div class="tuner-scale-track" id="tuner-track"></div>
+              <div class="tuner-needle" id="tuner-needle">
+                <div class="needle-line"></div>
+                <div class="needle-head"></div>
+              </div>
+            </div>
+
+            <div class="tuner-footer-band">
+              <span class="band-edge">88.0 MHz</span>
+              <span class="band-center">BANDA COMERCIAL COSTA ORIENTAL DEL LAGO</span>
+              <span class="band-edge">108.0 MHz</span>
+            </div>
+          </div>
+        </section>
+
         <!-- FEATURED BROADCAST HERO -->
         <section id="hero-banner" class="hero-broadcast">
           <div class="hero-overlay"></div>
@@ -166,7 +214,8 @@
               <div class="hero-tags-row">
                 <span class="hero-badge-city" id="hero-city">CABIMAS, ZULIA</span>
                 <span class="hero-badge-freq" id="hero-freq">98.9 FM</span>
-                <span class="hero-badge-status">ESTÉREO</span>
+                <span class="hero-badge-status">ESTÉREO CABINA</span>
+                <span class="hero-badge-tech" id="hero-codec">128 kbps</span>
               </div>
               <h1 class="hero-title" id="hero-title">Xtrema 98.9 FM</h1>
               <p class="hero-desc" id="hero-desc">
@@ -174,7 +223,7 @@
               </p>
               <div class="hero-actions">
                 <button class="hero-tune-btn" id="hero-play-btn">
-                  <span>SINTONIZAR</span>
+                  <span>SINTONIZAR EN DIRECTO</span>
                 </button>
                 <button class="hero-fav-btn" id="hero-fav-btn" title="Guardar Favorita">
                   <span>Favorita</span>
@@ -182,6 +231,31 @@
                 <div class="hero-socials" id="hero-socials">
                   <!-- Social Links injected via JS -->
                 </div>
+              </div>
+            </div>
+
+            <!-- Studio VU Meters Panel -->
+            <div class="hero-vu-panel" id="hero-vu-panel" title="Medidores VU de Estudio">
+              <div class="vu-meter-rack">
+                <div class="vu-channel">
+                  <span class="vu-ch-label">CH L</span>
+                  <div class="vu-leds-bar" id="vu-meter-l">
+                    <span class="vu-pip"></span><span class="vu-pip"></span><span class="vu-pip"></span><span class="vu-pip"></span>
+                    <span class="vu-pip"></span><span class="vu-pip"></span><span class="vu-pip amber"></span><span class="vu-pip amber"></span>
+                    <span class="vu-pip red"></span>
+                  </div>
+                </div>
+                <div class="vu-channel">
+                  <span class="vu-ch-label">CH R</span>
+                  <div class="vu-leds-bar" id="vu-meter-r">
+                    <span class="vu-pip"></span><span class="vu-pip"></span><span class="vu-pip"></span><span class="vu-pip"></span>
+                    <span class="vu-pip"></span><span class="vu-pip"></span><span class="vu-pip amber"></span><span class="vu-pip amber"></span>
+                    <span class="vu-pip red"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="vu-scale-ticks">
+                <span>-20</span><span>-12</span><span>-6</span><span>0</span><span>+3dB</span>
               </div>
             </div>
           </div>
