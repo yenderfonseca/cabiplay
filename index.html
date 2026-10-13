@@ -160,7 +160,7 @@
 
       <!-- SCROLLABLE BODY -->
       <div id="content-body">
-        <!-- ANALOG FREQUENCY TUNER TAPE (88.0 - 108.0 MHz) -->
+        <!-- ANALOG FREQUENCY TUNER TAPE & GRAPHIC EQUALIZER (88.0 - 108.0 MHz) -->
         <section id="frequency-tuner" class="tuner-deck">
           <div class="tuner-glass-panel">
             <div class="tuner-header-telemetry">
@@ -178,7 +178,7 @@
                 </div>
                 <div class="tuner-lcd-station">
                   <span class="tuner-station-callsign" id="tuner-display-callsign">Xtrema 98.9 FM</span>
-                  <span class="tuner-station-meta" id="tuner-display-meta">Casco Central • Cabimas</span>
+                  <span class="tuner-station-meta" id="tuner-display-meta">Casco Central · Cabimas</span>
                 </div>
               </div>
               <div class="tuner-seek-controls">
@@ -205,6 +205,80 @@
               <span class="band-center">BANDA COMERCIAL COSTA ORIENTAL DEL LAGO</span>
               <span class="band-edge">108.0 MHz</span>
             </div>
+
+            <!-- SPOTIFY GRAPHIC EQUALIZER & ROTARY PRESETS (Screen 3) -->
+            <div class="spotify-equalizer-rack" id="spotify-equalizer-rack">
+              <div class="eq-rack-header">
+                <div class="eq-rack-title">
+                  <span class="eq-badge">DSP</span>
+                  <h3>ECUALIZADOR ACÚSTICO CABIMAS</h3>
+                </div>
+                <span class="eq-status-pill">5 BANDAS MASTER</span>
+              </div>
+
+              <!-- 5 Vertical Faders -->
+              <div class="eq-sliders-cluster">
+                <div class="eq-slider-col" data-freq="60Hz">
+                  <span class="eq-gain-label" id="eq-gain-0">+3dB</span>
+                  <div class="eq-fader-track">
+                    <input type="range" class="eq-fader" id="eq-slider-0" min="-12" max="12" value="3" aria-label="60Hz Sub-bajo" />
+                  </div>
+                  <span class="eq-freq-tag">60Hz</span>
+                </div>
+                <div class="eq-slider-col" data-freq="230Hz">
+                  <span class="eq-gain-label" id="eq-gain-1">+2dB</span>
+                  <div class="eq-fader-track">
+                    <input type="range" class="eq-fader" id="eq-slider-1" min="-12" max="12" value="2" aria-label="230Hz Bajo" />
+                  </div>
+                  <span class="eq-freq-tag">230Hz</span>
+                </div>
+                <div class="eq-slider-col" data-freq="910Hz">
+                  <span class="eq-gain-label" id="eq-gain-2">0dB</span>
+                  <div class="eq-fader-track">
+                    <input type="range" class="eq-fader" id="eq-slider-2" min="-12" max="12" value="0" aria-label="910Hz Medios" />
+                  </div>
+                  <span class="eq-freq-tag">910Hz</span>
+                </div>
+                <div class="eq-slider-col" data-freq="3.6kHz">
+                  <span class="eq-gain-label" id="eq-gain-3">+4dB</span>
+                  <div class="eq-fader-track">
+                    <input type="range" class="eq-fader" id="eq-slider-3" min="-12" max="12" value="4" aria-label="3.6kHz Presencia" />
+                  </div>
+                  <span class="eq-freq-tag">3.6k</span>
+                </div>
+                <div class="eq-slider-col" data-freq="14kHz">
+                  <span class="eq-gain-label" id="eq-gain-4">+2dB</span>
+                  <div class="eq-fader-track">
+                    <input type="range" class="eq-fader" id="eq-slider-4" min="-12" max="12" value="2" aria-label="14kHz Brillo" />
+                  </div>
+                  <span class="eq-freq-tag">14k</span>
+                </div>
+              </div>
+
+              <!-- 5 Rotary Presets Knobs -->
+              <div class="eq-knobs-cluster">
+                <button type="button" class="eq-knob-btn active" data-preset="gaitas" title="Realce de tambora, furro y charrasca">
+                  <span class="knob-dial"><span class="knob-indicator"></span></span>
+                  <span class="knob-label">Gaitas</span>
+                </button>
+                <button type="button" class="eq-knob-btn" data-preset="urbano" title="Bajo profundo para reggaetón y ritmo latino">
+                  <span class="knob-dial"><span class="knob-indicator"></span></span>
+                  <span class="knob-label">Urbano</span>
+                </button>
+                <button type="button" class="eq-knob-btn" data-preset="noticias" title="Claridad de voz y modulación para programas de opinión">
+                  <span class="knob-dial"><span class="knob-indicator"></span></span>
+                  <span class="knob-label">Noticias</span>
+                </button>
+                <button type="button" class="eq-knob-btn" data-preset="tropical" title="Brillo para salsa, guaracha y merengue">
+                  <span class="knob-dial"><span class="knob-indicator"></span></span>
+                  <span class="knob-label">Tropical</span>
+                </button>
+                <button type="button" class="eq-knob-btn" data-preset="plano" title="Respuesta acústica plana de estudio">
+                  <span class="knob-dial"><span class="knob-indicator"></span></span>
+                  <span class="knob-label">En Vivo</span>
+                </button>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -213,9 +287,17 @@
           <div class="hero-overlay"></div>
           <div class="hero-content">
             <div class="hero-art-box" id="hero-art">
-              <div id="hero-art-slot" style="width:100%; height:100%;">
-                <img id="hero-img" src="https://cdn.onlineradiobox.com/img/l/8/115068.v13.png" alt="Emisora en Vivo" />
+              <button type="button" class="hero-arrow-btn hero-arrow-prev" id="hero-prev-btn" aria-label="Emisora anterior" title="Emisora anterior">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="15 18 9 12 15 6 15 18"></polygon></svg>
+              </button>
+              <div class="hero-disc-ring">
+                <div id="hero-art-slot" style="width:100%; height:100%;">
+                  <img id="hero-img" src="https://cdn.onlineradiobox.com/img/l/8/115068.v13.png" alt="Emisora en Vivo" />
+                </div>
               </div>
+              <button type="button" class="hero-arrow-btn hero-arrow-next" id="hero-next-btn" aria-label="Emisora siguiente" title="Emisora siguiente">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="9 18 15 12 9 6 9 18"></polygon></svg>
+              </button>
               <div class="hero-badge-live">
                 <span class="pulse-dot"></span> EN VIVO
               </div>
@@ -236,13 +318,13 @@
                   <span>SINTONIZAR EN DIRECTO</span>
                 </button>
                 <button class="hero-fav-btn" id="hero-fav-btn" title="Guardar Favorita">
-                  <span>Favorita</span>
+                  <span>FAVORITA</span>
                 </button>
                 <button class="hero-cast-btn" id="hero-cast-btn" title="Transmitir (AirPlay / Chromecast / Auto)">
-                  <span class="cast-dot"></span> <span>AirPlay / Cast</span>
+                  <span class="cast-dot"></span> <span>AIRPLAY / CAST</span>
                 </button>
                 <button class="hero-share-btn" id="hero-share-btn" title="Compartir señal de radio">
-                  <span>Compartir</span>
+                  <span>COMPARTIR</span>
                 </button>
                 <div class="hero-socials" id="hero-socials">
                   <!-- Social Links injected via JS -->
@@ -399,6 +481,86 @@
       <span class="tab-counter" id="mobile-fav-count">0</span>
     </button>
   </nav>
+
+  <!-- SPOTIFY-INSPIRED NOW PLAYING MODAL (EXPANDABLE FROM MOBILE DOCKED BAR) -->
+  <div id="now-playing-modal" class="now-playing-modal" aria-hidden="true">
+    <div class="npm-backdrop" id="npm-backdrop"></div>
+    <div class="npm-sheet">
+      <!-- Drag handle / header -->
+      <div class="npm-header">
+        <button type="button" id="npm-close-btn" class="npm-icon-btn" aria-label="Minimizar reproductor">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="npm-header-text">
+          <span class="npm-kicker">REPRODUCIENDO EN VIVO</span>
+          <span class="npm-source" id="npm-header-station">Cabimas, Zulia</span>
+        </div>
+        <button type="button" id="npm-cast-btn" class="npm-icon-btn" aria-label="Transmitir audio" title="AirPlay / Chromecast">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
+        </button>
+      </div>
+
+      <!-- Disc / Artwork (Screen 2 circular mockup) -->
+      <div class="npm-artwork-wrapper">
+        <div class="npm-vinyl-ring" id="npm-vinyl-ring">
+          <div class="npm-cover-circle" id="npm-cover-slot">
+            <img id="npm-thumb" src="https://cdn.onlineradiobox.com/img/l/8/115068.v13.png" alt="Cover" />
+          </div>
+          <div class="npm-center-spindle"></div>
+        </div>
+      </div>
+
+      <!-- Action Pill Bar: Fav, Repeat/Live, Shuffle, Share -->
+      <div class="npm-action-bar">
+        <button type="button" id="npm-fav-btn" class="npm-pill-action" title="Favorita">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span id="npm-fav-text">FAVORITA</span>
+        </button>
+        <button type="button" id="npm-live-btn" class="npm-pill-action active" title="Transmisión en directo">
+          <span class="npm-live-dot"></span>
+          <span>EN DIRECTO</span>
+        </button>
+        <button type="button" id="npm-shuffle-btn" class="npm-pill-action" title="Emisora aleatoria">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+          <span>ALEATORIO</span>
+        </button>
+        <button type="button" id="npm-share-btn" class="npm-pill-action" title="Compartir señal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          <span>COMPARTIR</span>
+        </button>
+      </div>
+
+      <!-- Station Info -->
+      <div class="npm-info">
+        <span class="npm-location-label" id="npm-location">CABIMAS, VENEZUELA</span>
+        <h2 class="npm-title" id="npm-title">Xtrema 98.9 FM</h2>
+        <span class="npm-meta-line" id="npm-meta">98.9 FM · Urbano & Latino · En Línea</span>
+      </div>
+
+      <!-- Scrubber / Visualizer Bar -->
+      <div class="npm-scrubber-row">
+        <span class="npm-time" id="npm-timer">00:00</span>
+        <div class="npm-progress-track">
+          <div class="npm-progress-fill" id="npm-progress-fill" style="width: 100%;"></div>
+          <div class="npm-progress-thumb"></div>
+        </div>
+        <span class="npm-badge-live">LIVE</span>
+      </div>
+
+      <!-- Main Controls (Circle Prev, Big Green Circle Play, Circle Next) -->
+      <div class="npm-controls-row">
+        <button type="button" id="npm-prev-btn" class="npm-circle-control" aria-label="Emisora anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2.5"></line></svg>
+        </button>
+        <button type="button" id="npm-play-btn" class="npm-circle-play" aria-label="Reproducir o pausar">
+          <span id="npm-play-icon">▶</span>
+        </button>
+        <button type="button" id="npm-next-btn" class="npm-circle-control" aria-label="Emisora siguiente">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2.5"></line></svg>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <audio id="audio-stream" preload="none" x-webkit-airplay="allow" webkit-playsinline playsinline></audio>
   <script src="app.js"></script>

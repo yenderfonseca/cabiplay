@@ -792,6 +792,7 @@ function selectAndPlayStation(station) {
   });
 
   renderCards();
+  if (typeof syncNowPlayingModal === "function") syncNowPlayingModal();
   playStream(station.stream_url || station.url_resolved);
 }
 
@@ -877,6 +878,8 @@ function startTimer() {
     const m = Math.floor(playDurationSeconds / 60).toString().padStart(2, "0");
     const s = (playDurationSeconds % 60).toString().padStart(2, "0");
     playerTimer.textContent = `${m}:${s}`;
+    const npmTimerEl = document.getElementById("npm-timer");
+    if (npmTimerEl) npmTimerEl.textContent = `${m}:${s}`;
   }, 1000);
 }
 
@@ -896,6 +899,7 @@ audio.addEventListener("playing", () => {
   startTimer();
   startVuMeters();
   renderCards();
+  if (typeof syncNowPlayingModal === "function") syncNowPlayingModal();
   if ("mediaSession" in navigator) {
     navigator.mediaSession.playbackState = "playing";
   }
@@ -909,6 +913,7 @@ audio.addEventListener("pause", () => {
   stopTimer();
   stopVuMeters();
   renderCards();
+  if (typeof syncNowPlayingModal === "function") syncNowPlayingModal();
   if ("mediaSession" in navigator) {
     navigator.mediaSession.playbackState = "paused";
   }
@@ -1151,9 +1156,221 @@ document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
   });
 });
 
+// 16. Spotify Graphic Equalizer & Acoustic Presets (Screen 3)
+const EQ_PRESETS = {
+  gaitas: [4, 2, 1, 4, 3],
+  urbano: [6, 3, 0, 2, 3],
+  noticias: [-3, -1, 4, 3, 1],
+  tropical: [2, 1, 3, 4, 3],
+  plano: [0, 0, 0, 0, 0]
+};
+
+function initSpotifyEqualizer() {
+  const sliders = [
+    document.getElementById("eq-slider-0"),
+    document.getElementById("eq-slider-1"),
+    document.getElementById("eq-slider-2"),
+    document.getElementById("eq-slider-3"),
+    document.getElementById("eq-slider-4")
+  ];
+  const labels = [
+    document.getElementById("eq-gain-0"),
+    document.getElementById("eq-gain-1"),
+    document.getElementById("eq-gain-2"),
+    document.getElementById("eq-gain-3"),
+    document.getElementById("eq-gain-4")
+  ];
+
+  sliders.forEach((slider, idx) => {
+    if (!slider) return;
+    slider.addEventListener("input", (e) => {
+      const val = parseInt(e.target.value, 10);
+      if (labels[idx]) labels[idx].textContent = (val > 0 ? "+" : "") + val + "dB";
+      document.querySelectorAll(".eq-knob-btn").forEach(b => b.classList.remove("active"));
+    });
+  });
+
+  document.querySelectorAll(".eq-knob-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".eq-knob-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const presetKey = btn.dataset.preset;
+      const values = EQ_PRESETS[presetKey] || EQ_PRESETS.plano;
+      sliders.forEach((slider, idx) => {
+        if (!slider) return;
+        slider.value = values[idx];
+        if (labels[idx]) {
+          const val = values[idx];
+          labels[idx].textContent = (val > 0 ? "+" : "") + val + "dB";
+        }
+      });
+    });
+  });
+}
+
+// 17. Hero Carousel Arrows (Screen 1)
+function initHeroCarousel() {
+  const heroPrevBtn = document.getElementById("hero-prev-btn");
+  const heroNextBtn = document.getElementById("hero-next-btn");
+
+  if (heroPrevBtn) {
+    heroPrevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (allStations.length === 0) return;
+      let idx = allStations.findIndex(s => s.id === (currentStation ? currentStation.id : ""));
+      if (idx <= 0) idx = allStations.length - 1;
+      else idx--;
+      setHeroStation(allStations[idx]);
+    });
+  }
+
+  if (heroNextBtn) {
+    heroNextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (allStations.length === 0) return;
+      let idx = allStations.findIndex(s => s.id === (currentStation ? currentStation.id : ""));
+      if (idx === -1 || idx >= allStations.length - 1) idx = 0;
+      else idx++;
+      setHeroStation(allStations[idx]);
+    });
+  }
+}
+
+// 18. Spotify-Inspired Now Playing Modal (Screen 2)
+const npmModal = document.getElementById("now-playing-modal");
+const npmBackdrop = document.getElementById("npm-backdrop");
+const npmCloseBtn = document.getElementById("npm-close-btn");
+const npmThumb = document.getElementById("npm-thumb");
+const npmTitle = document.getElementById("npm-title");
+const npmMeta = document.getElementById("npm-meta");
+const npmLocation = document.getElementById("npm-location");
+const npmHeaderStation = document.getElementById("npm-header-station");
+const npmFavBtn = document.getElementById("npm-fav-btn");
+const npmFavText = document.getElementById("npm-fav-text");
+const npmShuffleBtn = document.getElementById("npm-shuffle-btn");
+const npmShareBtn = document.getElementById("npm-share-btn");
+const npmCastBtn = document.getElementById("npm-cast-btn");
+const npmPrevBtn = document.getElementById("npm-prev-btn");
+const npmNextBtn = document.getElementById("npm-next-btn");
+const npmPlayBtn = document.getElementById("npm-play-btn");
+const npmPlayIcon = document.getElementById("npm-play-icon");
+const npmTimer = document.getElementById("npm-timer");
+const npmVinylRing = document.getElementById("npm-vinyl-ring");
+
+function openNowPlayingModal() {
+  if (!npmModal) return;
+  syncNowPlayingModal();
+  npmModal.classList.add("active");
+  npmModal.setAttribute("aria-hidden", "false");
+}
+
+function closeNowPlayingModal() {
+  if (!npmModal) return;
+  npmModal.classList.remove("active");
+  npmModal.setAttribute("aria-hidden", "true");
+}
+
+function syncNowPlayingModal() {
+  if (!currentStation) return;
+  if (npmTitle) npmTitle.textContent = currentStation.name;
+  if (npmMeta) npmMeta.textContent = (currentStation.freq || "WEB") + " · " + (currentStation.genre || "En Vivo") + " · En Línea";
+  if (npmLocation) npmLocation.textContent = (currentStation.sector || "Cabimas") + ", Venezuela";
+  if (npmHeaderStation) npmHeaderStation.textContent = currentStation.name;
+  if (npmThumb) {
+    npmThumb.src = currentStation.logo_local || currentStation.logo || ("assets/logos/" + (currentStation.slug || "radio") + ".svg");
+  }
+
+  const stId = currentStation.station_id || currentStation.stream_url;
+  const isFav = favorites.includes(stId);
+  if (npmFavBtn) {
+    npmFavBtn.classList.toggle("active", isFav);
+    if (npmFavText) npmFavText.textContent = isFav ? "GUARDADA" : "FAVORITA";
+  }
+
+  const isPlaying = !audio.paused && !audio.ended && audio.currentTime > 0;
+  if (npmPlayIcon) npmPlayIcon.textContent = isPlaying ? "⏸" : "▶";
+  if (npmVinylRing) npmVinylRing.classList.toggle("is-playing", isPlaying);
+  if (npmTimer && playerTimer) npmTimer.textContent = playerTimer.textContent;
+}
+
+function initNowPlayingModal() {
+  if (npmCloseBtn) npmCloseBtn.addEventListener("click", closeNowPlayingModal);
+  if (npmBackdrop) npmBackdrop.addEventListener("click", closeNowPlayingModal);
+
+  // Open modal when tapping player left on mobile or tablet
+  const playerLeftEl = document.querySelector("#tunein-player .player-left");
+  if (playerLeftEl) {
+    playerLeftEl.style.cursor = "pointer";
+    playerLeftEl.addEventListener("click", () => {
+      if (window.innerWidth <= 992) {
+        openNowPlayingModal();
+      }
+    });
+  }
+
+  if (npmPlayBtn) {
+    npmPlayBtn.addEventListener("click", () => {
+      if (mainPlayBtn) mainPlayBtn.click();
+      setTimeout(syncNowPlayingModal, 100);
+    });
+  }
+
+  if (npmPrevBtn) {
+    npmPrevBtn.addEventListener("click", () => {
+      if (btnPrev) btnPrev.click();
+      setTimeout(syncNowPlayingModal, 100);
+    });
+  }
+
+  if (npmNextBtn) {
+    npmNextBtn.addEventListener("click", () => {
+      if (btnNext) btnNext.click();
+      setTimeout(syncNowPlayingModal, 100);
+    });
+  }
+
+  if (npmShuffleBtn) {
+    npmShuffleBtn.addEventListener("click", () => {
+      if (btnShuffle) btnShuffle.click();
+      setTimeout(syncNowPlayingModal, 100);
+    });
+  }
+
+  if (npmFavBtn) {
+    npmFavBtn.addEventListener("click", () => {
+      if (currentStation) {
+        const stId = currentStation.station_id || currentStation.stream_url;
+        toggleFavorite(stId);
+        syncNowPlayingModal();
+      }
+    });
+  }
+
+  if (npmCastBtn) {
+    npmCastBtn.addEventListener("click", triggerAirPlayOrCast);
+  }
+
+  if (npmShareBtn) {
+    npmShareBtn.addEventListener("click", () => {
+      if (currentStation && navigator.share) {
+        navigator.share({
+          title: currentStation.name + " - Radio Cabimas en Vivo",
+          text: "Escucha " + currentStation.name + " (" + (currentStation.freq || "WEB") + ") en vivo desde Cabimas por cabiplay.",
+          url: window.location.href
+        }).catch(() => shareStationFallback());
+      } else {
+        shareStationFallback();
+      }
+    });
+  }
+}
+
 // App Entry Point
 window.addEventListener("DOMContentLoaded", () => {
   initMap();
   initMediaSessionHandlers();
+  initSpotifyEqualizer();
+  initHeroCarousel();
+  initNowPlayingModal();
   loadStations();
 });
