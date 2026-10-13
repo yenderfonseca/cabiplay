@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Zumaque 90.5 FM (90.5 FM) — Cabimas, Zulia en Vivo | cabiplay</title>
+  <meta name="description" content="Escucha Zumaque 90.5 FM (90.5 FM) en vivo desde Sector R-10 / El Zumaque, Cabimas, Estado Zulia. Conoce su historia, frecuencia dial y enlaces oficiales en cabiplay." />
+  <meta property="og:title" content="Zumaque 90.5 FM (90.5 FM) — En Vivo desde Cabimas, Zulia" />
+  <meta property="og:description" content="Homenaje al pionero petrolero de Venezuela. Música tropical, vallenatos, salsa y cobertura informativa local para el pueblo de Cabimas.
+
+Zumaque 90.5 FM es una ..." />
+  <meta property="og:type" content="music.radio_station" />
+  <meta property="og:url" content="https://yenderfonseca.com/cabiplay/estacion/zumaque-905-fm.html" />
+  <link rel="canonical" href="https://yenderfonseca.com/cabiplay/estacion/zumaque-905-fm.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    :root {
+      --bg-base: #070a13;
+      --bg-surface: #0e1422;
+      --bg-card: #141c2e;
+      --border: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --celeste: #00a8e8;
+      --sol: #ffb703;
+      --verde: #00a859;
+      --station-accent: #ffb703;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-base);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 90px;
+    }
+
+    header.top-nav {
+      background: rgba(7, 10, 19, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: var(--celeste);
+      color: #000;
+      border-color: var(--celeste);
+    }
+
+    .brand-tag {
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .brand-tag span { color: var(--celeste); }
+
+    .hero-container {
+      max-width: 1000px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+
+    .station-hero-card {
+      background: linear-gradient(135deg, rgba(20, 28, 46, 0.95) 0%, rgba(7, 10, 19, 0.98) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .station-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste) 0%, var(--verde) 50%, var(--sol) 100%);
+    }
+
+    @media (min-width: 640px) {
+      .station-hero-card {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .avatar-wrapper {
+      width: 160px;
+      height: 160px;
+      flex-shrink: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      border: 2px solid var(--border);
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Default HTML Art */
+    .station-default-art {
+      width: 100%;
+      height: 100%;
+      background: #080c14;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 10px;
+      text-align: center;
+    }
+    .art-flag-ribbon {
+      display: flex;
+      width: 100%;
+      height: 3px;
+      gap: 2px;
+    }
+    .ribbon-celeste { flex: 1; background: var(--celeste); }
+    .ribbon-verde { flex: 1; background: var(--verde); }
+    .ribbon-negro { flex: 1; background: #000; }
+    .ribbon-sun { flex: 1; background: var(--sol); }
+    .art-brand-tag { font-size: 0.65rem; font-weight: 900; color: #64748b; letter-spacing: 0.1em; }
+    .art-live-indicator { font-size: 0.6rem; font-weight: 800; color: #22c55e; }
+    .art-live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 3px; }
+    .art-dial-box { margin: auto 0; }
+    .art-dial-num { font-size: 1.8rem; font-weight: 900; color: #fff; line-height: 1; }
+    .art-dial-band { font-size: 0.75rem; font-weight: 800; color: var(--sol); margin-left: 2px; }
+    .art-tuner-scale { display: flex; gap: 3px; align-items: flex-end; height: 10px; }
+    .art-tuner-scale span { width: 2px; height: 5px; background: #334155; }
+    .art-tuner-scale .scale-pip { height: 8px; background: #94a3b8; }
+    .art-tuner-scale .scale-needle { height: 10px; width: 2px; background: #ef4444; }
+    .art-sub-tag { font-size: 0.55rem; font-weight: 800; color: #64748b; letter-spacing: 0.05em; }
+
+    .station-info {
+      flex: 1;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .station-info { text-align: left; }
+    }
+
+    .station-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    @media (min-width: 640px) {
+      .station-badge-row { justify-content: flex-start; }
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-freq { background: var(--celeste); color: #000; }
+    .badge-city { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); }
+    .badge-live { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+    .station-title {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .station-sector-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    @media (min-width: 640px) {
+      .cta-row { justify-content: flex-start; }
+    }
+
+    .btn-play-direct {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--celeste);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 168, 232, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-play-direct:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 168, 232, 0.5);
+    }
+
+    .btn-back-player {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back-player:hover {
+      border-color: var(--text-muted);
+    }
+
+    .content-grid {
+      max-width: 1000px;
+      margin: 32px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .content-grid { grid-template-columns: 2fr 1fr; }
+    }
+
+    .card-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .panel-header {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+    }
+
+    .bio-text {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      white-space: pre-line;
+      line-height: 1.7;
+    }
+
+    .social-btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-btn {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .social-btn strong { font-size: 0.85rem; font-weight: 800; }
+    .social-btn span { font-size: 0.78rem; color: var(--text-muted); }
+    .social-btn:hover { border-color: var(--celeste); transform: translateX(3px); }
+
+    .tech-sheet-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .tech-sheet-table td {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .tech-sheet-table td:first-child {
+      color: var(--text-muted);
+      width: 45%;
+    }
+    .tech-sheet-table td:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    #map-preview {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 14px;
+      border: 1px solid var(--border);
+    }
+
+    /* Persistent Mini-Audio Player */
+    .mini-player-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(7, 10, 19, 0.98);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+    .mini-player-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mini-player-info strong { font-size: 0.9rem; }
+    .mini-player-info span { font-size: 0.75rem; color: var(--text-muted); }
+    .btn-toggle-play {
+      background: var(--celeste);
+      border: none;
+      color: #000;
+      font-weight: 900;
+      font-size: 0.82rem;
+      padding: 10px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-nav">
+    <a href="../#station-zumaque-905-fm" class="back-btn">
+      ← Volver al Dial
+    </a>
+    <div class="brand-tag">
+      <span>cabi</span>play • <strong>CABIMAS</strong>
+    </div>
+  </header>
+
+  <div class="hero-container">
+    <div class="station-hero-card">
+      <div class="avatar-wrapper">
+        <img src="../assets/logos/zumaque-905-fm.svg" alt="Zumaque 90.5 FM Logo" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div style="display:none; width:100%; height:100%;">
+          <div class="station-default-art" aria-label="Zumaque 90.5 FM 90.5 FM">
+      <div class="art-flag-ribbon">
+        <span class="ribbon-celeste"></span>
+        <span class="ribbon-verde"></span>
+        <span class="ribbon-negro"></span>
+        <span class="ribbon-sun"></span>
+      </div>
+      <div class="art-header-line">
+        <span class="art-brand-tag">CABIMAS</span>
+        <span class="art-live-indicator"><span class="art-live-dot"></span> EN VIVO</span>
+      </div>
+      <div class="art-dial-box">
+        <span class="art-dial-num">90.5</span>
+        <span class="art-dial-band">FM</span>
+      </div>
+      <div class="art-tuner-scale" aria-hidden="true">
+        <span></span><span></span><span></span><span class="scale-pip"></span><span></span><span></span><span class="scale-needle"></span><span></span><span></span><span></span>
+      </div>
+      <div class="art-footer-line">
+        <span class="art-sub-tag">COSTA ORIENTAL DEL LAGO</span>
+      </div>
+    </div>
+        </div>
+      </div>
+
+      <div class="station-info">
+        <div class="station-badge-row">
+          <span class="badge-pill badge-freq">90.5 FM</span>
+          <span class="badge-pill badge-city">Sector R-10 / El Zumaque</span>
+          <span class="badge-pill badge-live">● EN VIVO</span>
+        </div>
+        <h1 class="station-title">Zumaque 90.5 FM</h1>
+        <p class="station-sector-sub">Sector R-10 / El Zumaque — Cabimas, Zulia, Venezuela</p>
+
+        <div class="cta-row">
+          <a href="../#station-zumaque-905-fm" class="btn-play-direct">
+            Sintonizar en Vivo
+          </a>
+          <a href="../" class="btn-back-player">
+            Explorar todas las emisoras
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <div class="card-panel">
+      <h2 class="panel-header">Historia & Propuesta Radial</h2>
+      <p class="bio-text">Homenaje al pionero petrolero de Venezuela. Música tropical, vallenatos, salsa y cobertura informativa local para el pueblo de Cabimas.
+
+Zumaque 90.5 FM es una estación de radio que transmite su señal en vivo desde Sector R-10 / El Zumaque, en Cabimas, Estado Zulia.
+Reconocida por su aporte comunicacional a la Costa Oriental del Lago, su propuesta sonora combina lo mejor de música latina, tropical, noticias,
+brindando a los oyentes cabimenses entretenimiento continuo, actualidad informativa y una selección musical representativa de la identidad zuliana y nacional.
+Transmitiendo en la frecuencia 90.5 FM, la emisora mantiene una presencia activa tanto en el dial como a través de su señal digital en streaming,
+conectando a los habitantes de Cabimas con la diáspora en el resto de Venezuela y el mundo.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div class="card-panel">
+        <h2 class="panel-header">Redes & Contacto</h2>
+        <div class="social-btn-list">
+          
+        <a href="https://onlineradiobox.com/ve/zumaque90.5/" target="_blank" class="social-btn website-btn">
+          <strong>Sitio Web Oficial</strong>
+          <span>Visitar portal</span>
+        </a>
+        </div>
+      </div>
+
+      <div class="card-panel">
+        <h2 class="panel-header">Ficha Técnica</h2>
+        <table class="tech-sheet-table">
+          <tr>
+            <td>Dial</td>
+            <td>90.5 FM</td>
+          </tr>
+          <tr>
+            <td>Municipio</td>
+            <td>Cabimas</td>
+          </tr>
+          <tr>
+            <td>Sector</td>
+            <td>Sector R-10</td>
+          </tr>
+          <tr>
+            <td>Estado</td>
+            <td>Zulia, Venezuela</td>
+          </tr>
+          <tr>
+            <td>Coordenadas</td>
+            <td>10.3880° N, 71.4460° W</td>
+          </tr>
+          <tr>
+            <td>Transmisión</td>
+            <td>Streaming Directo</td>
+          </tr>
+        </table>
+
+        <div id="map-preview"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Live Audio Element -->
+  <div class="mini-player-bar">
+    <div class="mini-player-info">
+      <div>
+        <strong>Zumaque 90.5 FM</strong>
+        <p><span>90.5 FM • Cabimas</span></p>
+      </div>
+    </div>
+    <audio id="station-audio" src="https://stream.zeno.fm/qe1h4q3mxk8uv" preload="none"></audio>
+    <button id="mini-play-btn" class="btn-toggle-play" onclick="toggleAudio()">
+      REPRODUCIR
+    </button>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Leaflet mini map
+    const map = L.map('map-preview', {
+      center: [10.388, -71.446],
+      zoom: 14,
+      zoomControl: false,
+      attributionControl: false
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18
+    }).addTo(map);
+
+    L.marker([10.388, -71.446]).addTo(map)
+      .bindPopup("<b>Zumaque 90.5 FM</b><br>Sector R-10 / El Zumaque")
+      .openPopup();
+
+    // Audio Playback
+    const audio = document.getElementById('station-audio');
+    const btn = document.getElementById('mini-play-btn');
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          btn.textContent = 'PAUSAR';
+          btn.style.background = '#ef4444';
+          btn.style.color = '#fff';
+        }).catch(e => {
+          console.error(e);
+          alert('Conectando a la señal en vivo de Cabimas...');
+        });
+      } else {
+        audio.pause();
+        btn.textContent = 'REPRODUCIR';
+        btn.style.background = '#00a8e8';
+        btn.style.color = '#000';
+      }
+    }
+  </script>
+</body>
+</html>

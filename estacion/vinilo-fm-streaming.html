@@ -2,334 +2,300 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vinilo Fm Streaming • FM Cabimas en Vivo | cabiplay</title>
-  <meta name="description" content="Escucha Vinilo Fm Streaming (FM) en vivo desde Municipio Cabimas, Zulia, Cabimas, Zulia. Biografía, redes sociales y transmisión de audio en directo." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Vinilo FM Streaming (WEB) — Cabimas, Zulia en Vivo | cabiplay</title>
+  <meta name="description" content="Escucha Vinilo FM Streaming (WEB) en vivo desde Sector Punta Icotea, Cabimas, Estado Zulia. Conoce su historia, frecuencia dial y enlaces oficiales en cabiplay." />
+  <meta property="og:title" content="Vinilo FM Streaming (WEB) — En Vivo desde Cabimas, Zulia" />
+  <meta property="og:description" content="Elegancia y recuerdos en vinilo desde la ribera de Cabimas. Los temas que marcaron época en los 70s, 80s y 90s.
 
-  <!-- Leaflet CSS & JS -->
+Vinilo FM Streaming es una estación de radio qu..." />
+  <meta property="og:type" content="music.radio_station" />
+  <meta property="og:url" content="https://yenderfonseca.com/cabiplay/estacion/vinilo-fm-streaming.html" />
+  <link rel="canonical" href="https://yenderfonseca.com/cabiplay/estacion/vinilo-fm-streaming.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Hls.js fallback -->
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
   <style>
     :root {
-      --cabimas-celeste: #00a8e8;
-      --cabimas-verde: #00a859;
-      --cabimas-negro: #090d14;
-      --cabimas-sol: #ffb703;
-      --surface-card: #151d2c;
-      --surface-border: #223047;
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
+      --bg-base: #070a13;
+      --bg-surface: #0e1422;
+      --bg-card: #141c2e;
+      --border: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --celeste: #00a8e8;
+      --sol: #ffb703;
+      --verde: #00a859;
+      --station-accent: #ffb703;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--cabimas-negro);
-      color: var(--text-primary);
-      line-height: 1.6;
-      padding-bottom: 60px;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-base);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 90px;
     }
-    /* Bandera de Cabimas */
-    .cabimas-ribbon {
-      height: 5px;
-      display: flex;
-      width: 100%;
-    }
-    .ribbon-celeste { flex: 2; background: var(--cabimas-celeste); }
-    .ribbon-verde { flex: 1; background: var(--cabimas-verde); }
-    .ribbon-negro { flex: 1; background: #000; }
-    .ribbon-sun { width: 40px; background: var(--cabimas-sol); }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    header.nav-header {
+    header.top-nav {
+      background: rgba(7, 10, 19, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--surface-border);
-      margin-bottom: 24px;
-    }
-    .brand-link {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-    .brand-link span { color: var(--cabimas-celeste); }
-    .back-btn {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      color: #cbd5e1;
-      padding: 8px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      transition: all 0.2s ease;
-    }
-    .back-btn:hover {
-      background: var(--cabimas-celeste);
-      color: #000;
-      border-color: var(--cabimas-celeste);
     }
 
-    /* Station Hero */
-    .station-hero {
-      background: linear-gradient(135deg, #091724 0%, #0d2235 60%, #082d24 100%);
-      border: 1px solid rgba(0, 168, 232, 0.3);
-      border-radius: 10px;
-      padding: 28px;
-      display: flex;
-      gap: 24px;
+    .back-btn {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 28px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 8px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: all 0.2s;
     }
-    .station-avatar {
-      width: 160px;
-      height: 160px;
-      min-width: 160px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 2px solid rgba(0, 168, 232, 0.4);
-      background: var(--surface-card);
-      position: relative;
+
+    .back-btn:hover {
+      background: var(--celeste);
+      color: #000;
+      border-color: var(--celeste);
     }
-    .station-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+
+    .brand-tag {
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
     }
-    /* Default HTML Art (Estilo Cabimas Dial) */
-    .station-default-art {
-      position: relative;
-      width: 100%;
-      height: 100%;
+    .brand-tag span { color: var(--celeste); }
+
+    .hero-container {
+      max-width: 1000px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+
+    .station-hero-card {
+      background: linear-gradient(135deg, rgba(20, 28, 46, 0.95) 0%, rgba(7, 10, 19, 0.98) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 8px 8px;
-      background: radial-gradient(circle at 50% 30%, #152238 0%, #0a1320 60%, #05080f 100%);
-      border: 1px solid rgba(0, 168, 232, 0.4);
-      border-radius: 6px;
+      gap: 24px;
+      position: relative;
       overflow: hidden;
-      user-select: none;
-      box-sizing: border-box;
-      box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
-    .art-flag-ribbon {
+
+    .station-hero-card::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      display: flex;
-      z-index: 5;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste) 0%, var(--verde) 50%, var(--sol) 100%);
     }
-    .art-flag-ribbon .ribbon-celeste { flex: 2; background: var(--cabimas-celeste); }
-    .art-flag-ribbon .ribbon-verde { flex: 1; background: var(--cabimas-verde); }
-    .art-flag-ribbon .ribbon-negro { flex: 1; background: #000; }
-    .art-flag-ribbon .ribbon-sun { width: 14px; background: var(--cabimas-sol); box-shadow: 0 0 4px var(--cabimas-sol); }
-    .art-header-line {
+
+    @media (min-width: 640px) {
+      .station-hero-card {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .avatar-wrapper {
+      width: 160px;
+      height: 160px;
+      flex-shrink: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      border: 2px solid var(--border);
       position: relative;
-      z-index: 2;
+      margin: 0 auto;
+    }
+
+    .avatar-wrapper img {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2px 4px;
-      margin-top: 2px;
+      height: 100%;
+      object-fit: cover;
     }
-    .art-brand-tag {
-      font-size: 0.62rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      color: var(--cabimas-celeste);
-      text-transform: uppercase;
-    }
-    .art-live-indicator {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      color: var(--cabimas-verde);
-      font-size: 0.58rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-    }
-    .art-live-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--cabimas-verde);
-      box-shadow: 0 0 6px var(--cabimas-verde);
-    }
-    .art-dial-box {
-      position: relative;
-      z-index: 2;
+
+    /* Default HTML Art */
+    .station-default-art {
+      width: 100%;
+      height: 100%;
+      background: #080c14;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      margin: auto 0;
-      text-align: center;
-    }
-    .art-dial-num {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 2.3rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      color: #ffffff;
-      text-shadow: 0 2px 12px rgba(0, 168, 232, 0.45);
-    }
-    .art-dial-band {
-      display: inline-block;
-      margin-top: 5px;
-      background: var(--cabimas-sol);
-      color: #000000;
-      font-weight: 900;
-      font-size: 0.72rem;
-      padding: 2px 8px;
-      border-radius: 3px;
-      letter-spacing: 0.06em;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-      text-transform: uppercase;
-    }
-    .art-tuner-scale {
-      position: relative;
-      z-index: 2;
-      width: 85%;
-      display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      height: 9px;
-      margin-bottom: 4px;
-    }
-    .art-tuner-scale span {
-      width: 1px;
-      height: 4px;
-      background: rgba(148, 163, 184, 0.4);
-    }
-    .art-tuner-scale .scale-pip {
-      height: 7px;
-      background: var(--cabimas-celeste);
-    }
-    .art-tuner-scale .scale-needle {
-      height: 10px;
-      width: 2px;
-      background: var(--cabimas-sol);
-      box-shadow: 0 0 6px var(--cabimas-sol);
-    }
-    .art-footer-line {
-      position: relative;
-      z-index: 2;
-      width: 100%;
+      padding: 12px 10px;
       text-align: center;
-      border-top: 1px solid rgba(34, 48, 71, 0.8);
-      padding-top: 4px;
     }
-    .art-sub-tag {
-      font-size: 0.54rem;
+    .art-flag-ribbon {
+      display: flex;
+      width: 100%;
+      height: 3px;
+      gap: 2px;
+    }
+    .ribbon-celeste { flex: 1; background: var(--celeste); }
+    .ribbon-verde { flex: 1; background: var(--verde); }
+    .ribbon-negro { flex: 1; background: #000; }
+    .ribbon-sun { flex: 1; background: var(--sol); }
+    .art-brand-tag { font-size: 0.65rem; font-weight: 900; color: #64748b; letter-spacing: 0.1em; }
+    .art-live-indicator { font-size: 0.6rem; font-weight: 800; color: #22c55e; }
+    .art-live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 3px; }
+    .art-dial-box { margin: auto 0; }
+    .art-dial-num { font-size: 1.8rem; font-weight: 900; color: #fff; line-height: 1; }
+    .art-dial-band { font-size: 0.75rem; font-weight: 800; color: var(--sol); margin-left: 2px; }
+    .art-tuner-scale { display: flex; gap: 3px; align-items: flex-end; height: 10px; }
+    .art-tuner-scale span { width: 2px; height: 5px; background: #334155; }
+    .art-tuner-scale .scale-pip { height: 8px; background: #94a3b8; }
+    .art-tuner-scale .scale-needle { height: 10px; width: 2px; background: #ef4444; }
+    .art-sub-tag { font-size: 0.55rem; font-weight: 800; color: #64748b; letter-spacing: 0.05em; }
+
+    .station-info {
+      flex: 1;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .station-info { text-align: left; }
+    }
+
+    .station-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    @media (min-width: 640px) {
+      .station-badge-row { justify-content: flex-start; }
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
       font-weight: 800;
-      color: #94a3b8;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      white-space: nowrap;
+      letter-spacing: 0.05em;
     }
-    .station-meta h1 {
-      font-size: 2.2rem;
+    .badge-freq { background: var(--celeste); color: #000; }
+    .badge-city { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); }
+    .badge-live { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+    .station-title {
+      font-size: 2rem;
       font-weight: 900;
       letter-spacing: -0.02em;
-      margin-bottom: 6px;
-      line-height: 1.15;
+      margin-bottom: 8px;
     }
-    .badges-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-    .badge-freq { background: var(--cabimas-sol); color: #000; }
-    .badge-city { background: rgba(0, 168, 232, 0.2); color: var(--cabimas-celeste); border: 1px solid var(--cabimas-celeste); }
-    .badge-live { background: rgba(0, 168, 89, 0.2); color: var(--cabimas-verde); border: 1px solid var(--cabimas-verde); }
 
-    /* Dedicated Player Box */
-    .player-box {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+    .station-sector-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
     }
-    .player-btn {
-      background: var(--cabimas-celeste);
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    @media (min-width: 640px) {
+      .cta-row { justify-content: flex-start; }
+    }
+
+    .btn-play-direct {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--celeste);
       color: #000;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: 12px;
       border: none;
-      padding: 12px 28px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(0, 168, 232, 0.4);
-      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 168, 232, 0.3);
+      transition: all 0.2s;
     }
-    .player-btn:hover {
-      background: #38b6ff;
-      transform: scale(1.03);
+    .btn-play-direct:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 168, 232, 0.5);
     }
-    .status-indicator {
+
+    .btn-back-player {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back-player:hover {
+      border-color: var(--text-muted);
+    }
+
+    .content-grid {
+      max-width: 1000px;
+      margin: 32px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .content-grid { grid-template-columns: 2fr 1fr; }
+    }
+
+    .card-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .panel-header {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--cabimas-verde);
-    }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cabimas-verde);
-      box-shadow: 0 0 8px var(--cabimas-verde);
+      color: #fff;
     }
 
-    /* Content Sections */
-    .content-card {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-    .content-card h2 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 14px;
-      color: var(--cabimas-celeste);
-      border-bottom: 1px solid var(--surface-border);
-      padding-bottom: 8px;
-    }
     .bio-text {
       font-size: 0.95rem;
       color: #cbd5e1;
@@ -337,108 +303,105 @@
       line-height: 1.7;
     }
 
-    /* Social Buttons Grid */
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
+    .social-btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
+
     .social-btn {
       display: flex;
       flex-direction: column;
-      padding: 12px 16px;
-      border-radius: 6px;
-      background: #111723;
-      border: 1px solid var(--surface-border);
-      text-decoration: none;
-      color: #fff;
-      transition: all 0.2s ease;
-    }
-    .social-btn:hover {
-      border-color: var(--cabimas-celeste);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .social-btn strong {
-      font-size: 0.88rem;
-      color: #fff;
-    }
-    .social-btn span {
-      font-size: 0.75rem;
-      color: var(--cabimas-celeste);
-      margin-top: 2px;
-    }
-
-    /* Tech Specs Table */
-    .specs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-    }
-    .spec-item {
-      background: #111723;
       padding: 12px 14px;
-      border-radius: 6px;
-      border: 1px solid var(--surface-border);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
     }
-    .spec-label {
-      font-size: 0.72rem;
-      color: var(--text-secondary);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      display: block;
-    }
-    .spec-value {
-      font-size: 0.92rem;
-      color: #fff;
-      font-weight: 800;
-      margin-top: 2px;
-      display: block;
-    }
+    .social-btn strong { font-size: 0.85rem; font-weight: 800; }
+    .social-btn span { font-size: 0.78rem; color: var(--text-muted); }
+    .social-btn:hover { border-color: var(--celeste); transform: translateX(3px); }
 
-    /* Map Box */
-    #station-map {
+    .tech-sheet-table {
       width: 100%;
-      height: 280px;
-      border-radius: 6px;
-      background: #0d1117;
-      border: 1px solid var(--surface-border);
-      margin-top: 10px;
+      border-collapse: collapse;
+      font-size: 0.85rem;
     }
-    .leaflet-tile-pane {
-      filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.35);
+    .tech-sheet-table td {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .tech-sheet-table td:first-child {
+      color: var(--text-muted);
+      width: 45%;
+    }
+    .tech-sheet-table td:last-child {
+      font-weight: 700;
+      text-align: right;
     }
 
-    @media (max-width: 650px) {
-      .station-hero { flex-direction: column; text-align: center; }
-      .station-avatar { margin: 0 auto; }
-      .badges-row { justify-content: center; }
-      .player-box { flex-direction: column; align-items: stretch; text-align: center; }
-      .player-btn { width: 100%; }
-      .status-indicator { justify-content: center; }
+    #map-preview {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 14px;
+      border: 1px solid var(--border);
+    }
+
+    /* Persistent Mini-Audio Player */
+    .mini-player-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(7, 10, 19, 0.98);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+    .mini-player-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mini-player-info strong { font-size: 0.9rem; }
+    .mini-player-info span { font-size: 0.75rem; color: var(--text-muted); }
+    .btn-toggle-play {
+      background: var(--celeste);
+      border: none;
+      color: #000;
+      font-weight: 900;
+      font-size: 0.82rem;
+      padding: 10px 20px;
+      border-radius: 999px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <!-- Cinta Bandera de Cabimas -->
-  <div class="cabimas-ribbon">
-    <span class="ribbon-celeste"></span>
-    <span class="ribbon-verde"></span>
-    <span class="ribbon-negro"></span>
-    <span class="ribbon-sun"></span>
-  </div>
 
-  <div class="container">
-    <header class="nav-header">
-      <a href="../" class="brand-link">cabi<span>play</span></a>
-      <a href="../" class="back-btn">Volver al Explorador</a>
-    </header>
+  <header class="top-nav">
+    <a href="../#station-vinilo-fm-streaming" class="back-btn">
+      ← Volver al Dial
+    </a>
+    <div class="brand-tag">
+      <span>cabi</span>play • <strong>CABIMAS</strong>
+    </div>
+  </header>
 
-    <!-- Hero de la Emisora -->
-    <section class="station-hero">
-      <div class="station-avatar">
-        <div class="station-default-art" aria-label="Vinilo Fm Streaming VINI WEB">
+  <div class="hero-container">
+    <div class="station-hero-card">
+      <div class="avatar-wrapper">
+        <img src="../assets/logos/vinilo-fm-streaming.png" alt="Vinilo FM Streaming Logo" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div style="display:none; width:100%; height:100%;">
+          <div class="station-default-art" aria-label="Vinilo FM Streaming CABI WEB">
       <div class="art-flag-ribbon">
         <span class="ribbon-celeste"></span>
         <span class="ribbon-verde"></span>
@@ -450,7 +413,7 @@
         <span class="art-live-indicator"><span class="art-live-dot"></span> EN VIVO</span>
       </div>
       <div class="art-dial-box">
-        <span class="art-dial-num">VINI</span>
+        <span class="art-dial-num">CABI</span>
         <span class="art-dial-band">WEB</span>
       </div>
       <div class="art-tuner-scale" aria-hidden="true">
@@ -460,158 +423,140 @@
         <span class="art-sub-tag">COSTA ORIENTAL DEL LAGO</span>
       </div>
     </div>
-      </div>
-      <div class="station-meta">
-        <div class="badges-row">
-          <span class="badge badge-freq">FM</span>
-          <span class="badge badge-city">Cabimas</span>
-          <span class="badge badge-live">SEÑAL ACTIVA</span>
         </div>
-        <h1>Vinilo Fm Streaming</h1>
-        <p style="color: var(--cabimas-sol); font-weight: 700; font-size: 0.9rem;">📍 Municipio Cabimas, Zulia</p>
       </div>
-    </section>
 
-    <!-- Reproductor de Audio Dedicado -->
-    <div class="player-box">
-      <div>
-        <div class="status-indicator">
-          <span class="pulse-dot"></span>
-          <span id="player-status">LISTO PARA SINTONIZAR</span>
+      <div class="station-info">
+        <div class="station-badge-row">
+          <span class="badge-pill badge-freq">WEB</span>
+          <span class="badge-pill badge-city">Sector Punta Icotea</span>
+          <span class="badge-pill badge-live">● EN VIVO</span>
         </div>
-        <p style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px;">
-          Transmisión oficial por internet • AUDIO 128 kbps
-        </p>
+        <h1 class="station-title">Vinilo FM Streaming</h1>
+        <p class="station-sector-sub">Sector Punta Icotea — Cabimas, Zulia, Venezuela</p>
+
+        <div class="cta-row">
+          <a href="../#station-vinilo-fm-streaming" class="btn-play-direct">
+            Sintonizar en Vivo
+          </a>
+          <a href="../" class="btn-back-player">
+            Explorar todas las emisoras
+          </a>
+        </div>
       </div>
-      <button id="stream-toggle-btn" class="player-btn">SINTONIZAR EN DIRECTO</button>
-      <audio id="station-audio" preload="none"></audio>
     </div>
-
-    <!-- Biografía & Reseña -->
-    <article class="content-card">
-      <h2>Reseña y Programación</h2>
-      <div class="bio-text">Vinilo Fm Streaming es una estación de radio que transmite su señal en vivo desde Municipio Cabimas, en Cabimas, Estado Zulia.
-Reconocida por su aporte comunicacional a la Costa Oriental del Lago, su propuesta sonora combina lo mejor de música variada,
-brindando a los oyentes cabimenses entretenimiento continuo, actualidad informativa y una selección musical representativa de la identidad zuliana y nacional.
-Transmitiendo en la frecuencia Señal Online, la emisora mantiene una presencia activa tanto en el espectro radioeléctrico como a través de su señal digital en streaming,
-conectando a los habitantes de Cabimas con la diáspora en el resto de Venezuela y el mundo.</div>
-    </article>
-
-    <!-- Redes Sociales y Enlaces Oficiales -->
-    <section class="content-card">
-      <h2>Enlaces Oficiales y Redes Sociales</h2>
-      <div class="social-grid">
-        
-    <a href="https://usa14.fastcast4u.com/proxy/vinilosfm?mp=/1" target="_blank" class="social-btn stream-btn">
-      <strong>Flujo Directo de Audio</strong>
-      <span>Abrir URL del stream</span>
-    </a>
-      </div>
-    </section>
-
-    <!-- Ficha Técnica -->
-    <section class="content-card">
-      <h2>Ficha Técnica de Transmisión</h2>
-      <div class="specs-grid">
-        <div class="spec-item">
-          <span class="spec-label">Frecuencia / Dial</span>
-          <span class="spec-value">FM</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Municipio</span>
-          <span class="spec-value">Cabimas</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Sector Transmisor</span>
-          <span class="spec-value">Municipio Cabimas, Zulia</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Coordenadas GPS</span>
-          <span class="spec-value">10.3965° N, -71.4640° W</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Formato de Flujo</span>
-          <span class="spec-value">AAC / MP3</span>
-        </div>
-        <div class="spec-item">
-          <span class="spec-label">Cobertura</span>
-          <span class="spec-value">Cabimas & Costa Oriental</span>
-        </div>
-      </div>
-
-      <!-- Mapa de Ubicación de la Antena -->
-      <h3 style="font-size: 0.95rem; font-weight: 800; margin-top: 20px; color: #fff;">Antena en el Radar de Cabimas:</h3>
-      <div id="station-map"></div>
-    </section>
   </div>
 
+  <div class="content-grid">
+    <div class="card-panel">
+      <h2 class="panel-header">Historia & Propuesta Radial</h2>
+      <p class="bio-text">Elegancia y recuerdos en vinilo desde la ribera de Cabimas. Los temas que marcaron época en los 70s, 80s y 90s.
+
+Vinilo FM Streaming es una estación de radio que transmite su señal en vivo desde Sector Punta Icotea, en Cabimas, Estado Zulia.
+Reconocida por su aporte comunicacional a la Costa Oriental del Lago, su propuesta sonora combina lo mejor de baladas, retro, romántica,
+brindando a los oyentes cabimenses entretenimiento continuo, actualidad informativa y una selección musical representativa de la identidad zuliana y nacional.
+Transmitiendo en la frecuencia WEB, la emisora mantiene una presencia activa tanto en el dial como a través de su señal digital en streaming,
+conectando a los habitantes de Cabimas con la diáspora en el resto de Venezuela y el mundo.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div class="card-panel">
+        <h2 class="panel-header">Redes & Contacto</h2>
+        <div class="social-btn-list">
+          
+        <div class="no-socials-box">
+          <p>Esta emisora transmite su señal en vivo para Cabimas y la COL a través de cabiplay.</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="card-panel">
+        <h2 class="panel-header">Ficha Técnica</h2>
+        <table class="tech-sheet-table">
+          <tr>
+            <td>Dial</td>
+            <td>WEB</td>
+          </tr>
+          <tr>
+            <td>Municipio</td>
+            <td>Cabimas</td>
+          </tr>
+          <tr>
+            <td>Sector</td>
+            <td>Sector Punta Icotea</td>
+          </tr>
+          <tr>
+            <td>Estado</td>
+            <td>Zulia, Venezuela</td>
+          </tr>
+          <tr>
+            <td>Coordenadas</td>
+            <td>10.3950° N, 71.4550° W</td>
+          </tr>
+          <tr>
+            <td>Transmisión</td>
+            <td>Streaming Directo</td>
+          </tr>
+        </table>
+
+        <div id="map-preview"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Live Audio Element -->
+  <div class="mini-player-bar">
+    <div class="mini-player-info">
+      <div>
+        <strong>Vinilo FM Streaming</strong>
+        <p><span>WEB • Cabimas</span></p>
+      </div>
+    </div>
+    <audio id="station-audio" src="https://usa14.fastcast4u.com/proxy/vinilosfm?mp=/1" preload="none"></audio>
+    <button id="mini-play-btn" class="btn-toggle-play" onclick="toggleAudio()">
+      REPRODUCIR
+    </button>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const streamUrl = "https://usa14.fastcast4u.com/proxy/vinilosfm?mp=/1";
-    const audio = document.getElementById("station-audio");
-    const playBtn = document.getElementById("stream-toggle-btn");
-    const statusText = document.getElementById("player-status");
-    let hls = null;
-
-    function playStream() {
-      if (!audio.paused && audio.src) {
-        audio.pause();
-        return;
-      }
-      statusText.textContent = "CONECTANDO...";
-      playBtn.textContent = "CARGANDO...";
-
-      if (streamUrl.includes(".m3u8") && Hls.isSupported()) {
-        if (hls) hls.destroy();
-        hls = new Hls();
-        hls.loadSource(streamUrl);
-        hls.attachMedia(audio);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => audio.play().catch(onErr));
-        hls.on(Hls.Events.ERROR, (_e, d) => { if (d.fatal) onErr(); });
-      } else {
-        audio.src = streamUrl;
-        audio.play().catch(onErr);
-      }
-    }
-
-    function onErr() {
-      statusText.textContent = "SEÑAL NO DISPONIBLE";
-      playBtn.textContent = "SINTONIZAR EN DIRECTO";
-    }
-
-    audio.addEventListener("playing", () => {
-      statusText.textContent = "EN DIRECTO AHORA";
-      playBtn.textContent = "PAUSAR SEÑAL";
-    });
-
-    audio.addEventListener("pause", () => {
-      statusText.textContent = "PAUSADO";
-      playBtn.textContent = "SINTONIZAR EN DIRECTO";
-    });
-
-    audio.addEventListener("error", onErr);
-    playBtn.addEventListener("click", playStream);
-
-    // Mapa Leaflet de la Estación
-    const lat = 10.3965;
-    const lon = -71.464;
-    const map = L.map("station-map", {
-      center: [lat, lon],
+    // Leaflet mini map
+    const map = L.map('map-preview', {
+      center: [10.395, -71.455],
       zoom: 14,
       zoomControl: false,
-      maxBounds: [[10.2800, -71.5800], [10.4900, -71.3200]],
-      maxBoundsViscosity: 1.0,
-      minZoom: 12
+      attributionControl: false
     });
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18 }).addTo(map);
-    const marker = L.circleMarker([lat, lon], {
-      radius: 9,
-      fillColor: "#00a8e8",
-      color: "#ffffff",
-      weight: 2,
-      opacity: 1,
-      fillOpacity: 0.9
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18
     }).addTo(map);
-    marker.bindPopup("<strong>Vinilo Fm Streaming</strong><br/>Municipio Cabimas, Zulia").openPopup();
+
+    L.marker([10.395, -71.455]).addTo(map)
+      .bindPopup("<b>Vinilo FM Streaming</b><br>Sector Punta Icotea")
+      .openPopup();
+
+    // Audio Playback
+    const audio = document.getElementById('station-audio');
+    const btn = document.getElementById('mini-play-btn');
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          btn.textContent = 'PAUSAR';
+          btn.style.background = '#ef4444';
+          btn.style.color = '#fff';
+        }).catch(e => {
+          console.error(e);
+          alert('Conectando a la señal en vivo de Cabimas...');
+        });
+      } else {
+        audio.pause();
+        btn.textContent = 'REPRODUCIR';
+        btn.style.background = '#00a8e8';
+        btn.style.color = '#000';
+      }
+    }
   </script>
 </body>
 </html>

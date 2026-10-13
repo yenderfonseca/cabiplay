@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <linearGradient id="grad_sonora-995-fm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1320"/>
+      <stop offset="100%" stop-color="#00a8e8"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="24" fill="url(#grad_sonora-995-fm)" stroke="#223047" stroke-width="4"/>
+  <circle cx="150" cy="115" r="54" fill="rgba(0,0,0,0.5)" stroke="#00a8e8" stroke-width="3"/>
+  <text x="150" y="128" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="36" font-weight="900" fill="#ffffff" text-anchor="middle">S9</text>
+  <rect x="40" y="180" width="220" height="34" rx="8" fill="#ffb703"/>
+  <text x="150" y="203" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="16" font-weight="900" fill="#000000" text-anchor="middle">99.5 FM</text>
+  <text x="150" y="248" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="800" fill="#94a3b8" letter-spacing="1.5" text-anchor="middle">CABIMAS, ZULIA</text>
+</svg>

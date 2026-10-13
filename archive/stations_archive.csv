@@ -1,111 +1,18 @@
-name,frequency,city,sector,region_type,status,status_code,stream_url,content_type,cors_allowed,latency_ms,lat,lon,tags,source,station_id,last_checked
-Buenísima 106.3 FM,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/asxs03bkrlotv,audio/aac,False,1089,10.414,-71.457,,OnlineRadioBox,ve.buenisima1063,2026-10-13T18:49:02.434833Z
-Canciones Infantiles Y Musica Infantil,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/d0volwnwvgatv,audio/mpeg,False,1037,10.379,-71.471,,OnlineRadioBox,ve.cancionesinfantilesymusicainfantil,2026-10-13T18:49:02.386087Z
-Carabobo Es Noticia Radio,,Cabimas,,cabimas_local,LIVE,200,https://cloudstream2036.conectarhosting.com/8160/stream,audio/mpeg,True,883,10.3895,-71.4395,,OnlineRadioBox,ve.caraboboesnoticia,2026-10-13T18:49:03.269643Z
-Chronos iRadio,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/1gy58o7wicquv,audio/aac,False,1048,10.4,-71.4535,,OnlineRadioBox,ve.chronos,2026-10-13T18:49:03.314593Z
-Clásicos de Siempre,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/m6xcps6f798uv,audio/mpeg,False,1491,10.4,-71.4535,,OnlineRadioBox,ve.clasicosdesiempre,2026-10-13T18:49:03.420743Z
-Diferente FM,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/xgddxc6af2zuv,audio/mpeg,False,1048,10.4105,-71.4675,,OnlineRadioBox,ve.diferente,2026-10-13T18:49:03.141255Z
-Exitosa Fm,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/awtyvmm5muhvv,audio/aac,False,867,10.379,-71.471,,OnlineRadioBox,ve.exitosa,2026-10-13T18:49:02.213616Z
-Favoritas 97.9fm,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/eaeo5job6q4uv,audio/mpeg,False,972,10.414,-71.457,,OnlineRadioBox,ve.favorito,2026-10-13T18:49:02.317315Z
-Infinita FM ¡Sin Barreras!,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/7bh6uff1cf9uv,audio/aac,False,1791,10.3895,-71.4395,,OnlineRadioBox,ve.infinitafm,2026-10-13T18:49:03.141345Z
-Internauta-La Radio del Futuro,,Cabimas,,cabimas_local,LIVE,200,https://sonicpanel.zonaradio.net/8006/stream,audio/mpeg,True,467,10.4175,-71.4465,,OnlineRadioBox,ve.internauta,2026-10-13T18:49:02.657487Z
-LIDER 100.5 FM,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/8pmblg27bo9vv,audio/mpeg,False,967,10.414,-71.457,,OnlineRadioBox,ve.clasicos1005,2026-10-13T18:49:03.285170Z
-La Chiquinquireña 90.9 FM,90.9 FM,Cabimas,Costa Oriental del Lago / La Rosa,cabimas_local,LIVE,200,https://server6.globalhostla.com:8098/stream,audio/aac,True,1676,10.385,-71.432,"Gaita Zuliana, Tradición, Noticias",DirectVerified,cabimas.chiquinquira909,2026-10-13T18:49:03.017276Z
-La Musicana Retro,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/bc0srapqn9quv,audio/mpeg,False,1085,10.4105,-71.4675,,OnlineRadioBox,ve.lamusicanaretro,2026-10-13T18:49:02.656684Z
-La Techno Buenísima 24/7,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/arvboln3rqnuv,audio/mpeg,False,1155,10.4035,-71.443,,OnlineRadioBox,ve.latechnobuensima,2026-10-13T18:49:03.308063Z
-MANA FM,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/3rzep03457zuv,audio/aac,False,1081,10.393,-71.429,,OnlineRadioBox,ve.manafm,2026-10-13T18:49:02.427481Z
-Misión 94.3 Fm,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/unsxrfcdn5jtv,audio/aac,False,1128,10.393,-71.429,,OnlineRadioBox,ve.activa883,2026-10-13T18:49:02.478674Z
-OK 101.5 FM,101.5 FM,Cabimas,Sector Tierra Negra / Cabimas,cabimas_local,LIVE,200,https://server6.globalhostla.com:9080/stream,audio/aac,True,1454,10.422,-71.448,"Pop, Top 40, Adulto Contemporáneo",DirectVerified,cabimas.ok101,2026-10-13T18:49:02.796265Z
-Orbita 103.3 FM,103.3 FM,Cabimas,Cabimas Norte / Ambrosio,cabimas_local,LIVE,200,https://guri.tepuyserver.net/8098/stream,audio/mpeg,True,753,10.418,-71.465,"Candela, Tropical, Salsa",DirectVerified,col.orbita1033,2026-10-13T18:49:02.092162Z
-Planeta Latino Radio Web,,Cabimas,,cabimas_local,LIVE,200,http://streaming3.globalhostla.com:9484/stream,audio/aac,True,565,10.386,-71.45,,OnlineRadioBox,ve.planetalatino,2026-10-13T18:49:02.657135Z
-Play Reggae,,Cabimas,,cabimas_local,LIVE,200,https://laradiossl.online:10315/live,audio/mpeg,True,501,10.4,-71.4535,,OnlineRadioBox,ve.playreggae,2026-10-13T18:49:02.987921Z
-RADIO Galaxia,,Cabimas,,cabimas_local,LIVE,200,https://laradiossl.online:8020/;stream.mp3,audio/aacp,True,553,10.393,-71.429,,OnlineRadioBox,ve.galaxia,2026-10-13T18:49:02.988640Z
-Radio Barroso,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/zrh0rnwuarzuv,audio/mpeg,False,1270,10.414,-71.457,,OnlineRadioBox,ve.barroso,2026-10-13T18:49:02.615183Z
-Radio Dylan Internacional,,Cabimas,,cabimas_local,LIVE,200,https://stream.laut.fm/radiodylaninternacional,audio/mpeg,False,800,10.379,-71.471,,OnlineRadioBox,ve.dylaninternacional,2026-10-13T18:49:02.152332Z
-Radio El Amor en la Red,,Cabimas,,cabimas_local,LIVE,200,https://encoder.radiux.cloud/radio/elamoreenlared.mp3,audio/mpeg,True,915,10.4105,-71.4675,,OnlineRadioBox,ve.elamorenlared,2026-10-13T18:49:03.029615Z
-Radio Sabrosa FM,93.3 FM,Cabimas,Cabimas Sur / La Rosa,cabimas_local,LIVE,200,https://radiostream3.interven.ca/listen/sabrosafm/radio.mp3,audio/aac,False,987,10.378,-71.442,"Salsa, Tropical, Merengue",DirectVerified,cabimas.sabrosa,2026-10-13T18:49:02.329297Z
-Radio Saludable,,Cabimas,,cabimas_local,LIVE,200,https://stream.radiosaludable.com/8012/stream,audio/mpeg,True,745,10.4035,-71.443,,OnlineRadioBox,ve.saludable,2026-10-13T18:49:02.960096Z
-Rumba FM,,Cabimas,,cabimas_local,LIVE,200,https://cast20.plugstreaming.com:2020/stream/r981,audio/aacp; charset=utf-8,True,854,10.386,-71.45,,OnlineRadioBox,ve.rumba,2026-10-13T18:49:03.503966Z
-Sirio Radio Digital,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/khmxxbjtlzhuv,audio/mpeg,False,979,10.393,-71.429,,OnlineRadioBox,ve.sirio,2026-10-13T18:49:02.924203Z
-Supernova,,Cabimas,,cabimas_local,LIVE,200,https://server6.globalhostla.com:9322/stream,audio/mpeg,True,1151,10.3895,-71.4395,,OnlineRadioBox,ve.supernova,2026-10-13T18:49:03.481016Z
-Victoria 95.9 FM,95.9 FM,Cabimas,Sector Concordia / Miraflores,cabimas_local,LIVE,200,https://guri.tepuyserver.net/8140/stream,audio/mpeg,True,754,10.4072,-71.455,"Vallenato, Pop, Noticias, Comunitaria",DirectVerified,cabimas.victoria959,2026-10-13T18:49:02.091419Z
-Victoria Fm,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/uxyga0p1cf9uv,audio/aac,False,917,10.3895,-71.4395,,OnlineRadioBox,ve.victoriafm,2026-10-13T18:49:02.265636Z
-Vinilo Fm Streaming,,Cabimas,,cabimas_local,LIVE,200,https://usa14.fastcast4u.com/proxy/vinilosfm?mp=/1,audio/mpeg,True,591,10.3965,-71.464,,OnlineRadioBox,ve.vinilostreaming,2026-10-13T18:49:02.284468Z
-Xtrema 98.9 FM,98.9 FM,Cabimas,Casco Central / Av. Universidad,cabimas_local,LIVE,200,https://app0102.sonicpanelradio.com/8352/stream,audio/aac,True,408,10.3995,-71.4435,"Pop, Reggaetón, Variada, Éxitos",DirectVerified,cabimas.xtrema989,2026-10-13T18:49:01.744907Z
-YVKE Mundial,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/mfhrulhxdvovv,audio/aac,False,930,10.379,-71.471,,OnlineRadioBox,ve.mundial1020,2026-10-13T18:49:03.365757Z
-Young Swagon Radio,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/97gyvgz7kyvtv,audio/aac,False,890,10.3825,-71.4605,,OnlineRadioBox,ve.youngswagon,2026-10-13T18:49:03.175207Z
-Zulianisima Fm,,Cabimas,,cabimas_local,LIVE,200,https://stream.zeno.fm/m7z6zdlqlrkuv,audio/aac,False,1310,10.3825,-71.4605,,OnlineRadioBox,ve.zulianisima1003,2026-10-13T18:49:02.655529Z
-Bachata 3.1,,Bachaquero,,costa_oriental,LIVE,200,https://tu.tamarezradio.com:8020/radio.mp3,audio/mpeg,False,514,9.9724,-71.1424,,OnlineRadioBox,ve.bachata31,2026-10-13T18:49:03.799727Z
-Gigante Fm,,Ciudad Ojeda,,costa_oriental,LIVE,200,https://nazca.globalhost1.com:8306/live,audio/aac,True,1009,10.1864,-71.3199,,OnlineRadioBox,ve.gigante,2026-10-13T18:49:03.668200Z
-Maxima 104.3 FM,,Ciudad Ojeda,,costa_oriental,LIVE,200,https://stream.zeno.fm/tpg754xrclsuv,audio/aac,False,1008,10.2249,-71.2954,,OnlineRadioBox,ve.maxima1043,2026-10-13T18:49:03.665771Z
-Pequiven 88.7 FM,,Los Puertos de Altagracia,,costa_oriental,LIVE,200,https://stream-178.surfernetwork.com/9gq4b4z8bshvv,audio/mpeg,False,1522,10.7237,-71.4992,,OnlineRadioBox,ve.pequiven887,2026-10-13T18:49:04.837254Z
-Suave 102.7 FM,,Ciudad Ojeda,,costa_oriental,LIVE,200,https://app0102.sonicpanelradio.com/8768/stream,text/html,False,264,10.2074,-71.3024,,OnlineRadioBox,ve.suave1027,2026-10-13T18:49:02.933082Z
-VEN FM,,Ciudad Ojeda,,costa_oriental,LIVE,200,https://acp2.lorini.net:20216/stream,audio/mpeg,True,1305,10.1864,-71.3199,,OnlineRadioBox,ve.ven893,2026-10-13T18:49:04.238959Z
-Vía 101.9 FM,101.9 FM,Ciudad Ojeda,Costa Oriental del Lago,costa_oriental,LIVE,200,https://streamingned.com/7182/stream,audio/aacp,True,847,10.2039,-71.3094,"Éxitos, Noticias, Región COL",DirectVerified,col.via7182,2026-10-13T18:49:02.190304Z
-iPlay RADIO,,Ciudad Ojeda,,costa_oriental,LIVE,200,https://stream.zeno.fm/vkt9954rp2zuv,audio/aac,False,808,10.1969,-71.2884,,OnlineRadioBox,ve.iplay,2026-10-13T18:49:03.733125Z
-Agape Stereo 101.1 FM,,San Francisco,,zulia_regional,LIVE,200,https://sonic2.sistemahost.es/8196/stream,audio/mpeg,True,366,10.5763,-71.6123,,OnlineRadioBox,ve.agapestereo,2026-10-13T18:49:07.891751Z
-Exitos de Siempre,,Maracaibo,,zulia_regional,LIVE,200,https://usa8.fastcast4u.com/proxy/ebert1010?mp=/1,audio/mpeg,True,584,10.6217,-71.6335,,OnlineRadioBox,ve.eberom,2026-10-13T18:49:04.393397Z
-LUZ Radio,,Maracaibo,,zulia_regional,LIVE,200,https://server6.globalhostla.com:9086/stream,audio/aac,True,1145,10.6427,-71.616,,OnlineRadioBox,ve.luz1029,2026-10-13T18:49:07.480950Z
-Latinos Radio 97.1 FM,97.1 FM,Maracaibo,Zulia Regional,zulia_regional,LIVE,200,https://cloud.livescast.com:2020/stream/latinosradio971/stream,audio/mpeg; charset=utf-8,True,585,10.635,-71.62,"Latino, Baile, Fiesta",DirectVerified,zulia.latinos971,2026-10-13T18:49:01.942390Z
-Metrópolis,,Maracaibo,,zulia_regional,LIVE,200,https://audio1stream.com/8022/stream;,audio/aacp,True,476,10.6637,-71.5985,,OnlineRadioBox,ve.metropolis,2026-10-13T18:49:04.715644Z
-Ok 101.3 FM,,Maracaibo,,zulia_regional,LIVE,200,https://server.radiostreaming.com.ar/8522/stream,audio/mpeg,True,788,10.6567,-71.6195,,OnlineRadioBox,ve.ok1013,2026-10-13T18:49:05.504585Z
-POPULAR 95.5 FM,,Maracaibo,,zulia_regional,LIVE,200,https://acp2.lorini.net:36045/stream,audio/mpeg,True,1117,10.6637,-71.5985,,OnlineRadioBox,ve.popular,2026-10-13T18:49:07.100450Z
-Pinchando Discos Radio Online,,Maracaibo,,zulia_regional,LIVE,200,https://audio1stream.com/8050/stream,audio/aacp,True,323,10.6637,-71.5985,,OnlineRadioBox,ve.pinchandodiscos,2026-10-13T18:49:06.351737Z
-Radio Capital,,Maracaibo,,zulia_regional,LIVE,200,https://radio.mipanel.stream:6808/stream,audio/aacp,True,309,10.6217,-71.6335,,OnlineRadioBox,ve.capital903,2026-10-13T18:49:06.701666Z
-Sabor 106.5 FM,,Maracaibo,,zulia_regional,LIVE,200,https://server6.globalhostla.com:9166/stream,audio/aac,True,1190,10.6567,-71.6195,,OnlineRadioBox,ve.sabor1065,2026-10-13T18:49:06.028126Z
-Suite FM,,Maracaibo,,zulia_regional,LIVE,200,https://acp2.lorini.net:36034/stream/1/,audio/mpeg,True,835,10.6287,-71.6125,,OnlineRadioBox,ve.suite,2026-10-13T18:49:06.360870Z
-Urbe 96.3 FM,96.3 FM,Maracaibo,Cuenca del Lago / Universitaria,zulia_regional,LIVE,200,https://app0102.sonicpanelradio.com/8780/stream,audio/aac,True,399,10.6427,-71.6125,"Universitaria, Juvenil, Rock, Pop",DirectVerified,zulia.urbe963,2026-10-13T18:49:01.743468Z
-Ciudad Stereo 93.9 fm,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/yyfbtcm50cjuv,,False,4984,10.3895,-71.4395,,OnlineRadioBox,ve.ciudad939,2026-10-13T18:49:06.334706Z
-Favorita 106.1 FM,106.1 FM,Cabimas,Av. Intercomunal / Delicias,cabimas_local,OFFLINE,0,https://live.ajfnetwork.com.ve:8046/stream,,False,4639,10.411,-71.439,"Criolla, Llanera, Folclore",DirectVerified,cabimas.favorita1061,2026-10-13T18:49:05.981230Z
-Futura Fm,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/f7eru6q4998uv,,False,5056,10.386,-71.45,,OnlineRadioBox,ve.futura,2026-10-13T18:49:06.403986Z
-Luz Cabimas FM,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/ugy0f2ad1k8uv,,False,334,10.421,-71.436,,OnlineRadioBox,ve.luzcabimas,2026-10-13T18:49:01.683856Z
-Parrandera Fm,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/cnuhxaknvxpvv,,False,5020,10.393,-71.429,,OnlineRadioBox,ve.parrandera1021,2026-10-13T18:49:06.367933Z
-Sonora 99.5 FM,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/n8zghua6u68uv,,False,222,10.414,-71.457,,OnlineRadioBox,ve.sonora995,2026-10-13T18:49:01.568522Z
-Xtrema 92.1 FM,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/lc2laf4z3bdtv,,False,5086,10.414,-71.457,,OnlineRadioBox,ve.xtrema,2026-10-13T18:49:06.436938Z
-ZEN9 Retro Songs,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/jf3dn92qx85vv,,False,4975,10.379,-71.471,,OnlineRadioBox,ve.zen9retrosongs,2026-10-13T18:49:06.719471Z
-Zona 98.5 FM,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/hf0yz27sk0ltv,,False,5028,10.414,-71.457,,OnlineRadioBox,ve.zona985,2026-10-13T18:49:06.377062Z
-Zumaque 90.5 FM,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/qe1h4q3mxk8uv,,False,582,10.393,-71.429,,OnlineRadioBox,ve.zumaque,2026-10-13T18:49:01.929333Z
-en casa urbano,,Cabimas,,cabimas_local,OFFLINE,0,https://stream.zeno.fm/xebwfpk4rnatv,,False,5014,10.3825,-71.4605,,OnlineRadioBox,ve.encasaurbano,2026-10-13T18:49:06.363164Z
-100% Música,,Los Puertos de Altagracia,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/usie6vvdq9mvv,,False,4503,10.7132,-71.5307,,OnlineRadioBox,ve.100musica,2026-10-13T18:49:08.007841Z
-Altagracia 100.7 FM,,Los Puertos de Altagracia,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/sw0jea6mfo0tv,,False,4510,10.6957,-71.5377,,OnlineRadioBox,ve.altagracia,2026-10-13T18:49:08.176620Z
-Ciudad Digital,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/xfns4r6rq0hvv,,False,4504,10.1969,-71.2884,,OnlineRadioBox,ve.ciudaddigital,2026-10-13T18:49:07.534444Z
-Col 105.9,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/w1k8rjaql61tv,,False,4544,10.1899,-71.3094,,OnlineRadioBox,ve.col105.9,2026-10-13T18:49:07.532620Z
-Emisora Conexión 248 FM,,Los Puertos de Altagracia,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/w2q8ftcy1ckvv,,False,4503,10.7097,-71.4957,,OnlineRadioBox,ve.conexion248,2026-10-13T18:49:07.923964Z
-Frecuencia Retro,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/3u9n8n688a0uv,,False,266,10.2144,-71.3269,,OnlineRadioBox,ve.frecuenciaretro,2026-10-13T18:49:02.925142Z
-Galaxia 94.9 FM,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/9t7m4hbggfhvv,,False,4947,10.2109,-71.2919,,OnlineRadioBox,ve.galaxia949,2026-10-13T18:49:07.873035Z
-Gigantesca,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/2bb038kmh7etv,,False,4503,10.2004,-71.3234,,OnlineRadioBox,ve.gigantesca,2026-10-13T18:49:07.644429Z
-Km Studio,,Santa Rita,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/ts5h6hecldmtv,,False,4503,10.5228,-71.5062,,OnlineRadioBox,ve.kmstudio,2026-10-13T18:49:07.772735Z
-Lagunillas Stereo,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/zwxhlink0nduv,,False,343,10.1864,-71.3199,,OnlineRadioBox,ve.lagunillas,2026-10-13T18:49:03.140046Z
-MG RADIO ONLINE,,Mene Grande,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/0m42pr5q4ehvv,,False,4502,9.8377,-70.9193,,OnlineRadioBox,ve.mgonline,2026-10-13T18:49:07.810817Z
-Melodica 92.3 FM,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/mnlfxjkunqruv,,False,4507,10.2039,-71.3129,,OnlineRadioBox,ve.melodica923,2026-10-13T18:49:07.525028Z
-Radio Sur 105.5Fm,,Santa Rita,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/6qe9uhsr598uv,,False,4505,10.5368,-71.5097,,OnlineRadioBox,ve.sur,2026-10-13T18:49:07.680253Z
-Relampago 91.1 FM,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,http://freeuk23.listen2myradio.com:6365/;,,False,4536,10.1899,-71.3094,,OnlineRadioBox,ve.relampago,2026-10-13T18:49:07.525179Z
-Retro 107.5Fm,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/os9ojs9xqaatv,,False,4589,10.1899,-71.3094,,OnlineRadioBox,ve.retro1075,2026-10-13T18:49:07.549690Z
-Rumba 89.3 FM,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/udmcrs5joa4tv,,False,4503,10.1829,-71.3304,,OnlineRadioBox,ve.rumba893,2026-10-13T18:49:07.644526Z
-Titan 98.5 FM,,Los Puertos de Altagracia,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/lesdx3dsyblvv,,False,4503,10.6957,-71.5377,,OnlineRadioBox,ve.titan,2026-10-13T18:49:07.869439Z
-Tu Radio Punta De Leiva FM Online,,Los Puertos de Altagracia,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/pmujmzfezvrtv,,False,4508,10.7097,-71.4957,,OnlineRadioBox,ve.tupuntadeleiva,2026-10-13T18:49:08.176568Z
-Xtrema 101.1 FM,,Ciudad Ojeda,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/bin4ahlv4lttv,,False,4503,10.2144,-71.3269,,OnlineRadioBox,ve.xtrema1011,2026-10-13T18:49:07.643811Z
-ZR89.9FM,,Los Puertos de Altagracia,,costa_oriental,OFFLINE,0,https://stream.zeno.fm/k904vbussnhvv,,False,4503,10.7132,-71.5307,,OnlineRadioBox,ve.zr899,2026-10-13T18:49:07.985018Z
-Amistad 95.1 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/0vzntfsvcg0uv,,False,4503,10.6008,-71.6298,,OnlineRadioBox,ve.amistad951,2026-10-13T18:49:12.053695Z
-Armonia Estereo 99.3 Fm,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/vmusbkzo8ccuv,,False,4503,10.5728,-71.6228,,OnlineRadioBox,ve.armonia,2026-10-13T18:49:11.603764Z
-Eco 103.1 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://servers58.com/proxy/ecostere?mp=/stream,,False,648,10.5833,-71.6368,,OnlineRadioBox,ve.eco1031,2026-10-13T18:49:07.350155Z
-Excelente,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/ile02g9z2oevv,,False,4503,10.5833,-71.6368,,OnlineRadioBox,ve.excelente,2026-10-13T18:49:11.984614Z
-Gaiterisima,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/ip5o6dmpqudtv,,False,4502,10.6602,-71.609,,OnlineRadioBox,ve.gaiterisima,2026-10-13T18:49:10.865743Z
-Gaiterisima 94.7 FM,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/eifrtjxvxvpuv,,False,4506,10.6252,-71.623,,OnlineRadioBox,ve.gaiterisima947,2026-10-13T18:49:08.239871Z
-Grandísimo 100.9 Fm,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/kacwzuluofetv,,False,4505,10.5868,-71.6263,,OnlineRadioBox,ve.grandisimo,2026-10-13T18:49:12.030412Z
-Maracaibo 87.9 FM,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/f9xcxc5pcc9uv,,False,4504,10.6497,-71.595,,OnlineRadioBox,ve.maracaibo879,2026-10-13T18:49:10.881195Z
-Maracaibo Stereo 107.3 Fm,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/ahssn6qj01yvv,,False,4503,10.6427,-71.616,,OnlineRadioBox,ve.maracaibo,2026-10-13T18:49:10.940416Z
-Mas Network 101.9 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/imzlzcjgktwvv,,False,4502,10.5798,-71.6473,,OnlineRadioBox,ve.masnetwork1019,2026-10-13T18:49:12.036639Z
-Mision Radio 96.5 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/vzhx40n1iztuv,,False,4506,10.5623,-71.6543,,OnlineRadioBox,ve.mision,2026-10-13T18:49:12.279392Z
-Navidad Venezuela,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/vbvpvf6a6uvtv,,False,4507,10.6392,-71.6265,,OnlineRadioBox,ve.navidadvenezuela,2026-10-13T18:49:08.900712Z
-Nostalgica 104.9 FM,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/orprfnxkbp6tv,,False,4504,10.6567,-71.6195,,OnlineRadioBox,ve.nostalgica1049,2026-10-13T18:49:10.865040Z
-Nueva Genesis,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/spt6wfnkca2tv,,False,4502,10.5938,-71.6508,,OnlineRadioBox,ve.genesi,2026-10-13T18:49:11.221869Z
-Rumba 101.9 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/obze2sm1o3itv,,False,4503,10.5973,-71.6403,,OnlineRadioBox,ve.rumba1019,2026-10-13T18:49:12.314236Z
-Rumba 107.1 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/invsp7bprjqtv,,False,4505,10.5868,-71.6263,,OnlineRadioBox,ve.rumba1071,2026-10-13T18:49:12.185840Z
-Rumba 93.1 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/eth7zefxezptv,,False,4503,10.5903,-71.6158,,OnlineRadioBox,ve.rumba931,2026-10-13T18:49:12.147717Z
-Rumba 97.7 FM,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/omxryu6eennvv,,False,4503,10.5763,-71.6123,,OnlineRadioBox,ve.rumba977,2026-10-13T18:49:12.147345Z
-Rumbera Network 98.7 FM,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/85y72q4wzdfuv,,False,4503,10.6392,-71.6265,,OnlineRadioBox,ve.rumberanetwork987,2026-10-13T18:49:10.907757Z
-SOL Stereo,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/heodacmidnzuv,,False,4503,10.5763,-71.6123,,OnlineRadioBox,ve.solstereo,2026-10-13T18:49:12.036082Z
-Super Activa 977,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/e75vyjetrhwtv,,False,4502,10.5728,-71.6228,,OnlineRadioBox,ve.superactiva977,2026-10-13T18:49:11.853024Z
-Yolo Aventuras Radio,,San Francisco,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/epjh77etkdjuv,,False,4502,10.5658,-71.6438,,OnlineRadioBox,ve.yoloaventurasradio,2026-10-13T18:49:12.147420Z
-lagaitazulianaonline,,Maracaibo,,zulia_regional,OFFLINE,0,https://stream.zeno.fm/g2lbh5phf2auv,,False,4505,10.6602,-71.609,,OnlineRadioBox,ve.lagaitazuliana,2026-10-13T18:49:10.856975Z
+id,name,frequency,dial,city,state,sector,category,stream_url,lat,lon
+cabimas.xtrema989,Xtrema 98.9 FM,98.9 FM,98.9,Cabimas,Zulia,Casco Central / Av. Universidad,urbano,https://app0102.sonicpanelradio.com/8352/stream,10.3995,-71.4435
+cabimas.favoritas979,Favoritas 97.9 FM,97.9 FM,97.9,Cabimas,Zulia,Casco Central / Ambrosio,pop,https://stream.zeno.fm/eaeo5job6q4uv,10.408,-71.455
+cabimas.buenisima1063,Buenísima 106.3 FM,106.3 FM,106.3,Cabimas,Zulia,Sector Ambrosio / Av. Intercomunal,tropical,https://stream.zeno.fm/asxs03bkrlotv,10.418,-71.465
+cabimas.victoria959,Victoria 95.9 FM,95.9 FM,95.9,Cabimas,Zulia,Sector Concordia / Miraflores,tropical,https://guri.tepuyserver.net/8140/stream,10.4072,-71.455
+cabimas.mision943,Misión 94.3 FM,94.3 FM,94.3,Cabimas,Zulia,Sector Miraflores / Concordia,pop,https://stream.zeno.fm/unsxrfcdn5jtv,10.403,-71.449
+cabimas.zumaque905,Zumaque 90.5 FM,90.5 FM,90.5,Cabimas,Zulia,Sector R-10 / El Zumaque,tropical,https://stream.zeno.fm/qe1h4q3mxk8uv,10.388,-71.446
+cabimas.sonora995,Sonora 99.5 FM,99.5 FM,99.5,Cabimas,Zulia,Sector Las 40s / Casco Central,noticias,https://stream.zeno.fm/n8zghua6u68uv,10.405,-71.441
+cabimas.ciudadstereo939,Ciudad Stereo 93.9 FM,93.9 FM,93.9,Cabimas,Zulia,Sector Los Laureles,pop,https://stream.zeno.fm/zkqm3ojholhtv,10.412,-71.428
+cabimas.radiobarroso,Radio Barroso,WEB,CABI,Cabimas,Zulia,Sector El Barroso II / La Rosa,gaitas,https://stream.zeno.fm/zrh0rnwuarzuv,10.378,-71.442
+cabimas.exitosa,Exitosa FM Cabimas,WEB,CABI,Cabimas,Zulia,Sector Delicias Nuevas,pop,https://stream.zeno.fm/awtyvmm5muhvv,10.411,-71.439
+cabimas.zulianisima,Zulianísima FM,WEB,CABI,Cabimas,Zulia,Sector Campo Blanco,gaitas,https://stream.zeno.fm/m7z6zdlqlrkuv,10.395,-71.436
+cabimas.diferente,Diferente FM,WEB,CABI,Cabimas,Zulia,Sector Tierra Negra,pop,https://stream.zeno.fm/xgddxc6af2zuv,10.422,-71.448
+cabimas.sirio,Sirio Radio Digital,WEB,CABI,Cabimas,Zulia,Sector Guabina,retro,https://stream.zeno.fm/khmxxbjtlzhuv,10.402,-71.432
+cabimas.infinita,Infinita FM ¡Sin Barreras!,WEB,CABI,Cabimas,Zulia,Sector Las 50s,pop,https://stream.zeno.fm/7bh6uff1cf9uv,10.401,-71.438
+cabimas.technobuenisima,La Techno Buenísima 24/7,WEB,CABI,Cabimas,Zulia,Sector Ambrosio / Buenísima Media,urbano,https://stream.zeno.fm/arvboln3rqnuv,10.418,-71.465
+cabimas.mana,MANA FM,WEB,CABI,Cabimas,Zulia,Sector Ambrosio,pop,https://stream.zeno.fm/3rzep03457zuv,10.419,-71.463
+cabimas.vinilo,Vinilo FM Streaming,WEB,CABI,Cabimas,Zulia,Sector Punta Icotea,retro,https://usa14.fastcast4u.com/proxy/vinilosfm?mp=/1,10.395,-71.455
