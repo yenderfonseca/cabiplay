@@ -1360,10 +1360,19 @@ function initNowPlayingModal() {
 }
 
 // App Entry Point
-window.addEventListener("DOMContentLoaded", () => {
+// app.js is injected dynamically (so the preload scanner cannot resolve it
+// against the wrong base), which means DOMContentLoaded may already have
+// fired by the time this runs. Start immediately in that case.
+function startCabiplay() {
   initMap();
   initMediaSessionHandlers();
   initHeroCarousel();
   initNowPlayingModal();
   loadStations();
-});
+}
+
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", startCabiplay);
+} else {
+  startCabiplay();
+}

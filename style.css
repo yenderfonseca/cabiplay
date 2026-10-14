@@ -3830,3 +3830,63 @@ body.view-map-only #map-pane {
     padding-bottom: 24px;
   }
 }
+
+/* ==========================================================================
+   NOW PLAYING: ACTION BAR ON PHONES
+   Four labelled pills cannot fit 390px: the row overflowed and clipped
+   "FAVORITA" and "COMPARTIR". Collapse to icon-only, keeping each label
+   available to screen readers via the button's title/aria-label.
+   ========================================================================== */
+.npm-live-short {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .npm-action-bar {
+    justify-content: space-around;
+    gap: 4px;
+    padding: 6px 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .npm-pill-action {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;           /* touch target */
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 4px 2px;
+  }
+
+  /* Visually hidden, still announced. */
+  .npm-pill-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* The live pill has no glyph of its own, so show a short tag under its dot. */
+  .npm-live-short {
+    display: block;
+    font-size: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    line-height: 1;
+  }
+
+  .npm-pill-action svg {
+    width: 20px;
+    height: 20px;
+  }
+}

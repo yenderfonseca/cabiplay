@@ -5,15 +5,29 @@
   <script>
     // Resolve the app base from the current URL so relative assets work at any
     // mount point (/, /cabiplay, /cabiplay/index.html) and in local dev.
-    // Runs synchronously in <head> before any relative asset is requested.
+    //
+    // The <base> must exist before the preload scanner fetches anything, and the
+    // scanner runs ahead of this script for tags already in the markup. The
+    // stylesheet is therefore emitted from here, after the base is in place;
+    // otherwise /cabiplay (no trailing slash) resolves "style.css" against the
+    // document URL and 404s at the site root.
     (function () {
       var dir = location.pathname
-        .replace(/\/[^\/]*\.[^\/]*$/, "/")   // drop trailing filename
+        .replace(/\/[^\/]*\.[^\/]*$/, "/")   // drop a trailing filename
         .replace(/\/estacion\/$/, "/");       // station pages sit one level down
       if (dir.slice(-1) !== "/") dir += "/";
-      var b = document.createElement("base");
-      b.href = dir;
-      document.head.appendChild(b);
+
+      var base = document.createElement("base");
+      base.href = dir;
+      document.head.appendChild(base);
+
+      window.CABIPLAY_BASE = dir;
+      var v = "202610140306";
+
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = dir + "style.css?v=" + v;
+      document.head.appendChild(css);
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
@@ -40,7 +54,6 @@
   <!-- Hls.js fallback for HTTP Live Streaming (.m3u8) -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-  <link rel="stylesheet" href="style.css?v=202610140243" />
 </head>
 <body>
   <!-- CABIMAS FLAG STRIPE HEADER (Celeste, Verde, Negro, Sol Dorado) -->
@@ -261,7 +274,7 @@
                   <span class="cast-dot"></span> <span>AIRPLAY / CAST</span>
                 </button>
                 <button class="hero-share-btn" id="hero-share-btn" title="Compartir señal de radio">
-                  <span>COMPARTIR</span>
+                  <span class="npm-pill-label">COMPARTIR</span>
                 </button>
                 <div class="hero-socials" id="hero-socials">
                   <!-- Social Links injected via JS -->
@@ -458,15 +471,16 @@
       <div class="npm-action-bar">
         <button type="button" id="npm-fav-btn" class="npm-pill-action" title="Favorita">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          <span id="npm-fav-text">FAVORITA</span>
+          <span id="npm-fav-text" class="npm-pill-label">FAVORITA</span>
         </button>
         <button type="button" id="npm-live-btn" class="npm-pill-action active" title="Transmisión en directo">
           <span class="npm-live-dot"></span>
-          <span>EN DIRECTO</span>
+          <span class="npm-pill-label">EN DIRECTO</span>
+          <span class="npm-live-short" aria-hidden="true">LIVE</span>
         </button>
         <button type="button" id="npm-shuffle-btn" class="npm-pill-action" title="Emisora aleatoria">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
-          <span>ALEATORIO</span>
+          <span class="npm-pill-label">ALEATORIO</span>
         </button>
         <button type="button" id="npm-share-btn" class="npm-pill-action" title="Compartir señal">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
@@ -507,6 +521,14 @@
   </div>
 
   <audio id="audio-stream" preload="none" x-webkit-airplay="allow" webkit-playsinline playsinline></audio>
-  <script src="app.js?v=202610140243"></script>
+  <script>
+    // Emitted here too, so the preload scanner never resolves it against
+    // the document URL instead of the app base.
+    (function () {
+      var s = document.createElement("script");
+      s.src = window.CABIPLAY_BASE + "app.js?v=202610140306";
+      document.body.appendChild(s);
+    })();
+  </script>
 </body>
 </html>
