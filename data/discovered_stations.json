@@ -1,0 +1,1386 @@
+[
+  {
+    "name": "Xtrema 98.9 FM",
+    "frequency": "98.9 FM",
+    "dial": "98.9",
+    "city": "Cabimas",
+    "stream_url": "https://app0102.sonicpanelradio.com/8352/stream",
+    "stream_status": "verified_200",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Reggaetón",
+      "Pop Latino",
+      "Éxitos Juveniles"
+    ],
+    "description": "La estación juvenil de Cabimas y la Costa Oriental del Lago. Música urbana, pop y entretenimiento.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Favoritas 97.9 FM",
+    "frequency": "97.9 FM",
+    "dial": "97.9",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/eaeo5job6q4uv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Éxitos",
+      "Variada",
+      "Noticias Locales"
+    ],
+    "description": "La Imbatible de Cabimas. Estación pionera e histórica de la radiodifusión en la COL.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Buenísima 106.3 FM",
+    "frequency": "106.3 FM",
+    "dial": "106.3",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/asxs03bkrlotv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Salsa",
+      "Merengue",
+      "Bailable"
+    ],
+    "description": "La estación más alegre de Cabimas, con los mejores ritmos bailables y sabor latino.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Victoria 95.9 FM",
+    "frequency": "95.9 FM",
+    "dial": "95.9",
+    "city": "Cabimas",
+    "stream_url": "https://guri.tepuyserver.net/8140/stream",
+    "stream_status": "verified_200",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Tropical",
+      "Variada"
+    ],
+    "description": "Emisora tropical y variada de Cabimas, sector Concordia / Miraflores.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Misión 94.3 FM",
+    "frequency": "94.3 FM",
+    "dial": "94.3",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/unsxrfcdn5jtv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Cristiana",
+      "Variada"
+    ],
+    "description": "Radio de contenido cristiano y familiar en el dial de Cabimas.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Zumaque 90.5 FM",
+    "frequency": "90.5 FM",
+    "dial": "90.5",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/qe1h4q3mxk8uv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Gaita",
+      "Tropical"
+    ],
+    "description": "Emisora tradicional de Cabimas, con música variada y gaita zuliana.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Sonora 99.5 FM",
+    "frequency": "99.5 FM",
+    "dial": "99.5",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/n8zghua6u68uv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Tropical",
+      "Salsa",
+      "Variada"
+    ],
+    "description": "Emisora de música tropical y bailable de Cabimas.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Ciudad Stereo 93.9 FM",
+    "frequency": "93.9 FM",
+    "dial": "93.9",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/zkqm3ojholhtv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "description": "Emisora urbana de Cabimas con programación variada y éxitos del momento.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Radio Barroso",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/zrh0rnwuarzuv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Comunitaria"
+    ],
+    "description": "Radio online de Cabimas, con programación comunitaria y musical variada.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Exitosa FM Cabimas",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/awtyvmm5muhvv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Éxitos",
+      "Variada"
+    ],
+    "description": "Radio digital de Cabimas dedicada a los éxitos y la música variada.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Zulianísima FM",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/m7z6zdlqlrkuv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Gaita",
+      "Zuliana",
+      "Folklore"
+    ],
+    "description": "Radio online dedicada a la gaita y la música zuliana. Reportada también en 100.3 FM.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Diferente FM",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/xgddxc6af2zuv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Pop"
+    ],
+    "description": "Radio digital de Cabimas con una propuesta musical alternativa.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Sirio Radio Digital",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/khmxxbjtlzhuv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Digital"
+    ],
+    "description": "Emisora exclusivamente online de Cabimas.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Infinita FM ¡Sin Barreras!",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/7bh6uff1cf9uv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Juvenil"
+    ],
+    "description": "Radio online de Cabimas, con programación juvenil y variada.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "La Techno Buenísima 24/7",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/arvboln3rqnuv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Electrónica",
+      "Techno",
+      "Dance"
+    ],
+    "description": "Canal online de música electrónica 24/7, ligado a Buenísima 106.3 FM.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "MANA FM",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/3rzep03457zuv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Cristiana"
+    ],
+    "description": "Radio online de Cabimas con programación variada.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Vinilo FM Streaming",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://usa14.fastcast4u.com/proxy/vinilosfm?mp=/1",
+    "stream_status": "verified_200",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Retro",
+      "Clásicos",
+      "Vinilo"
+    ],
+    "description": "Radio online de Cabimas dedicada a la música retro y los clásicos en vinilo.",
+    "already_in_catalog": true,
+    "source": "catálogo existente del proyecto (ya confirmado por el usuario)"
+  },
+  {
+    "name": "Futura 104.7 FM",
+    "frequency": "104.7 FM",
+    "dial": "104.7",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/f7eru6q4998uv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://static2.mytuner.mobi/media/tvos_radios/LTrwUCtwnQ.jpg",
+    "instagram": null,
+    "website": "https://futurafm.gob.ve/",
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Institucional",
+      "Noticias"
+    ],
+    "description": "Emisora pública de Cabimas, parte del circuito de radios del Estado venezolano. Programación variada e informativa.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + mytuner-radio.com"
+  },
+  {
+    "name": "Zona 98.5 FM",
+    "frequency": "98.5 FM",
+    "dial": "98.5",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/hf0yz27sk0ltv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "description": "Emisora del dial 98.5 de Cabimas. Algunos directorios la listan como Jerusalén Stereo 98.5, que comparte frecuencia.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + mytuner-radio.com"
+  },
+  {
+    "name": "Parrandera FM 102.1",
+    "frequency": "102.1 FM",
+    "dial": "102.1",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/cnuhxaknvxpvv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Gaita",
+      "Parranda",
+      "Navideña"
+    ],
+    "description": "Emisora dedicada a la gaita, la parranda y la música navideña zuliana.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) (slug /ve/parrandera1021/)"
+  },
+  {
+    "name": "Xtrema 92.1 FM",
+    "frequency": "92.1 FM",
+    "dial": "92.1",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/lc2laf4z3bdtv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/5/141005.v1.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Urbano",
+      "Pop",
+      "Éxitos"
+    ],
+    "description": "Segunda frecuencia del circuito Xtrema en la Costa Oriental del Lago, con programación urbana y juvenil.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "Ciudad Stereo 93.9 FM (stream alterno)",
+    "frequency": "93.9 FM",
+    "dial": "93.9",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/yyfbtcm50cjuv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "description": "Stream alternativo verificado de Ciudad Stereo 93.9 FM, útil como respaldo del enlace del catálogo.",
+    "already_in_catalog": true,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "Victoria 95.9 FM (stream alterno)",
+    "frequency": "95.9 FM",
+    "dial": "95.9",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/uxyga0p1cf9uv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Tropical",
+      "Variada"
+    ],
+    "description": "Stream alternativo verificado de Victoria 95.9 FM, útil como respaldo del enlace del catálogo.",
+    "already_in_catalog": true,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "En Casa Urbano",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": "https://stream.zeno.fm/xebwfpk4rnatv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Urbano",
+      "Reggaetón",
+      "Trap"
+    ],
+    "description": "Radio online de Cabimas especializada en música urbana.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "Luz Cabimas FM (LUZ COL)",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Universitaria",
+      "Cultural"
+    ],
+    "description": "Radio universitaria vinculada a LUZ Costa Oriental del Lago. Su mount de Zeno aparece listado pero no entrega audio.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) (mount https://stream.zeno.fm/ugy0f2ad1k8uv responde 401 sin audio)"
+  },
+  {
+    "name": "Jerusalén Stereo 98.5",
+    "frequency": "98.5 FM",
+    "dial": "98.5",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Cristiana",
+      "Religiosa"
+    ],
+    "description": "Emisora cristiana de Cabimas en el 98.5 FM. No se localizó URL de stream directo verificable.",
+    "already_in_catalog": false,
+    "source": "streema.com + mytuner-radio.com"
+  },
+  {
+    "name": "Voz de Vida 96.5 FM",
+    "frequency": "96.5 FM",
+    "dial": "96.5",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Cristiana",
+      "Religiosa"
+    ],
+    "description": "Emisora cristiana de Cabimas. Listada en Streema sin URL de stream accesible.",
+    "already_in_catalog": false,
+    "source": "streema.com"
+  },
+  {
+    "name": "Dinámica Stereo",
+    "frequency": "no confirmada",
+    "dial": "",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora de Cabimas listada en Streema. Frecuencia no confirmada en ninguna fuente.",
+    "already_in_catalog": false,
+    "source": "streema.com"
+  },
+  {
+    "name": "Cabimas Stereo 107.9 FM",
+    "frequency": "107.9 FM",
+    "dial": "107.9",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora local de Cabimas (Calle Miranda) según directorio comercial. Sin stream localizado.",
+    "already_in_catalog": false,
+    "source": "asdphone.com/emisoras-de-radio/cabimas"
+  },
+  {
+    "name": "RNV Canal Informativo Cabimas",
+    "frequency": "100.7 FM",
+    "dial": "100.7",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Noticias",
+      "Institucional"
+    ],
+    "description": "Repetidora de Radio Nacional de Venezuela, Canal Informativo, en el dial de Cabimas.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda)"
+  },
+  {
+    "name": "Eclipse 88.3 FM",
+    "frequency": "88.3 FM",
+    "dial": "88.3",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora reportada en el 88.3 de Cabimas. Frecuencia compartida en listados con Activa 88.3; sin stream localizado.",
+    "already_in_catalog": false,
+    "source": "busqueda web (varios directorios)"
+  },
+  {
+    "name": "Activa 88.3 FM",
+    "frequency": "88.3 FM",
+    "dial": "88.3",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora reportada en el 88.3 de Cabimas. Dato de listado agregador; no verificado en fuente oficial.",
+    "already_in_catalog": false,
+    "source": "busqueda web (varios directorios) (dato de listado, no verificado en CONATEL)"
+  },
+  {
+    "name": "Súper Caribeña 90.1 FM",
+    "frequency": "90.1 FM",
+    "dial": "90.1",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Tropical",
+      "Caribeña"
+    ],
+    "description": "Emisora tropical reportada en el 90.1 de Cabimas. Sin stream localizado.",
+    "already_in_catalog": false,
+    "source": "busqueda web (varios directorios)"
+  },
+  {
+    "name": "Radio Oasis 91.1 FM",
+    "frequency": "91.1 FM",
+    "dial": "91.1",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Cristiana"
+    ],
+    "description": "Emisora reportada en el 91.1 de Cabimas. Sin stream localizado.",
+    "already_in_catalog": false,
+    "source": "busqueda web (varios directorios)"
+  },
+  {
+    "name": "Faro Luz Stereo 91.9 FM",
+    "frequency": "91.9 FM",
+    "dial": "91.9",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Cristiana",
+      "Variada"
+    ],
+    "description": "Emisora reportada en el 91.9 de la zona de Cabimas. Sin stream localizado.",
+    "already_in_catalog": false,
+    "source": "busqueda web (varios directorios)"
+  },
+  {
+    "name": "Radio Baralt 92.1 FM",
+    "frequency": "92.1 FM",
+    "dial": "92.1",
+    "city": "Municipio Baralt",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Comunitaria",
+      "Variada"
+    ],
+    "description": "Emisora del municipio Baralt (COL) reportada en el 92.1. Comparte dial con Xtrema 92.1; dato no verificado en CONATEL.",
+    "already_in_catalog": false,
+    "source": "busqueda web (varios directorios)"
+  },
+  {
+    "name": "Exitosa 92.7 FM",
+    "frequency": "92.7 FM",
+    "dial": "92.7",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Éxitos",
+      "Variada"
+    ],
+    "description": "Frecuencia 92.7 atribuida a Exitosa en un listado agregador. El catálogo ya incluye Exitosa FM como radio online; la frecuencia no está confirmada.",
+    "already_in_catalog": false,
+    "source": "busqueda web (varios directorios) (frecuencia NO verificada)"
+  },
+  {
+    "name": "Free FM Gaita",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Gaita",
+      "Zuliana"
+    ],
+    "description": "Radio online de Cabimas dedicada a la gaita. Listada en MyTuner sin URL de stream expuesta.",
+    "already_in_catalog": false,
+    "source": "mytuner-radio.com"
+  },
+  {
+    "name": "Navidad Venezuela",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Navideña",
+      "Gaita"
+    ],
+    "description": "Canal online estacional de música navideña asociado a Cabimas. Sin stream expuesto.",
+    "already_in_catalog": false,
+    "source": "mytuner-radio.com"
+  },
+  {
+    "name": "Radio Libertad 620 AM",
+    "frequency": "620 AM",
+    "dial": "620",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Noticias",
+      "Hablada",
+      "Variada"
+    ],
+    "description": "Emisora histórica de onda media de Cabimas (10 kW), indicativo YVNO. Sin transmisión online localizada.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda) + venezueladx.blogspot.com (lista WRTH 2010)"
+  },
+  {
+    "name": "Radio Cabimas 1250 AM",
+    "frequency": "1250 AM",
+    "dial": "1250",
+    "city": "Cabimas",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Noticias",
+      "Hablada",
+      "Variada"
+    ],
+    "description": "Emisora de onda media de Cabimas (1 kW), Avenida Andrés Bello. Sin transmisión online localizada.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda) + venezueladx.blogspot.com (lista WRTH 2010) + asdphone.com/emisoras-de-radio/cabimas"
+  },
+  {
+    "name": "Órbita 103.3 FM",
+    "frequency": "103.3 FM",
+    "dial": "103.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://guri.tepuyserver.net/8098/stream",
+    "stream_status": "verified_200",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos",
+      "Pop"
+    ],
+    "description": "La emisora más sintonizada de Ciudad Ojeda y el municipio Lagunillas según estudios de Comunicometría.",
+    "already_in_catalog": false,
+    "source": "radiosve.com/zulia/ciudad-ojeda + radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda)"
+  },
+  {
+    "name": "Melódica 92.3 FM",
+    "frequency": "92.3 FM",
+    "dial": "92.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/mnlfxjkunqruv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/4/134764.png",
+    "instagram": "https://www.instagram.com/melodica923fm",
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Baladas",
+      "Romántica",
+      "Variada"
+    ],
+    "description": "Emisora de Ciudad Ojeda con programación melódica, baladas y música romántica.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Retro 107.5 FM",
+    "frequency": "107.5 FM",
+    "dial": "107.5",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/os9ojs9xqaatv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/7/129997.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Retro",
+      "Clásicos",
+      "80s",
+      "90s"
+    ],
+    "description": "Emisora de Ciudad Ojeda dedicada a los grandes éxitos retro de los 80 y 90.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Col 105.9 FM",
+    "frequency": "105.9 FM",
+    "dial": "105.9",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/w1k8rjaql61tv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "description": "Emisora de la Costa Oriental del Lago con base en Ciudad Ojeda. Stream alterno verificado: https://stream.zeno.fm/sguusrhxyihuv",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda + cvir.com.ve/zulia"
+  },
+  {
+    "name": "Galaxia Insuperable 94.9 FM",
+    "frequency": "94.9 FM",
+    "dial": "94.9",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/9t7m4hbggfhvv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/0/129310.v4.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Tropical",
+      "Éxitos"
+    ],
+    "description": "Emisora de Ciudad Ojeda con programación variada. Stream alterno verificado: https://stream.zeno.fm/wqzux4hryhhvv",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Rumba 89.3 FM",
+    "frequency": "89.3 FM",
+    "dial": "89.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/udmcrs5joa4tv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/6/129796.v1.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Tropical",
+      "Salsa",
+      "Bailable"
+    ],
+    "description": "Emisora bailable de Ciudad Ojeda. Stream alterno verificado: https://stream.zeno.fm/eh3pczb3qnhuv",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Xtrema 101.1 FM",
+    "frequency": "101.1 FM",
+    "dial": "101.1",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/bin4ahlv4lttv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/5/141005.v1.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Urbano",
+      "Pop",
+      "Éxitos"
+    ],
+    "description": "Frecuencia del circuito Xtrema en Ciudad Ojeda, con programación urbana y juvenil.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Gigantesca 98.3 FM",
+    "frequency": "98.3 FM",
+    "dial": "98.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/2bb038kmh7etv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/5/140235.v1.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "description": "Emisora de Ciudad Ojeda, vinculada al circuito Gigante 98.3 FM.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "VEN FM Costa Oriental 89.3",
+    "frequency": "89.3 FM",
+    "dial": "89.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://acp2.lorini.net:20216/stream",
+    "stream_status": "verified_200",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Noticias"
+    ],
+    "description": "Frecuencia del circuito VEN FM para la Costa Oriental del Lago. Comparte dial 89.3 con Rumba en los listados.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Ciudad Digital",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/xfns4r6rq0hvv",
+    "stream_status": "verified_302_audio",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/9/115069.v6.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Digital"
+    ],
+    "description": "Radio exclusivamente online de Ciudad Ojeda.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Maxima 104.3 FM",
+    "frequency": "104.3 FM",
+    "dial": "104.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/tpg754xrclsuv",
+    "stream_status": "dead_401",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/5/129795.v4.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "description": "Emisora de Ciudad Ojeda. El mount de Zeno existe y responde con redirect válido, pero el servidor devuelve 'Mount point not active': estación fuera del aire al momento de verificar.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "iPlay Radio",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/vkt9954rp2zuv",
+    "stream_status": "dead_401",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Digital"
+    ],
+    "description": "Radio online de Ciudad Ojeda. Mount de Zeno registrado pero inactivo ('Mount point not active') en las dos verificaciones.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Suave 102.7 FM",
+    "frequency": "102.7 FM",
+    "dial": "102.7",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://app0102.sonicpanelradio.com/8768/stream",
+    "stream_status": "dead_401",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/0/95040.v17.png",
+    "instagram": "https://www.instagram.com/suave1027fm",
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Baladas",
+      "Romántica",
+      "Suave"
+    ],
+    "description": "Emisora de música suave y romántica. El servidor SonicPanel responde 200 pero con mensaje 'Stream is Offline': emisora fuera del aire al verificar. Algunos listados la ubican en 95.3 FM.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "Gigante FM 98.3",
+    "frequency": "98.3 FM",
+    "dial": "98.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://nazca.globalhost1.com:8306/live",
+    "stream_status": "dead_401",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "description": "Emisora de Ciudad Ojeda (CC. Manfer). La URL de stream listada devuelve 404; usar Gigantesca 98.3 como alternativa activa.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiosve.com/zulia/ciudad-ojeda + cvir.com.ve/zulia"
+  },
+  {
+    "name": "Lagunillas Stereo 95.3 FM",
+    "frequency": "95.3 FM",
+    "dial": "95.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": "https://stream.zeno.fm/zwxhlink0nduv",
+    "stream_status": "dead_401",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/1/100761.v10.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Tropical"
+    ],
+    "description": "Emisora del municipio Lagunillas con sede en Ciudad Ojeda. El mount de Zeno devuelve 404: enlace caído.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) + radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda) + radios-de-venezuela.com"
+  },
+  {
+    "name": "Frecuencia Retro",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": "https://cdn.onlineradiobox.com/img/fblogo/8/113108.v4.png",
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Retro",
+      "Clásicos"
+    ],
+    "description": "Radio online de retro y clásicos listada en Ciudad Ojeda. Su mount comparte URL con 'Clásicos En La Web' y no entrega audio (401).",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "Clásicos En La Web",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Clásicos",
+      "Retro"
+    ],
+    "description": "Radio online listada en Ciudad Ojeda. El mount listado coincide con Frecuencia Retro y no entrega audio.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "Suave 95.3 FM",
+    "frequency": "95.3 FM",
+    "dial": "95.3",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Baladas",
+      "Romántica"
+    ],
+    "description": "Variante en 95.3 FM reportada para Suave en directorios. La URL listada (mundostreaminghd:8160) devuelve 404.",
+    "already_in_catalog": false,
+    "source": "radiosve.com/zulia/ciudad-ojeda"
+  },
+  {
+    "name": "Relámpago 91.1 FM",
+    "frequency": "91.1 FM",
+    "dial": "91.1",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora de Ciudad Ojeda listada sin URL de stream en el directorio.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML)"
+  },
+  {
+    "name": "Ojeda Stereo 92.5 FM",
+    "frequency": "92.5 FM",
+    "dial": "92.5",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora del municipio Lagunillas en el 92.5 FM. Sin transmisión online localizada.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda)"
+  },
+  {
+    "name": "Tropical FM 100.1",
+    "frequency": "100.1 FM",
+    "dial": "100.1",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Tropical",
+      "Salsa"
+    ],
+    "description": "Emisora tropical del municipio Lagunillas. Sin transmisión online localizada.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda)"
+  },
+  {
+    "name": "Maranatha 106.9 FM",
+    "frequency": "106.9 FM",
+    "dial": "106.9",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Cristiana",
+      "Religiosa"
+    ],
+    "description": "Emisora cristiana de Ciudad Ojeda. Sin URL de stream verificable.",
+    "already_in_catalog": false,
+    "source": "streema.com"
+  },
+  {
+    "name": "Control 90.1 FM",
+    "frequency": "90.1 FM",
+    "dial": "90.1",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora de Ciudad Ojeda listada en Streema. Sin URL de stream verificable.",
+    "already_in_catalog": false,
+    "source": "streema.com"
+  },
+  {
+    "name": "Radio Espectro Online 91.9",
+    "frequency": "91.9 FM",
+    "dial": "91.9",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Digital"
+    ],
+    "description": "Emisora online de Ciudad Ojeda listada en Streema. Sin URL de stream verificable.",
+    "already_in_catalog": false,
+    "source": "streema.com"
+  },
+  {
+    "name": "Radio Lago",
+    "frequency": "no confirmada",
+    "dial": "",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada"
+    ],
+    "description": "Emisora de Ciudad Ojeda listada en Streema. Frecuencia no confirmada.",
+    "already_in_catalog": false,
+    "source": "streema.com"
+  },
+  {
+    "name": "Radio Petrolera 1180 AM",
+    "frequency": "1180 AM",
+    "dial": "1180",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Noticias",
+      "Hablada"
+    ],
+    "description": "Emisora de onda media del municipio Lagunillas (10 kW), histórica de la zona petrolera. Sin transmisión online localizada.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda) + venezueladx.blogspot.com (lista WRTH 2010)"
+  },
+  {
+    "name": "Radio Regional 1330 AM",
+    "frequency": "1330 AM",
+    "dial": "1330",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Noticias",
+      "Hablada"
+    ],
+    "description": "Emisora de onda media de Ciudad Ojeda (10 kW). El listado WRTH 2010 la marca como cerrada; estatus actual no confirmado.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda) + venezueladx.blogspot.com (lista WRTH 2010)"
+  },
+  {
+    "name": "Radio Ojeda 1550 AM",
+    "frequency": "1550 AM",
+    "dial": "1550",
+    "city": "Ciudad Ojeda",
+    "stream_url": null,
+    "stream_status": "not_found",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Noticias",
+      "Hablada",
+      "Variada"
+    ],
+    "description": "Emisora de onda media de Ciudad Ojeda (10 kW), también referida como Radio Impacto La Poderosa. Sin transmisión online localizada.",
+    "already_in_catalog": false,
+    "source": "radiostationworld.com (Estado Zulia: Cabimas / Ciudad Ojeda) + venezueladx.blogspot.com (lista WRTH 2010)"
+  },
+  {
+    "name": "Radio Sur 105.5 FM",
+    "frequency": "105.5 FM",
+    "dial": "105.5",
+    "city": "Santa Rita",
+    "stream_url": "https://stream.zeno.fm/6qe9uhsr598uv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Comunitaria"
+    ],
+    "description": "Emisora del municipio Santa Rita, en el norte de la Costa Oriental del Lago.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) (/ve/Santa_Rita)"
+  },
+  {
+    "name": "MG Radio Online",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Mene Grande",
+    "stream_url": "https://stream.zeno.fm/0m42pr5q4ehvv",
+    "stream_status": "verified_302_audio",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Variada",
+      "Comunitaria",
+      "Digital"
+    ],
+    "description": "Radio online de Mene Grande, municipio Baralt, Costa Oriental del Lago.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) (/ve/Mene_Grande)"
+  },
+  {
+    "name": "Bachata 3.1",
+    "frequency": "WEB",
+    "dial": "WEB",
+    "city": "Bachaquero",
+    "stream_url": "https://tu.tamarezradio.com:8020/radio.mp3",
+    "stream_status": "verified_200",
+    "logo_url": null,
+    "instagram": null,
+    "website": null,
+    "whatsapp": null,
+    "genres": [
+      "Bachata",
+      "Tropical"
+    ],
+    "description": "Radio online de Bachaquero, municipio Valmore Rodríguez, dedicada a la bachata.",
+    "already_in_catalog": false,
+    "source": "onlineradiobox.com (listado de ciudad, stream extraido del HTML) (/ve/Bachaquero)"
+  }
+]

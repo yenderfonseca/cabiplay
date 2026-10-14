@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <base href="/cabiplay/" />
   <meta charset="UTF-8" />
+  <script>
+    // Resolve the app base from the current URL so relative assets work at any
+    // mount point (/, /cabiplay, /cabiplay/index.html) and in local dev.
+    // Runs synchronously in <head> before any relative asset is requested.
+    (function () {
+      var dir = location.pathname
+        .replace(/\/[^\/]*\.[^\/]*$/, "/")   // drop trailing filename
+        .replace(/\/estacion\/$/, "/");       // station pages sit one level down
+      if (dir.slice(-1) !== "/") dir += "/";
+      var b = document.createElement("base");
+      b.href = dir;
+      document.head.appendChild(b);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -27,7 +40,7 @@
   <!-- Hls.js fallback for HTTP Live Streaming (.m3u8) -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=202610140243" />
 </head>
 <body>
   <!-- CABIMAS FLAG STRIPE HEADER (Celeste, Verde, Negro, Sol Dorado) -->
@@ -46,7 +59,7 @@
           <div class="brand-text">
             <h2>cabi<span class="brand-highlight">play</span></h2>
             <span class="brand-sub">Radio Cabimas en Vivo</span>
-            <a href="/" style="font-size: 0.65rem; color: #94a3b8; text-decoration: none; display: inline-block; margin-top: 4px;" title="Volver al portal principal">← yenderfonseca.com</a>
+            <a href="/" style="font-size: 0.65rem; color: #94a3b8; text-decoration: none; display: inline-block; margin-top: 4px;" title="Volver al portal principal"><svg class="icon-inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg> yenderfonseca.com</a>
           </div>
         </div>
       </div>
@@ -98,8 +111,6 @@
             <span>Noticias & Opinión</span>
           </li>
         </ul>
-      </div>
-
       </div>
     </aside>
 
@@ -206,79 +217,6 @@
               <span class="band-edge">108.0 MHz</span>
             </div>
 
-            <!-- SPOTIFY GRAPHIC EQUALIZER & ROTARY PRESETS (Screen 3) -->
-            <div class="spotify-equalizer-rack" id="spotify-equalizer-rack">
-              <div class="eq-rack-header">
-                <div class="eq-rack-title">
-                  <span class="eq-badge">DSP</span>
-                  <h3>ECUALIZADOR ACÚSTICO CABIMAS</h3>
-                </div>
-                <span class="eq-status-pill">5 BANDAS MASTER</span>
-              </div>
-
-              <!-- 5 Vertical Faders -->
-              <div class="eq-sliders-cluster">
-                <div class="eq-slider-col" data-freq="60Hz">
-                  <span class="eq-gain-label" id="eq-gain-0">+3dB</span>
-                  <div class="eq-fader-track">
-                    <input type="range" class="eq-fader" id="eq-slider-0" min="-12" max="12" value="3" aria-label="60Hz Sub-bajo" />
-                  </div>
-                  <span class="eq-freq-tag">60Hz</span>
-                </div>
-                <div class="eq-slider-col" data-freq="230Hz">
-                  <span class="eq-gain-label" id="eq-gain-1">+2dB</span>
-                  <div class="eq-fader-track">
-                    <input type="range" class="eq-fader" id="eq-slider-1" min="-12" max="12" value="2" aria-label="230Hz Bajo" />
-                  </div>
-                  <span class="eq-freq-tag">230Hz</span>
-                </div>
-                <div class="eq-slider-col" data-freq="910Hz">
-                  <span class="eq-gain-label" id="eq-gain-2">0dB</span>
-                  <div class="eq-fader-track">
-                    <input type="range" class="eq-fader" id="eq-slider-2" min="-12" max="12" value="0" aria-label="910Hz Medios" />
-                  </div>
-                  <span class="eq-freq-tag">910Hz</span>
-                </div>
-                <div class="eq-slider-col" data-freq="3.6kHz">
-                  <span class="eq-gain-label" id="eq-gain-3">+4dB</span>
-                  <div class="eq-fader-track">
-                    <input type="range" class="eq-fader" id="eq-slider-3" min="-12" max="12" value="4" aria-label="3.6kHz Presencia" />
-                  </div>
-                  <span class="eq-freq-tag">3.6k</span>
-                </div>
-                <div class="eq-slider-col" data-freq="14kHz">
-                  <span class="eq-gain-label" id="eq-gain-4">+2dB</span>
-                  <div class="eq-fader-track">
-                    <input type="range" class="eq-fader" id="eq-slider-4" min="-12" max="12" value="2" aria-label="14kHz Brillo" />
-                  </div>
-                  <span class="eq-freq-tag">14k</span>
-                </div>
-              </div>
-
-              <!-- 5 Rotary Presets Knobs -->
-              <div class="eq-knobs-cluster">
-                <button type="button" class="eq-knob-btn active" data-preset="gaitas" title="Realce de tambora, furro y charrasca">
-                  <span class="knob-dial"><span class="knob-indicator"></span></span>
-                  <span class="knob-label">Gaitas</span>
-                </button>
-                <button type="button" class="eq-knob-btn" data-preset="urbano" title="Bajo profundo para reggaetón y ritmo latino">
-                  <span class="knob-dial"><span class="knob-indicator"></span></span>
-                  <span class="knob-label">Urbano</span>
-                </button>
-                <button type="button" class="eq-knob-btn" data-preset="noticias" title="Claridad de voz y modulación para programas de opinión">
-                  <span class="knob-dial"><span class="knob-indicator"></span></span>
-                  <span class="knob-label">Noticias</span>
-                </button>
-                <button type="button" class="eq-knob-btn" data-preset="tropical" title="Brillo para salsa, guaracha y merengue">
-                  <span class="knob-dial"><span class="knob-indicator"></span></span>
-                  <span class="knob-label">Tropical</span>
-                </button>
-                <button type="button" class="eq-knob-btn" data-preset="plano" title="Respuesta acústica plana de estudio">
-                  <span class="knob-dial"><span class="knob-indicator"></span></span>
-                  <span class="knob-label">En Vivo</span>
-                </button>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -368,7 +306,7 @@
                 <h2 id="grid-heading">Emisoras en Cabimas</h2>
                 <span id="grid-subheading" class="sub-text">Señales verificadas de transmisión en directo</span>
               </div>
-              <span id="results-count" class="count-pill">36 emisoras</span>
+              <span id="results-count" class="count-pill">Cargando...</span>
             </div>
 
             <!-- CARDS GRID -->
@@ -415,20 +353,20 @@
     <!-- CENTER: BROADCAST CONSOLE & VISUALIZER -->
     <div class="player-center">
       <div class="console-controls">
-        <button id="btn-shuffle" class="console-btn" title="Emisora Aleatoria">
-          Aleatorio
+        <button id="btn-shuffle" class="console-btn is-icon" title="Emisora Aleatoria" aria-label="Emisora aleatoria">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
         </button>
-        <button id="btn-prev" class="console-btn" title="Anterior">
-          Anterior
+        <button id="btn-prev" class="console-btn is-icon" title="Anterior" aria-label="Emisora anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6 5h2v14H6z"/><path d="M19 5.5v13a1 1 0 0 1-1.54.84l-9.2-6.5a1 1 0 0 1 0-1.68l9.2-6.5A1 1 0 0 1 19 5.5z"/></svg>
         </button>
-        <button id="btn-main-play" class="btn-tunein-play" disabled title="Sintonizar / Pausar">
-          <span id="icon-main-play-text">PLAY</span>
+        <button id="btn-main-play" class="btn-tunein-play" disabled title="Sintonizar / Pausar" aria-label="Reproducir o pausar">
+          <span id="icon-main-play-text" class="play-icon-slot"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.53.85l10.74-6.86a1 1 0 0 0 0-1.7L9.53 4.29A1 1 0 0 0 8 5.14z"/></svg></span>
         </button>
-        <button id="btn-next" class="console-btn" title="Siguiente">
-          Siguiente
+        <button id="btn-next" class="console-btn is-icon" title="Siguiente" aria-label="Emisora siguiente">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16 5h2v14h-2z"/><path d="M5 5.5v13a1 1 0 0 0 1.54.84l9.2-6.5a1 1 0 0 0 0-1.68l-9.2-6.5A1 1 0 0 0 5 5.5z"/></svg>
         </button>
-        <button id="btn-player-cast" class="console-btn cast-btn" title="Transmitir señal (AirPlay / Chromecast / Auto)">
-          <span class="cast-dot"></span> Transmitir
+        <button id="btn-player-cast" class="console-btn is-icon cast-btn" title="Transmitir señal (AirPlay / Chromecast / Auto)" aria-label="Transmitir señal">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.1A5 5 0 0 1 5.9 20"/><path d="M2 12.05A9 9 0 0 1 9.95 20"/><path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/><circle cx="2" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
         </button>
       </div>
 
@@ -553,7 +491,7 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2.5"></line></svg>
         </button>
         <button type="button" id="npm-play-btn" class="npm-circle-play" aria-label="Reproducir o pausar">
-          <span id="npm-play-icon">▶</span>
+          <span id="npm-play-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.53.85l10.74-6.86a1 1 0 0 0 0-1.7L9.53 4.29A1 1 0 0 0 8 5.14z"/></svg></span>
         </button>
         <button type="button" id="npm-next-btn" class="npm-circle-control" aria-label="Emisora siguiente">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2.5"></line></svg>
@@ -563,6 +501,6 @@
   </div>
 
   <audio id="audio-stream" preload="none" x-webkit-airplay="allow" webkit-playsinline playsinline></audio>
-  <script src="app.js"></script>
+  <script src="app.js?v=202610140243"></script>
 </body>
 </html>

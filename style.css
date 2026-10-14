@@ -8,11 +8,19 @@
   --bg-elevated: #1f1f1f;
   --bg-highlight: #2a2a2a;
 
-  /* Spotify Green Functional Accent */
-  --spotify-green: #1ed760;
-  --spotify-green-hover: #1fdf64;
-  --spotify-green-press: #169c46;
-  --spotify-green-glow: rgba(30, 215, 96, 0.35);
+  /* Functional accent: Cabimas flag, not Spotify green.
+     Celeste (the lake and sky) carries primary actions; the golden sun is the
+     highlight/active accent. The variable names are kept so the 45 existing
+     references retarget in one place. */
+  --spotify-green: #00a8e8;              /* celeste lago */
+  --spotify-green-hover: #2bbdf5;
+  --spotify-green-press: #0082b4;
+  --spotify-green-glow: rgba(0, 168, 232, 0.35);
+
+  /* Golden sun, used for highlights, live markers and the active tab. */
+  --accent-sun: #ffb703;
+  --accent-sun-hover: #ffc53d;
+  --accent-sun-glow: rgba(255, 183, 3, 0.38);
 
   /* Legacy Mapping for Existing Components */
   --surface-main: #121212;
@@ -40,7 +48,7 @@
 
   /* Cabimas Flag Identity (Subtle Cultural Tokens) */
   --cabimas-celeste: #00a8e8;
-  --cabimas-verde: #1ed760;
+  --cabimas-verde: #00a859;   /* flag green (fertility), per the project README */
   --cabimas-negro: #121212;
   --cabimas-sol: #ffb703;
 }
@@ -1299,29 +1307,12 @@ body {
   transform: translateY(0);
 }
 
-.card-equalizer {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 14px;
-  background: rgba(0, 0, 0, 0.85);
-  padding: 3px 6px;
-  border-radius: 3px;
-  border: 1px solid var(--cabimas-verde);
-}
 
-.card-equalizer span {
-  width: 3px;
-  height: 100%;
-  background: var(--cabimas-verde);
-  animation: eq-bounce 0.8s ease-in-out infinite alternate;
-}
 
-.card-equalizer span:nth-child(2) { animation-delay: 0.2s; }
-.card-equalizer span:nth-child(3) { animation-delay: 0.4s; }
+
+
+
+
 
 @keyframes eq-bounce {
   0% { height: 2px; }
@@ -1882,13 +1873,21 @@ body.view-map-only #map-pane {
     touch-action: manipulation;
   }
 
-  /* 1. App Shell */
+  /* 1. App Shell
+     The shell holds the (hidden) sidebar and #main-content. It must fill the
+     space left over by the docked player and tab bar so #main-content can
+     scroll inside it. */
   #cabiplay-app {
     flex-direction: column;
-    height: calc(100dvh - var(--mobile-player-height) - var(--mobile-tab-height) - env(safe-area-inset-bottom) - 4px);
+    height: calc(100dvh - var(--mobile-player-height) - var(--mobile-tab-height) - env(safe-area-inset-bottom));
     width: 100vw;
-    margin-top: 4px;
+    margin-top: 0;
     overflow: hidden;
+  }
+
+  #main-content {
+    flex: 1 1 auto;
+    min-height: 0;
   }
 
   /* Desktop sidebar is fully replaced by mobile top & bottom app navigation */
@@ -2021,6 +2020,18 @@ body.view-map-only #map-pane {
     display: none; /* Managed natively by the bottom mobile tab bar */
   }
 
+  /* Desktop pins #top-bar to 60px, but on mobile it also carries the search
+     field and the category carousel. The fixed height squeezed the carousel to
+     10px and its 30px pills spilled over the content below. Let it grow. */
+  #top-bar {
+    height: auto;
+    min-height: 60px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 8px 12px 10px;
+  }
+
   /* 4. Swipe-First Horizontal Category Pills */
   .mobile-category-carousel {
     display: flex;
@@ -2029,6 +2040,8 @@ body.view-map-only #map-pane {
     overflow-x: auto;
     padding: 4px 0 6px;
     width: 100%;
+    flex: 0 0 auto;
+    min-height: 42px;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -2233,6 +2246,31 @@ body.view-map-only #map-pane {
     padding: 8px;
     border-radius: 8px;
     touch-action: manipulation;
+    /* Grid items default to min-width:auto, so the social-chip row forced each
+       card wider than its 1fr track and spilled past the viewport. */
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* Chips wrap inside the card instead of stretching it. */
+  .station-card .card-social-row,
+  .station-card .card-actions {
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  .station-card .card-social-icon {
+    font-size: 0.62rem;
+    padding: 4px 7px;
+  }
+
+  .station-card .card-title,
+  .station-card .card-meta,
+  .station-card .card-sector {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .station-card:active {
@@ -2243,6 +2281,29 @@ body.view-map-only #map-pane {
     aspect-ratio: 1;
     border-radius: 6px;
     margin-bottom: 8px;
+  }
+
+  /* The card already pins a frequency badge top-left over the art, which landed
+     on the generated artwork's own "CABIMAS / EN VIVO" strip. Drop the inner
+     strip on phones: the badge carries the same information. */
+  .station-card .station-default-art .art-header-line {
+    display: none;
+  }
+
+  /* The always-on PLAY pill sits bottom-right over the art; keep the generated
+     artwork's footer label clear of it instead of letting them collide. */
+  .station-default-art .art-footer-line {
+    padding-right: 74px;
+    text-align: left;
+    padding-left: 8px;
+  }
+
+  .station-default-art .art-sub-tag {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.55rem;
   }
 
   /* Always visible play button for touch screens */
@@ -2582,6 +2643,54 @@ body.view-map-only #map-pane {
     border-radius: 8px;
     line-height: 1;
   }
+
+  /* ==========================================================================
+     8. App-first ordering: stations are the content, everything else is chrome.
+     The tuner deck and hero banner together pushed the first station ~1790px
+     down — two full screens of scrolling before any content. On phones the
+     station list leads; the tuner stays reachable via the DIAL FM tab.
+     ========================================================================== */
+  #frequency-tuner,
+  #hero-banner {
+    display: none;
+  }
+
+  /* The DIAL FM tab opts back into the tuner (and its equalizer). */
+  body.show-tuner-mobile #frequency-tuner,
+
+
+  /* Compact hero: a lead-in strip, not a full screen. */
+  .hero-broadcast {
+    margin-bottom: 12px;
+  }
+
+  .hero-content {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .hero-art-box {
+    width: 84px;
+    height: 84px;
+    flex: 0 0 84px;
+  }
+
+  .hero-meta {
+    gap: 4px;
+  }
+
+  /* Stacked CTAs need real separation (house rule: >=24px, 28px+ for primary). */
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .content-body {
+    padding-top: 8px;
+  }
+
 }
 
 /* ==========================================================================
@@ -2920,29 +3029,11 @@ body.view-map-only #map-pane {
 }
 
 /* --- SPOTIFY GRAPHIC EQUALIZER RACK (SCREEN 3) --- */
-.spotify-equalizer-rack {
-  margin-top: 18px;
-  background: #151515;
-  border: 1px solid #282828;
-  border-radius: 12px;
-  padding: 16px 20px;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4);
-}
 
-.eq-rack-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #222222;
-  padding-bottom: 10px;
-  margin-bottom: 16px;
-}
 
-.eq-rack-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+
+
+
 
 .eq-badge {
   background: var(--spotify-green);
@@ -2954,14 +3045,7 @@ body.view-map-only #map-pane {
   letter-spacing: 0.5px;
 }
 
-.eq-rack-title h3 {
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  color: #ffffff;
-  margin: 0;
-  text-transform: uppercase;
-}
+
 
 .eq-status-pill {
   font-size: 0.65rem;
@@ -2975,28 +3059,11 @@ body.view-map-only #map-pane {
 }
 
 /* 5 Vertical Faders */
-.eq-sliders-cluster {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0 16px;
-}
 
-.eq-slider-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
 
-.eq-gain-label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  color: var(--spotify-green);
-  font-family: monospace;
-}
+
+
+
 
 .eq-fader-track {
   height: 110px;
@@ -3046,28 +3113,9 @@ body.view-map-only #map-pane {
 }
 
 /* 5 Rotary Knobs (Presets) */
-.eq-knobs-cluster {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 8px;
-  border-top: 1px solid #222222;
-  padding-top: 14px;
-  flex-wrap: wrap;
-}
 
-.eq-knob-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
+
+
 
 .knob-dial {
   width: 44px;
@@ -3102,25 +3150,13 @@ body.view-map-only #map-pane {
   transition: color 0.2s ease;
 }
 
-.eq-knob-btn.active .knob-dial {
-  border-color: var(--spotify-green);
-  box-shadow: 0 0 12px var(--spotify-green-glow);
-}
 
-.eq-knob-btn.active .knob-indicator {
-  background: var(--spotify-green);
-  box-shadow: 0 0 6px var(--spotify-green);
-}
 
-.eq-knob-btn.active .knob-label {
-  color: #ffffff;
-  font-weight: 800;
-}
 
-.eq-knob-btn:hover .knob-dial {
-  transform: scale(1.05);
-  border-color: #555555;
-}
+
+
+
+
 
 /* --- SPOTIFY NOW PLAYING MODAL (SCREEN 2) --- */
 .now-playing-modal {
@@ -3390,9 +3426,9 @@ body.view-map-only #map-pane {
 }
 
 .npm-badge-live {
-  background: rgba(30, 215, 96, 0.15);
-  color: var(--spotify-green);
-  border: 1px solid var(--spotify-green);
+  background: rgba(255, 183, 3, 0.15);
+  color: var(--accent-sun);
+  border: 1px solid var(--accent-sun);
   font-size: 0.6rem;
   font-weight: 900;
   padding: 2px 6px;
@@ -3546,4 +3582,229 @@ body.view-map-only #map-pane {
 
 .mobile-tab-btn.active {
   color: #ffffff !important;
+}
+
+/* ==========================================================================
+   INLINE SVG ICONOGRAPHY
+   Replaces glyph characters in the transport controls. SVG inherits colour
+   via currentColor and renders identically across platforms, unlike the
+   font-dependent glyphs it replaces.
+   ========================================================================== */
+.console-btn.is-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;        /* touch target, not just the glyph box */
+  min-height: 44px;
+  padding: 0;
+  line-height: 0;
+}
+
+.console-btn.is-icon svg {
+  display: block;
+  pointer-events: none;
+}
+
+.btn-tunein-play .play-icon-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.btn-tunein-play .play-icon-slot svg {
+  display: block;
+  pointer-events: none;
+}
+
+.icon-inline {
+  vertical-align: -2px;
+}
+
+@keyframes cabiplay-spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: cabiplay-spin 0.9s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation-duration: 2.4s; }
+}
+
+/* Letterboxed logos (wide lockups and low-res thumbnails) sit on the card's own
+   dark surface rather than flashing the browser's white image backdrop. */
+.card-art-wrap,
+.hero-art-slot {
+  background: #0b1220;
+}
+
+.card-img[style*="contain"] {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   iPHONE-OPTIMISED TUNER (DIAL FM tab)
+   Fixes seen on a real iPhone: the station flags on the scale tape collided
+   with the frequency numbers, the "ON AIR" strip ran under the category pills,
+   and the SCAN buttons were cramped against the LCD.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Give the revealed tuner clear separation from the sticky header above it. */
+  body.show-tuner-mobile #frequency-tuner {
+    margin-top: 16px;
+    scroll-margin-top: 12px;
+  }
+
+  .tuner-glass-panel {
+    padding: 14px 12px 16px;
+  }
+
+  /* Telemetry stacks instead of competing for one row. */
+  .tuner-header-telemetry {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .tuner-status-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tuner-band-tag {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+
+  /* The LCD is the hero of this screen: give it room and centre it. */
+  .tuner-lcd-primary {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tuner-digital-freq {
+    font-size: 2.6rem;
+    line-height: 1;
+  }
+
+  .tuner-stereo-badge {
+    font-size: 0.55rem;
+    padding: 3px 7px;
+    white-space: nowrap;
+  }
+
+  .tuner-lcd-station {
+    text-align: center;
+    display: block;
+    margin-top: 6px;
+  }
+
+  .tuner-station-callsign {
+    display: block;
+    font-size: 1rem;
+  }
+
+  .tuner-station-meta {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 2px;
+  }
+
+  /* SCAN buttons get real touch targets and breathing room (house rule). */
+  .tuner-seek-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .tuner-seek-btn {
+    min-height: 48px;
+    font-size: 0.78rem;
+  }
+
+  /* The scale tape: taller, so flags sit above the numbers instead of on them. */
+  .tuner-scale-viewport {
+    height: 104px;
+    margin-top: 16px;
+  }
+
+  .tuner-footer-band {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.58rem;
+    margin-top: 10px;
+  }
+
+  .band-edge {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  /* The dial carries ~17 stations across 390px, so always-on labels overlapped
+     each other and the frequency numbers. Keep the dots as position markers and
+     show the label only for the tuned station. */
+  .tuner-station-pip .pip-tag {
+    display: none;
+  }
+
+  .tuner-station-pip.active .pip-tag {
+    display: inline-block;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    z-index: 6;
+    font-size: 0.62rem;
+    padding: 3px 7px;
+  }
+
+  .tuner-station-pip {
+    position: absolute;
+  }
+
+  /* Bigger dots: these are the touch targets on a phone. */
+  .tuner-station-pip .pip-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Tick numbers sit below the dots so the two never share a line. */
+  .tick-label {
+    font-size: 0.52rem;
+  }
+
+  /* STEREO LOCK carried a green tint; align it with the flag palette. */
+  .tuner-stereo-badge {
+    color: var(--cabimas-celeste);
+    border-color: var(--cabimas-celeste);
+    background: rgba(0, 168, 232, 0.12);
+  }
+}
+
+/* The PLAY pill overlaps the generated artwork's footer label at every width,
+   not just on phones; reserve the space on the base rule too. */
+.station-default-art .art-footer-line {
+  padding-right: 64px;
+  text-align: left;
+  padding-left: 8px;
+}
+
+.station-default-art .art-sub-tag {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

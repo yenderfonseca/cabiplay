@@ -29,8 +29,10 @@
       "website": "https://xtrema98fm.com/",
       "whatsapp": "https://wa.me/584246879890"
     },
-    "logo_local": "assets/logos/xtrema-989-fm.svg",
-    "logo": "assets/logos/xtrema-989-fm.svg"
+    "logo_local": "assets/logos/hires/xtrema-989-fm.png",
+    "logo": "assets/logos/hires/xtrema-989-fm.png",
+    "logo_hires": "assets/logos/hires/xtrema-989-fm.png",
+    "logo_fit": "cover"
   },
   {
     "id": "cabimas.favoritas979",
@@ -60,7 +62,8 @@
       "instagram_handle": "@favoritas979fm"
     },
     "logo_local": "assets/logos/favoritas-979-fm.svg",
-    "logo": "assets/logos/favoritas-979-fm.svg"
+    "logo": "assets/logos/favoritas-979-fm.svg",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.buenisima1063",
@@ -89,7 +92,8 @@
       "facebook": "https://www.facebook.com/p/Buenisima-1063-FM-100057114427007/"
     },
     "logo_local": "assets/logos/buenisima-1063-fm.png",
-    "logo": "assets/logos/buenisima-1063-fm.png"
+    "logo": "assets/logos/buenisima-1063-fm.png",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.victoria959",
@@ -120,7 +124,8 @@
       "whatsapp": "https://wa.me/584146009590"
     },
     "logo_local": "assets/logos/victoria-959-fm.svg",
-    "logo": "assets/logos/victoria-959-fm.svg"
+    "logo": "assets/logos/victoria-959-fm.svg",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.mision943",
@@ -149,8 +154,10 @@
       "website": "https://www.tufm943.com/",
       "facebook": "https://www.facebook.com/mision943fm/"
     },
-    "logo_local": "assets/logos/mision-943-fm.png",
-    "logo": "assets/logos/mision-943-fm.png"
+    "logo_local": "assets/logos/hires/mision-943-fm.png",
+    "logo": "assets/logos/hires/mision-943-fm.png",
+    "logo_hires": "assets/logos/hires/mision-943-fm.png",
+    "logo_fit": "cover"
   },
   {
     "id": "cabimas.zumaque905",
@@ -178,8 +185,10 @@
     "socials": {
       "website": "https://onlineradiobox.com/ve/zumaque90.5/"
     },
-    "logo_local": "assets/logos/zumaque-905-fm.svg",
-    "logo": "assets/logos/zumaque-905-fm.svg"
+    "logo_local": "assets/logos/hires/zumaque-905-fm.jpg",
+    "logo": "assets/logos/hires/zumaque-905-fm.jpg",
+    "logo_hires": "assets/logos/hires/zumaque-905-fm.jpg",
+    "logo_fit": "cover"
   },
   {
     "id": "cabimas.sonora995",
@@ -208,7 +217,8 @@
       "whatsapp": "https://wa.me/584246814831"
     },
     "logo_local": "assets/logos/sonora-995-fm.svg",
-    "logo": "assets/logos/sonora-995-fm.svg"
+    "logo": "assets/logos/sonora-995-fm.svg",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.ciudadstereo939",
@@ -235,7 +245,8 @@
     "theme_color": "#00a859",
     "socials": {},
     "logo_local": "assets/logos/ciudad-stereo-939-fm.svg",
-    "logo": "assets/logos/ciudad-stereo-939-fm.svg"
+    "logo": "assets/logos/ciudad-stereo-939-fm.svg",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.radiobarroso",
@@ -263,8 +274,10 @@
     "socials": {
       "website": "https://radio-barroso.blogspot.com/"
     },
-    "logo_local": "assets/logos/radio-barroso.png",
-    "logo": "assets/logos/radio-barroso.png"
+    "logo_local": "assets/logos/hires/radio-barroso.jpg",
+    "logo": "assets/logos/hires/radio-barroso.jpg",
+    "logo_hires": "assets/logos/hires/radio-barroso.jpg",
+    "logo_fit": "cover"
   },
   {
     "id": "cabimas.exitosa",
@@ -294,7 +307,8 @@
       "facebook": "https://www.facebook.com/ExitosaFm.Cabimas/"
     },
     "logo_local": "assets/logos/exitosa-fm.png",
-    "logo": "assets/logos/exitosa-fm.png"
+    "logo": "assets/logos/exitosa-fm.png",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.zulianisima",
@@ -322,8 +336,10 @@
     "socials": {
       "website": "https://www.zulianisimafm.com/"
     },
-    "logo_local": "assets/logos/zulianisima-fm.png",
-    "logo": "assets/logos/zulianisima-fm.png"
+    "logo_local": "assets/logos/hires/zulianisima-fm.png",
+    "logo": "assets/logos/hires/zulianisima-fm.png",
+    "logo_hires": "assets/logos/hires/zulianisima-fm.png",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.diferente",
@@ -351,8 +367,10 @@
     "socials": {
       "website": "https://diferentefm.blogspot.com/"
     },
-    "logo_local": "assets/logos/diferente-fm.png",
-    "logo": "assets/logos/diferente-fm.png"
+    "logo_local": "assets/logos/hires/diferente-fm.jpg",
+    "logo": "assets/logos/hires/diferente-fm.jpg",
+    "logo_hires": "assets/logos/hires/diferente-fm.jpg",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.sirio",
@@ -381,7 +399,8 @@
       "website": "https://sirioradiodigital.blogspot.com/"
     },
     "logo_local": "assets/logos/sirio-radio-digital.png",
-    "logo": "assets/logos/sirio-radio-digital.png"
+    "logo": "assets/logos/sirio-radio-digital.png",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.infinita",
@@ -409,8 +428,10 @@
     "socials": {
       "website": "https://infinitafmweb.blogspot.com/"
     },
-    "logo_local": "assets/logos/infinita-fm-sin-barreras.png",
-    "logo": "assets/logos/infinita-fm-sin-barreras.png"
+    "logo_local": "assets/logos/hires/infinita-fm-sin-barreras.png",
+    "logo": "assets/logos/hires/infinita-fm-sin-barreras.png",
+    "logo_hires": "assets/logos/hires/infinita-fm-sin-barreras.png",
+    "logo_fit": "cover"
   },
   {
     "id": "cabimas.technobuenisima",
@@ -437,7 +458,8 @@
     "theme_color": "#e91e63",
     "socials": {},
     "logo_local": "assets/logos/la-techno-buenisima-247.png",
-    "logo": "assets/logos/la-techno-buenisima-247.png"
+    "logo": "assets/logos/la-techno-buenisima-247.png",
+    "logo_fit": "contain"
   },
   {
     "id": "cabimas.mana",
@@ -465,8 +487,10 @@
     "socials": {
       "website": "https://manafm.org/"
     },
-    "logo_local": "assets/logos/mana-fm.png",
-    "logo": "assets/logos/mana-fm.png"
+    "logo_local": "assets/logos/hires/mana-fm.png",
+    "logo": "assets/logos/hires/mana-fm.png",
+    "logo_hires": "assets/logos/hires/mana-fm.png",
+    "logo_fit": "cover"
   },
   {
     "id": "cabimas.vinilo",
@@ -493,6 +517,7 @@
     "theme_color": "#ffb703",
     "socials": {},
     "logo_local": "assets/logos/vinilo-fm-streaming.png",
-    "logo": "assets/logos/vinilo-fm-streaming.png"
+    "logo": "assets/logos/vinilo-fm-streaming.png",
+    "logo_fit": "contain"
   }
 ]

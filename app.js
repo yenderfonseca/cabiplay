@@ -14,6 +14,13 @@ const CABIMAS_CONFIG = {
 let allStations = [];
 let filteredStations = [];
 let currentStation = null;
+let currentStreamUrl = null;
+
+// Inline SVG icons (no emoji or glyph fonts: these render identically on every
+// platform and inherit colour from the button via currentColor).
+const SVG_PLAY = '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.53.85l10.74-6.86a1 1 0 0 0 0-1.7L9.53 4.29A1 1 0 0 0 8 5.14z"/></svg>';
+const SVG_PAUSE = '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+const SVG_SPINNER = '<svg class="spin" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.22-8.56"/></svg>';
 let currentNav = "all";
 let currentCategory = null;
 let searchQuery = "";
@@ -143,9 +150,10 @@ function getStationDefaultArtHtml(station, isMini = false, isHero = false) {
   `;
 }
 
+// True when the station has a real raster logo (not a generated SVG placeholder).
 function hasCustomLogoPng(station) {
-  const logoLocal = station.logo_local || "";
-  return logoLocal.endsWith(".png");
+  const logo = station.logo_local || station.logo || "";
+  return /\.(png|jpe?g|webp)$/i.test(logo);
 }
 
 function renderStationArtMarkup(station, isMini = false, isHero = false) {
@@ -155,11 +163,14 @@ function renderStationArtMarkup(station, isMini = false, isHero = false) {
 
   if (hasPng && logoUrl) {
     const imgClass = isMini ? "player-img" : (isHero ? "hero-img" : "card-img");
+    // Horizontal lockups must not be cropped; squares may fill the tile.
+    const fit = station.logo_fit === "contain" ? "contain" : "cover";
     return `
       <img class="${imgClass}" 
            src="${logoUrl}" 
            alt="${station.name}" 
            loading="lazy" 
+           style="object-fit:${fit};" 
            onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
       <div style="display:none; width:100%; height:100%;">
         ${defaultArtHtml}
@@ -193,11 +204,12 @@ async function loadStations() {
   try {
     let res;
     try {
-      res = await fetch("data/stations.json");
+      // Version the dataset too: a stale JSON would hide new stations/logos.
+      res = await fetch("data/stations.json", { cache: "no-cache" });
       if (!res.ok) throw new Error("Status " + res.status);
     } catch (relErr) {
-      console.warn("Relative fetch for data/stations.json failed, trying /cabiplay/data/stations.json", relErr);
-      res = await fetch("/cabiplay/data/stations.json");
+      console.warn("Relative dataset fetch failed, retrying absolute path", relErr);
+      res = await fetch("/cabiplay/data/stations.json", { cache: "no-cache" });
     }
     if (!res.ok) throw new Error("Error loading dataset: " + res.status);
     const rawStations = await res.json();
@@ -796,10 +808,20 @@ function selectAndPlayStation(station) {
   playStream(station.stream_url || station.url_resolved);
 }
 
+// Incremented on every tune. Lets us ignore `error` events fired by tearing
+// down the previous stream, which otherwise flash a false "SEÑAL OFFLINE".
+let streamGeneration = 0;
+
 function playStream(streamUrl) {
+  const generation = ++streamGeneration;
+  currentStreamUrl = streamUrl;
+
+  // Detach before teardown: removeAttribute + load() fires a spurious `error`.
+  audio.removeEventListener("error", handleAudioErrorEvent);
   audio.pause();
   audio.removeAttribute("src");
   audio.load();
+  audio.addEventListener("error", handleAudioErrorEvent);
 
   if (hlsInstance) {
     hlsInstance.destroy();
@@ -808,7 +830,7 @@ function playStream(streamUrl) {
 
   playerStatusText.textContent = "SINTONIZANDO SEÑAL...";
   playerLiveDot.className = "broadcast-dot loading";
-  iconMainPlayText.textContent = "...";
+  iconMainPlayText.innerHTML = SVG_SPINNER;
 
   const isHls = streamUrl.includes(".m3u8");
 
@@ -817,21 +839,38 @@ function playStream(streamUrl) {
     hlsInstance.loadSource(streamUrl);
     hlsInstance.attachMedia(audio);
     hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
-      audio.play().catch(handlePlaybackError);
+      if (generation !== streamGeneration) return;
+      audio.play().catch(err => handlePlaybackError(err, generation));
     });
     hlsInstance.on(Hls.Events.ERROR, (_evt, data) => {
-      if (data.fatal) handlePlaybackError(data);
+      if (data.fatal) handlePlaybackError(data, generation);
     });
   } else {
     audio.src = streamUrl;
-    audio.play().catch(handlePlaybackError);
+    audio.play().catch(err => handlePlaybackError(err, generation));
   }
 }
 
-function handlePlaybackError(err) {
+// Only treat an <audio> error as real when it concerns the stream we are
+// currently trying to play and the element actually holds that source.
+function handleAudioErrorEvent() {
+  if (!audio.src || !currentStreamUrl) return;
+  handlePlaybackError(audio.error, streamGeneration);
+}
+
+function handlePlaybackError(err, generation) {
+  // A late failure from a stream the user already tuned away from is noise.
+  if (generation !== undefined && generation !== streamGeneration) return;
+  // Autoplay rejections are not stream failures; the user just needs to tap.
+  if (err && err.name === "NotAllowedError") {
+    playerStatusText.textContent = "TOCA PLAY PARA ESCUCHAR";
+    iconMainPlayText.innerHTML = SVG_PLAY;
+    playerLiveDot.className = "broadcast-dot";
+    return;
+  }
   playerLiveDot.className = "broadcast-dot";
   playerStatusText.textContent = "SEÑAL OFFLINE / PROTEGIDA";
-  iconMainPlayText.textContent = "PLAY";
+  iconMainPlayText.innerHTML = SVG_PLAY;
   playerCoverBars.classList.remove("active");
   audioVisualizer.classList.remove("playing");
   stopTimer();
@@ -893,7 +932,7 @@ function stopTimer() {
 audio.addEventListener("playing", () => {
   playerLiveDot.className = "broadcast-dot live";
   playerStatusText.textContent = "SEÑAL EN DIRECTO";
-  iconMainPlayText.textContent = "PAUSA";
+  iconMainPlayText.innerHTML = SVG_PAUSE;
   playerCoverBars.classList.add("active");
   audioVisualizer.classList.add("playing");
   startTimer();
@@ -907,7 +946,7 @@ audio.addEventListener("playing", () => {
 
 audio.addEventListener("pause", () => {
   playerLiveDot.className = "broadcast-dot";
-  iconMainPlayText.textContent = "PLAY";
+  iconMainPlayText.innerHTML = SVG_PLAY;
   playerCoverBars.classList.remove("active");
   audioVisualizer.classList.remove("playing");
   stopTimer();
@@ -919,7 +958,7 @@ audio.addEventListener("pause", () => {
   }
 });
 
-audio.addEventListener("error", handlePlaybackError);
+audio.addEventListener("error", handleAudioErrorEvent);
 
 mainPlayBtn.addEventListener("click", () => {
   if (!currentStation) return;
@@ -1125,6 +1164,8 @@ document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
     btn.classList.add("active");
     const tab = btn.dataset.tab;
 
+    if (tab !== "tuner") document.body.classList.remove("show-tuner-mobile");
+
     if (tab === "radio") {
       setViewMode("split");
       currentNav = "all";
@@ -1135,8 +1176,13 @@ document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
       if (splitEl) splitEl.scrollIntoView({ behavior: "smooth" });
     } else if (tab === "tuner") {
       setViewMode("split");
+      // On mobile the tuner is hidden by default so stations lead the screen.
+      // The DIAL FM tab is what reveals it, so unhide before scrolling to it.
+      document.body.classList.add("show-tuner-mobile");
       const tunerEl = document.getElementById("frequency-tuner");
-      if (tunerEl) tunerEl.scrollIntoView({ behavior: "smooth" });
+      if (tunerEl) {
+        requestAnimationFrame(() => tunerEl.scrollIntoView({ behavior: "smooth", block: "start" }));
+      }
     } else if (tab === "radar") {
       setViewMode("map");
       if (map) {
@@ -1155,58 +1201,6 @@ document.querySelectorAll(".mobile-tab-btn").forEach(btn => {
     }
   });
 });
-
-// 16. Spotify Graphic Equalizer & Acoustic Presets (Screen 3)
-const EQ_PRESETS = {
-  gaitas: [4, 2, 1, 4, 3],
-  urbano: [6, 3, 0, 2, 3],
-  noticias: [-3, -1, 4, 3, 1],
-  tropical: [2, 1, 3, 4, 3],
-  plano: [0, 0, 0, 0, 0]
-};
-
-function initSpotifyEqualizer() {
-  const sliders = [
-    document.getElementById("eq-slider-0"),
-    document.getElementById("eq-slider-1"),
-    document.getElementById("eq-slider-2"),
-    document.getElementById("eq-slider-3"),
-    document.getElementById("eq-slider-4")
-  ];
-  const labels = [
-    document.getElementById("eq-gain-0"),
-    document.getElementById("eq-gain-1"),
-    document.getElementById("eq-gain-2"),
-    document.getElementById("eq-gain-3"),
-    document.getElementById("eq-gain-4")
-  ];
-
-  sliders.forEach((slider, idx) => {
-    if (!slider) return;
-    slider.addEventListener("input", (e) => {
-      const val = parseInt(e.target.value, 10);
-      if (labels[idx]) labels[idx].textContent = (val > 0 ? "+" : "") + val + "dB";
-      document.querySelectorAll(".eq-knob-btn").forEach(b => b.classList.remove("active"));
-    });
-  });
-
-  document.querySelectorAll(".eq-knob-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".eq-knob-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const presetKey = btn.dataset.preset;
-      const values = EQ_PRESETS[presetKey] || EQ_PRESETS.plano;
-      sliders.forEach((slider, idx) => {
-        if (!slider) return;
-        slider.value = values[idx];
-        if (labels[idx]) {
-          const val = values[idx];
-          labels[idx].textContent = (val > 0 ? "+" : "") + val + "dB";
-        }
-      });
-    });
-  });
-}
 
 // 17. Hero Carousel Arrows (Screen 1)
 function initHeroCarousel() {
@@ -1288,7 +1282,7 @@ function syncNowPlayingModal() {
   }
 
   const isPlaying = !audio.paused && !audio.ended && audio.currentTime > 0;
-  if (npmPlayIcon) npmPlayIcon.textContent = isPlaying ? "⏸" : "▶";
+  if (npmPlayIcon) npmPlayIcon.innerHTML = isPlaying ? SVG_PAUSE : SVG_PLAY;
   if (npmVinylRing) npmVinylRing.classList.toggle("is-playing", isPlaying);
   if (npmTimer && playerTimer) npmTimer.textContent = playerTimer.textContent;
 }
@@ -1369,7 +1363,6 @@ function initNowPlayingModal() {
 window.addEventListener("DOMContentLoaded", () => {
   initMap();
   initMediaSessionHandlers();
-  initSpotifyEqualizer();
   initHeroCarousel();
   initNowPlayingModal();
   loadStations();
