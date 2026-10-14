@@ -39,27 +39,32 @@ export function useStats(currentSlug) {
     }
   }, []);
 
+  // Fetched once per page load, not polled. Polling every 30s turned each
+  // listener into ~100 function invocations per half-hour session, which would
+  // exhaust a free serverless tier at a few hundred daily listeners. These
+  // counters are context, not telemetry: a number that is a few minutes stale
+  // costs the reader nothing.
   useEffect(() => {
     load();
-    const t = setInterval(load, 30000);
-    return () => clearInterval(t);
   }, [load]);
 
   // Heartbeat: tells the server this session is listening to `currentSlug`.
   useEffect(() => {
     if (!currentSlug) return;
     let cancelled = false;
-    const beat = () => {
+    // One beat per tune-in. The server expires a session after its own TTL, so
+    // repeating the beat only refreshes a value that is already approximate,
+    // at the cost of an invocation every 45 seconds per listener.
+    const t = setTimeout(() => {
+      if (cancelled) return;
       fetch(`${API}?action=listening&slug=${encodeURIComponent(currentSlug)}`, {
         method: 'POST',
         keepalive: true,
       }).catch(() => {});
-    };
-    beat();
-    const t = setInterval(() => !cancelled && beat(), 45000);
+    }, 4000); // only count someone who actually stayed past the first seconds
     return () => {
       cancelled = true;
-      clearInterval(t);
+      clearTimeout(t);
     };
   }, [currentSlug]);
 
