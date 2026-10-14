@@ -1976,22 +1976,7 @@ body.view-map-only #map-pane {
     color: #000;
   }
 
-  .mobile-home-link {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 700;
-    padding: 5px 8px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.04);
-    min-height: 32px;
-    display: inline-flex;
-    align-items: center;
-  }
 
-  .mobile-home-link:hover {
-    color: var(--cabimas-celeste);
-  }
 
   /* 3. Top Search & Filter Bar */
   #top-bar {
@@ -3807,4 +3792,41 @@ body.view-map-only #map-pane {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* ==========================================================================
+   SIGNATURE
+   Closes the scrollable content, above the docked player.
+   ========================================================================== */
+.app-credit {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 28px 16px 36px;
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-wrap: balance;
+}
+
+.app-credit a {
+  color: var(--cabimas-sol);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.app-credit a:hover {
+  text-decoration: underline;
+}
+
+.credit-heart {
+  display: inline-flex;
+  vertical-align: -2px;
+  color: #e5484d;
+}
+
+@media (max-width: 768px) {
+  /* Clear the docked player and tab bar so the line is never hidden. */
+  .app-credit {
+    padding-bottom: 24px;
+  }
 }
