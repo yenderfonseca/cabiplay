@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Row from '../components/Row.jsx';
 import { usePlayer } from '../lib/PlayerContext.jsx';
 import { useStats } from '../lib/useStats.js';
-import { Info, Radio } from '../lib/icons.jsx';
+import { Info } from '../lib/icons.jsx';
+import Logo from '../components/Logo.jsx';
 
 const GENRES = [
   ['urbano', 'Urbano'],
@@ -42,12 +43,7 @@ export default function Home() {
   return (
     <main className="page">
       <header className="masthead">
-        <span className="brand">
-          <Radio size={22} />
-          <span>
-            cabi<b>play</b>
-          </span>
-        </span>
+        <Logo size={24} />
         <Link to="/creditos" className="icon-btn" aria-label="Créditos y cómo se hizo">
           <Info size={20} />
         </Link>
@@ -69,10 +65,17 @@ export default function Home() {
         />
       ))}
 
-      <p className="credit">
-        Hecho con <span className="credit__heart">&hearts;</span> por{' '}
-        <Link to="/creditos">Yender</Link>
-      </p>
+      <footer className="foot">
+        <p className="foot__legal">
+          Directorio independiente. cabiplay no transmite ni aloja audio: cada
+          señal viaja desde el servidor de su emisora.{' '}
+          <Link to="/creditos#aviso-legal">Aviso legal</Link>
+        </p>
+        <p className="credit">
+          Hecho con <span className="credit__heart">&hearts;</span> por{' '}
+          <Link to="/creditos">Yender</Link>
+        </p>
+      </footer>
     </main>
   );
 }

@@ -1,0 +1,17 @@
+{
+  "name": "cabiplay · Radio en vivo de Cabimas",
+  "short_name": "cabiplay",
+  "description": "Las emisoras de Cabimas y la Costa Oriental del Lago, en vivo.",
+  "start_url": "/cabiplay/",
+  "scope": "/cabiplay/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0f16",
+  "theme_color": "#0b0f16",
+  "lang": "es",
+  "icons": [
+    { "src": "/cabiplay/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/cabiplay/brand/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/cabiplay/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -8,11 +8,11 @@ export default function Credits() {
 
   return (
     <main className="page">
-      <Link to="/" className="icon-btn station__back" aria-label="Volver">
+      <Link to="/" className="icon-btn page__back" aria-label="Volver al directorio">
         <Back size={20} />
       </Link>
 
-      <h1 className="station__name">Cómo se hizo</h1>
+      <h1 className="page__title">Cómo se hizo</h1>
       <p className="station__about">
         cabiplay es un directorio abierto de la radio de Cabimas y la Costa Oriental del
         Lago. Reúne las señales que ya transmiten por internet y las pone en un solo
@@ -57,12 +57,38 @@ export default function Credits() {
         salen de la bandera de Cabimas: el celeste del lago y el sol dorado.
       </p>
 
+      <h2 className="row__title" id="aviso-legal">Aviso legal</h2>
+      <div className="legal">
+        <p>
+          <b>cabiplay es un directorio, no una emisora.</b> No transmite, no
+          retransmite y no almacena audio. Tampoco intercepta, reconvierte ni
+          redistribuye ninguna señal.
+        </p>
+        <p>
+          Cada ficha enlaza a la dirección pública que la propia emisora ya
+          difunde en internet. Al pulsar play, el audio viaja directamente desde
+          el servidor de esa emisora al dispositivo de quien escucha, igual que
+          si abriera el enlace en su navegador. cabiplay no se interpone en esa
+          conexión ni obtiene beneficio de ella.
+        </p>
+        <p>
+          Los nombres, logotipos, frecuencias y contenidos pertenecen a cada
+          emisora y se muestran únicamente para identificarlas. La
+          responsabilidad sobre lo que se emite, incluidos los derechos de la
+          música y la publicidad, es de cada estación.
+        </p>
+        <p>
+          <b>¿Eres de una emisora?</b> Si quieres corregir tus datos, cambiar tu
+          logotipo o que retiremos tu señal del directorio, escríbeme y lo hago
+          sin preguntar por qué. Si una señal deja de funcionar o una emisora
+          sale del aire, deja de aparecer como disponible.
+        </p>
+      </div>
+
       <h2 className="row__title">Créditos</h2>
       <p className="station__about">
-        Los logotipos y nombres pertenecen a cada emisora. cabiplay no aloja ni
-        retransmite audio: enlaza a las señales públicas que cada estación ya emite.
-        Si eres de una emisora y quieres actualizar tus datos o salir del directorio,
-        escríbeme.
+        El directorio lo mantiene una persona, no una empresa. Las emisoras de
+        Cabimas son de quienes las hacen sonar todos los días.
       </p>
 
       <p className="credit">

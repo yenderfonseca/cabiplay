@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 56" width="62" height="56" role="img" aria-label="cabiplay">
+  <title>cabiplay</title>
+  <!-- Dial scale: celeste, the lake and sky of the Cabimas flag -->
+  <g stroke="#00a8e8" stroke-width="3" stroke-linecap="round">
+    <line x1="7" y1="21" x2="7" y2="35"/>
+    <line x1="19" y1="16" x2="19" y2="40"/>
+  </g>
+  <!-- Tuning needle: the golden sun, the one thing a radio does -->
+  <line x1="31" y1="7" x2="31" y2="49" stroke="#ffb703" stroke-width="3.8" stroke-linecap="round"/>
+  <circle cx="31" cy="7" r="5" fill="#ffb703"/>
+  <!-- Trailing marks fade: the dial continues past what is tuned -->
+  <g stroke="#00a8e8" stroke-width="3" stroke-linecap="round" opacity="0.45">
+    <line x1="43" y1="16" x2="43" y2="40"/>
+    <line x1="55" y1="21" x2="55" y2="35"/>
+  </g>
+</svg>
