@@ -1,0 +1,497 @@
+/* ==========================================================================
+   cabiplay — Cabimas flag palette on a dark app surface.
+   Celeste (lake and sky) carries actions; the golden sun marks what is live.
+   ========================================================================== */
+:root {
+  --bg: #0b0f16;
+  --surface: #131a24;
+  --surface-2: #1a2430;
+  --border: #222e3d;
+
+  --celeste: #00a8e8;
+  --celeste-hi: #2bbdf5;
+  --sun: #ffb703;
+  --verde: #00a859;
+
+  --text: #f2f6fa;
+  --text-2: #93a4b8;
+  --text-3: #64748b;
+
+  --player-h: 68px;
+  --radius: 12px;
+
+  /* The built-in curves are too weak to read as intentional. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; }
+
+.muted { color: var(--text-2); }
+
+/* Content clears the docked player plus the iOS home indicator. */
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 16px calc(var(--player-h) + 28px + env(safe-area-inset-bottom));
+}
+
+/* ---------- masthead ---------- */
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0 2px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.22rem;
+  letter-spacing: -0.4px;
+  color: var(--celeste);
+}
+
+.brand b { color: var(--text); font-weight: 800; }
+.brand > span { font-weight: 500; }
+
+.masthead__sub {
+  margin: 2px 0 20px;
+  color: var(--text-2);
+  font-size: 0.85rem;
+}
+
+/* ---------- genre shelves ---------- */
+.row { margin-bottom: 30px; }
+
+.row__title {
+  margin: 0 0 12px;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  text-wrap: balance;
+}
+
+/* Horizontal shelf that still snaps cleanly on a phone. */
+.row__scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 148px;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  /* Full-bleed scroll without letting the row push the page sideways. */
+  margin-inline: -16px;
+  padding-inline: 16px;
+}
+
+.row__scroller::-webkit-scrollbar { display: none; }
+.row__scroller > * { scroll-snap-align: start; }
+
+/* ---------- card ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.card__art-link {
+  position: relative;
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.art {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.art img { width: 100%; height: 100%; display: block; }
+
+.art-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 4px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(0, 168, 232, 0.22), transparent 62%),
+    var(--surface);
+}
+
+.art-fallback__dial {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+
+.art-fallback__band {
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  color: var(--sun);
+}
+
+.card__live {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.82);
+  backdrop-filter: blur(6px);
+  color: var(--sun);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.card__play {
+  position: absolute;
+  right: 8px;
+  top: calc(148px - 46px);
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--celeste);
+  color: #04121b;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+
+.card__play:active { transform: scale(0.94); }
+
+.card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 9px 2px 0;
+  min-width: 0;
+}
+
+.card__name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card__dial {
+  font-size: 0.7rem;
+  color: var(--text-3);
+}
+
+.card__like {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.82);
+  backdrop-filter: blur(6px);
+  color: var(--text-2);
+  font-size: 0.64rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+
+.card__like:active { transform: scale(0.92); }
+.card__like.is-liked { color: #ff5b6e; }
+.card--active .card__name { color: var(--celeste); }
+
+/* ---------- player ---------- */
+.player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: calc(var(--player-h) + env(safe-area-inset-bottom));
+  padding: 0 12px env(safe-area-inset-bottom);
+  background: rgba(14, 19, 28, 0.94);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+}
+
+.player__id {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+  text-decoration: none;
+}
+
+.art--mini {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 8px;
+}
+
+.player__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+
+.player__text strong {
+  font-size: 0.84rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player__status { font-size: 0.68rem; color: var(--text-3); }
+.player__status--playing { color: var(--sun); }
+.player__status--error { color: #ff6b6b; }
+
+.player__controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* The shuffle control is a nicety; the phone needs the width for transport. */
+.player__controls > :first-child { display: none; }
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+
+.icon-btn:active { transform: scale(0.94); }
+
+.icon-btn--primary {
+  background: var(--celeste);
+  color: #04121b;
+}
+
+.icon-btn--lg {
+  width: 48px;
+  height: 48px;
+  background: var(--surface-2);
+}
+
+.icon-btn.is-liked { color: #ff5b6e; }
+
+/* ---------- station page ---------- */
+.station { text-align: center; }
+
+.station__back {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: var(--surface-2);
+}
+
+.art--hero {
+  width: min(248px, 62vw);
+  margin: 42px auto 20px;
+  border-radius: 18px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+}
+
+.station__name {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-wrap: balance;
+}
+
+.station__dial {
+  margin: 0 0 22px;
+  color: var(--text-2);
+  font-size: 0.84rem;
+}
+
+.station__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--sun);
+  font-weight: 700;
+}
+
+.station__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn--primary {
+  background: var(--celeste);
+  color: #04121b;
+  box-shadow: 0 8px 24px rgba(0, 168, 232, 0.3);
+}
+
+.station__about {
+  max-width: 62ch;
+  margin: 0 auto 22px;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.station__socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.toast {
+  display: inline-block;
+  margin: 0 auto 16px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.78rem;
+}
+
+/* ---------- credits ---------- */
+.facts {
+  list-style: none;
+  max-width: 62ch;
+  margin: 0 auto 26px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.fact {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 0.88rem;
+}
+
+.fact svg { color: var(--celeste); flex: 0 0 auto; }
+.fact b { color: var(--text); }
+
+.credit {
+  margin: 34px 0 0;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 0.78rem;
+}
+
+.credit a { color: var(--sun); font-weight: 700; text-decoration: none; }
+.credit__heart { color: #e5484d; }
+
+.spin { animation: spin 0.9s linear infinite; transform-origin: 50% 50%; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- larger screens ---------- */
+@media (min-width: 700px) {
+  .page { padding-inline: 28px; }
+  .row__scroller {
+    grid-auto-columns: 172px;
+    margin-inline: -28px;
+    padding-inline: 28px;
+  }
+  .card__play { top: calc(172px - 48px); }
+  .player__controls > :first-child { display: inline-grid; }
+  .station__back { left: 22px; top: 18px; }
+}
+
+/* Hover belongs to pointers; touch devices fire it on tap. */
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn:hover { background: var(--surface-2); }
+  .icon-btn--primary:hover { background: var(--celeste-hi); }
+  .card__play:hover { background: var(--celeste-hi); }
+  .card__name:hover { color: var(--celeste); }
+}
+
+/* Reduced motion keeps meaning, drops movement. */
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; }
+  .spin { animation-duration: 2.4s; }
+}

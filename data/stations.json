@@ -32,7 +32,8 @@
     "logo_local": "assets/logos/hires/xtrema-989-fm.png",
     "logo": "assets/logos/hires/xtrema-989-fm.png",
     "logo_hires": "assets/logos/hires/xtrema-989-fm.png",
-    "logo_fit": "cover"
+    "logo_fit": "cover",
+    "genre": "urbano"
   },
   {
     "id": "cabimas.favoritas979",
@@ -61,9 +62,10 @@
       "instagram": "https://www.instagram.com/favoritas979fm/",
       "instagram_handle": "@favoritas979fm"
     },
-    "logo_local": "assets/logos/favoritas-979-fm.svg",
-    "logo": "assets/logos/favoritas-979-fm.svg",
-    "logo_fit": "contain"
+    "logo_local": null,
+    "logo": null,
+    "logo_fit": "contain",
+    "genre": "pop"
   },
   {
     "id": "cabimas.buenisima1063",
@@ -93,7 +95,8 @@
     },
     "logo_local": "assets/logos/buenisima-1063-fm.png",
     "logo": "assets/logos/buenisima-1063-fm.png",
-    "logo_fit": "contain"
+    "logo_fit": "contain",
+    "genre": "tropical"
   },
   {
     "id": "cabimas.victoria959",
@@ -123,9 +126,10 @@
       "instagram_handle": "@victoria959fm",
       "whatsapp": "https://wa.me/584146009590"
     },
-    "logo_local": "assets/logos/victoria-959-fm.svg",
-    "logo": "assets/logos/victoria-959-fm.svg",
-    "logo_fit": "contain"
+    "logo_local": null,
+    "logo": null,
+    "logo_fit": "contain",
+    "genre": "tropical"
   },
   {
     "id": "cabimas.mision943",
@@ -157,7 +161,8 @@
     "logo_local": "assets/logos/hires/mision-943-fm.png",
     "logo": "assets/logos/hires/mision-943-fm.png",
     "logo_hires": "assets/logos/hires/mision-943-fm.png",
-    "logo_fit": "cover"
+    "logo_fit": "cover",
+    "genre": "pop"
   },
   {
     "id": "cabimas.zumaque905",
@@ -188,7 +193,8 @@
     "logo_local": "assets/logos/hires/zumaque-905-fm.jpg",
     "logo": "assets/logos/hires/zumaque-905-fm.jpg",
     "logo_hires": "assets/logos/hires/zumaque-905-fm.jpg",
-    "logo_fit": "cover"
+    "logo_fit": "cover",
+    "genre": "tropical"
   },
   {
     "id": "cabimas.sonora995",
@@ -216,9 +222,10 @@
     "socials": {
       "whatsapp": "https://wa.me/584246814831"
     },
-    "logo_local": "assets/logos/sonora-995-fm.svg",
-    "logo": "assets/logos/sonora-995-fm.svg",
-    "logo_fit": "contain"
+    "logo_local": null,
+    "logo": null,
+    "logo_fit": "contain",
+    "genre": "noticias"
   },
   {
     "id": "cabimas.ciudadstereo939",
@@ -244,9 +251,10 @@
     "lon": -71.428,
     "theme_color": "#00a859",
     "socials": {},
-    "logo_local": "assets/logos/ciudad-stereo-939-fm.svg",
-    "logo": "assets/logos/ciudad-stereo-939-fm.svg",
-    "logo_fit": "contain"
+    "logo_local": null,
+    "logo": null,
+    "logo_fit": "contain",
+    "genre": "pop"
   },
   {
     "id": "cabimas.radiobarroso",
@@ -254,7 +262,7 @@
     "slug": "radio-barroso",
     "name": "Radio Barroso",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector El Barroso II / La Rosa",
@@ -277,7 +285,8 @@
     "logo_local": "assets/logos/hires/radio-barroso.jpg",
     "logo": "assets/logos/hires/radio-barroso.jpg",
     "logo_hires": "assets/logos/hires/radio-barroso.jpg",
-    "logo_fit": "cover"
+    "logo_fit": "cover",
+    "genre": "gaitas"
   },
   {
     "id": "cabimas.exitosa",
@@ -285,7 +294,7 @@
     "slug": "exitosa-fm",
     "name": "Exitosa FM Cabimas",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Delicias Nuevas",
@@ -308,7 +317,8 @@
     },
     "logo_local": "assets/logos/exitosa-fm.png",
     "logo": "assets/logos/exitosa-fm.png",
-    "logo_fit": "contain"
+    "logo_fit": "contain",
+    "genre": "pop"
   },
   {
     "id": "cabimas.zulianisima",
@@ -316,7 +326,7 @@
     "slug": "zulianisima-fm",
     "name": "Zulianísima FM",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Campo Blanco",
@@ -339,7 +349,8 @@
     "logo_local": "assets/logos/hires/zulianisima-fm.png",
     "logo": "assets/logos/hires/zulianisima-fm.png",
     "logo_hires": "assets/logos/hires/zulianisima-fm.png",
-    "logo_fit": "contain"
+    "logo_fit": "contain",
+    "genre": "gaitas"
   },
   {
     "id": "cabimas.diferente",
@@ -347,7 +358,7 @@
     "slug": "diferente-fm",
     "name": "Diferente FM",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Tierra Negra",
@@ -370,7 +381,8 @@
     "logo_local": "assets/logos/hires/diferente-fm.jpg",
     "logo": "assets/logos/hires/diferente-fm.jpg",
     "logo_hires": "assets/logos/hires/diferente-fm.jpg",
-    "logo_fit": "contain"
+    "logo_fit": "contain",
+    "genre": "pop"
   },
   {
     "id": "cabimas.sirio",
@@ -378,7 +390,7 @@
     "slug": "sirio-radio-digital",
     "name": "Sirio Radio Digital",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Guabina",
@@ -400,7 +412,8 @@
     },
     "logo_local": "assets/logos/sirio-radio-digital.png",
     "logo": "assets/logos/sirio-radio-digital.png",
-    "logo_fit": "contain"
+    "logo_fit": "contain",
+    "genre": "recuerdos"
   },
   {
     "id": "cabimas.infinita",
@@ -408,7 +421,7 @@
     "slug": "infinita-fm-sin-barreras",
     "name": "Infinita FM ¡Sin Barreras!",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Las 50s",
@@ -431,7 +444,8 @@
     "logo_local": "assets/logos/hires/infinita-fm-sin-barreras.png",
     "logo": "assets/logos/hires/infinita-fm-sin-barreras.png",
     "logo_hires": "assets/logos/hires/infinita-fm-sin-barreras.png",
-    "logo_fit": "cover"
+    "logo_fit": "cover",
+    "genre": "pop"
   },
   {
     "id": "cabimas.technobuenisima",
@@ -439,7 +453,7 @@
     "slug": "la-techno-buenisima-247",
     "name": "La Techno Buenísima 24/7",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Ambrosio / Buenísima Media",
@@ -459,7 +473,8 @@
     "socials": {},
     "logo_local": "assets/logos/la-techno-buenisima-247.png",
     "logo": "assets/logos/la-techno-buenisima-247.png",
-    "logo_fit": "contain"
+    "logo_fit": "contain",
+    "genre": "urbano"
   },
   {
     "id": "cabimas.mana",
@@ -467,7 +482,7 @@
     "slug": "mana-fm",
     "name": "MANA FM",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Ambrosio",
@@ -490,7 +505,8 @@
     "logo_local": "assets/logos/hires/mana-fm.png",
     "logo": "assets/logos/hires/mana-fm.png",
     "logo_hires": "assets/logos/hires/mana-fm.png",
-    "logo_fit": "cover"
+    "logo_fit": "cover",
+    "genre": "pop"
   },
   {
     "id": "cabimas.vinilo",
@@ -498,7 +514,7 @@
     "slug": "vinilo-fm-streaming",
     "name": "Vinilo FM Streaming",
     "frequency": "WEB",
-    "dial": "CABI",
+    "dial": "",
     "city": "Cabimas",
     "state": "Zulia",
     "sector": "Sector Punta Icotea",
@@ -518,6 +534,128 @@
     "socials": {},
     "logo_local": "assets/logos/vinilo-fm-streaming.png",
     "logo": "assets/logos/vinilo-fm-streaming.png",
-    "logo_fit": "contain"
+    "logo_fit": "contain",
+    "genre": "recuerdos"
+  },
+  {
+    "id": "cabimas.futura1047fm",
+    "station_id": "cabimas.futura1047fm",
+    "slug": "futura-104-7-fm",
+    "name": "Futura 104.7 FM",
+    "frequency": "104.7 FM",
+    "dial": "104.7",
+    "city": "Cabimas",
+    "state": "Zulia",
+    "sector": "Cabimas",
+    "region_type": "cabimas_local",
+    "category": "variada",
+    "genres": [
+      "Variada",
+      "Institucional",
+      "Noticias"
+    ],
+    "tags": "Variada, Institucional, Noticias",
+    "description": "Emisora pública de Cabimas, parte del circuito de radios del Estado venezolano. Programación variada e informativa.",
+    "stream_url": "https://stream.zeno.fm/f7eru6q4998uv",
+    "lat": 10.3997,
+    "lon": -71.4456,
+    "theme_color": "#00a8e8",
+    "socials": {
+      "website": "https://futurafm.gob.ve/"
+    },
+    "logo": null,
+    "logo_local": null,
+    "logo_fit": "contain",
+    "genre": "pop",
+    "verified_at": "2026-10-14"
+  },
+  {
+    "id": "cabimas.zona985fm",
+    "station_id": "cabimas.zona985fm",
+    "slug": "zona-98-5-fm",
+    "name": "Zona 98.5 FM",
+    "frequency": "98.5 FM",
+    "dial": "98.5",
+    "city": "Cabimas",
+    "state": "Zulia",
+    "sector": "Cabimas",
+    "region_type": "cabimas_local",
+    "category": "variada",
+    "genres": [
+      "Variada",
+      "Éxitos"
+    ],
+    "tags": "Variada, Éxitos",
+    "description": "Emisora del dial 98.5 de Cabimas. Algunos directorios la listan como Jerusalén Stereo 98.5, que comparte frecuencia.",
+    "stream_url": "https://stream.zeno.fm/hf0yz27sk0ltv",
+    "lat": 10.3997,
+    "lon": -71.4456,
+    "theme_color": "#00a8e8",
+    "socials": {},
+    "logo": null,
+    "logo_local": null,
+    "logo_fit": "contain",
+    "genre": "pop",
+    "verified_at": "2026-10-14"
+  },
+  {
+    "id": "cabimas.xtrema921fm",
+    "station_id": "cabimas.xtrema921fm",
+    "slug": "xtrema-92-1-fm",
+    "name": "Xtrema 92.1 FM",
+    "frequency": "92.1 FM",
+    "dial": "92.1",
+    "city": "Cabimas",
+    "state": "Zulia",
+    "sector": "Cabimas",
+    "region_type": "cabimas_local",
+    "category": "urbano",
+    "genres": [
+      "Urbano",
+      "Pop",
+      "Éxitos"
+    ],
+    "tags": "Urbano, Pop, Éxitos",
+    "description": "Segunda frecuencia del circuito Xtrema en la Costa Oriental del Lago, con programación urbana y juvenil.",
+    "stream_url": "https://stream.zeno.fm/lc2laf4z3bdtv",
+    "lat": 10.3997,
+    "lon": -71.4456,
+    "theme_color": "#00a8e8",
+    "socials": {},
+    "logo": null,
+    "logo_local": null,
+    "logo_fit": "contain",
+    "genre": "urbano",
+    "verified_at": "2026-10-14"
+  },
+  {
+    "id": "cabimas.encasaurbano",
+    "station_id": "cabimas.encasaurbano",
+    "slug": "en-casa-urbano",
+    "name": "En Casa Urbano",
+    "frequency": "WEB",
+    "dial": "",
+    "city": "Cabimas",
+    "state": "Zulia",
+    "sector": "Cabimas",
+    "region_type": "cabimas_local",
+    "category": "urbano",
+    "genres": [
+      "Urbano",
+      "Reggaetón",
+      "Trap"
+    ],
+    "tags": "Urbano, Reggaetón, Trap",
+    "description": "Radio online de Cabimas especializada en música urbana.",
+    "stream_url": "https://stream.zeno.fm/xebwfpk4rnatv",
+    "lat": 10.3997,
+    "lon": -71.4456,
+    "theme_color": "#00a8e8",
+    "socials": {},
+    "logo": null,
+    "logo_local": null,
+    "logo_fit": "contain",
+    "genre": "urbano",
+    "verified_at": "2026-10-14"
   }
 ]
