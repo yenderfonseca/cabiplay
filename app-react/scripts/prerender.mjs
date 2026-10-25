@@ -130,6 +130,18 @@ for (const s of stations) {
   }));
 }
 
+// App tabs. Real files, so a direct visit or a reload of /cabiplay/buscar is
+// served by cleanUrls instead of depending on a rewrite rule.
+for (const [file, title, description] of [
+  ['buscar', 'Buscar emisoras · cabiplay', 'Busca emisoras de Cabimas por nombre, frecuencia, sector o género.'],
+  ['biblioteca', 'Tu biblioteca · cabiplay', 'Tus emisoras favoritas y las que escuchaste hace poco.'],
+]) {
+  writeFileSync(join(dist, `${file}.html`), page({
+    title, description, path: `/${file}`, image: siteLogo,
+    body: `<main class="page"><h1>${esc(title.split(' · ')[0])}</h1><p>${esc(description)}</p></main>`,
+  }));
+}
+
 writeFileSync(join(dist, 'creditos.html'), page({
   title: 'Cómo se hizo y aviso legal · cabiplay',
   description: 'Cómo se construyó cabiplay, de dónde salen los datos de las emisoras, y el aviso legal: es un directorio, no una emisora.',
