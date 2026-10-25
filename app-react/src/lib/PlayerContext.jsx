@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState, useCallback } from 'react';
+import { useStats } from './useStats.js';
+import { coverDataURL } from './art.js';
 
 const PlayerContext = createContext(null);
 export const usePlayer = () => useContext(PlayerContext);
@@ -16,13 +18,19 @@ export function PlayerProvider({ children }) {
   const [current, setCurrent] = useState(null);
   const [status, setStatus] = useState('idle'); // idle | tuning | playing | error
   const [elapsed, setElapsed] = useState(0);
-  const [favorites, setFavorites] = useState(() => {
+  // Last stations tuned in, newest first, for "Escuchadas hace poco".
+  const [recent, setRecent] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem('cabiplay_favorites') || '[]');
+      return JSON.parse(localStorage.getItem('cabiplay_recent') || '[]');
     } catch {
       return [];
     }
   });
+  // Full-screen "Sonando ahora" sheet, opened from the mini player.
+  const [expanded, setExpanded] = useState(false);
+  // One stats instance for the whole app, so a like in the sheet shows on the
+  // home shelves immediately and the stats endpoint is fetched once per visit.
+  const { stats, liked, like } = useStats(current?.slug);
 
   // Tracks which tune-in an async callback belongs to. Tearing down the
   // previous stream fires a spurious `error`; without this guard it would
@@ -43,11 +51,11 @@ export function PlayerProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem('cabiplay_favorites', JSON.stringify(favorites));
+      localStorage.setItem('cabiplay_recent', JSON.stringify(recent));
     } catch {
-      /* private mode: favourites simply do not persist */
+      /* private mode: history simply does not persist */
     }
-  }, [favorites]);
+  }, [recent]);
 
   const play = useCallback(async (station) => {
     const audio = audioRef.current;
@@ -55,6 +63,7 @@ export function PlayerProvider({ children }) {
     const gen = ++genRef.current;
 
     setCurrent(station);
+    setRecent((r) => [station.slug, ...r.filter((x) => x !== station.slug)].slice(0, 12));
     setStatus('tuning');
     setElapsed(0);
 
@@ -122,10 +131,6 @@ export function PlayerProvider({ children }) {
     play(pool[Math.floor(Math.random() * pool.length)] || stations[0]);
   }, [stations, current, play]);
 
-  const toggleFavorite = useCallback((slug) => {
-    setFavorites((f) => (f.includes(slug) ? f.filter((x) => x !== slug) : [...f, slug]));
-  }, []);
-
   // Audio element events drive status, so external pauses (headphones, OS
   // controls, interruptions) stay in sync with the UI.
   useEffect(() => {
@@ -152,22 +157,42 @@ export function PlayerProvider({ children }) {
     return () => clearInterval(t);
   }, [status]);
 
-  // Lock screen / CarPlay / Android Auto metadata.
+  // Lock screen / CarPlay / Android Auto. A web app cannot be a CarPlay app of
+  // its own (that needs a native iOS app with Apple's CarPlay audio
+  // entitlement), but audio from Safari shows in CarPlay's "Sonando" screen,
+  // fed by this metadata. Artwork must be an absolute URL; stations without a
+  // logo get the generated dial cover instead of a blank square.
+  const [coverUrl, setCoverUrl] = useState(null);
+  useEffect(() => {
+    setCoverUrl(null);
+    if (!current) return;
+    let alive = true;
+    const art = current.logo_hires || current.logo_local || current.logo;
+    if (art && !art.endsWith('.svg')) {
+      setCoverUrl(new URL(`${BASE}${art}`, window.location.origin).href);
+    } else {
+      coverDataURL(current).then((u) => alive && setCoverUrl(u), () => {});
+    }
+    return () => {
+      alive = false;
+    };
+  }, [current]);
+
   useEffect(() => {
     if (!('mediaSession' in navigator) || !current) return;
-    const art = current.logo_local || current.logo;
+    const fallback = new URL(`${BASE}brand/icon-512.png`, window.location.origin).href;
+    const src = coverUrl || fallback;
+    const type = src.startsWith('data:image/png') || src.endsWith('.png') ? 'image/png' : 'image/jpeg';
     navigator.mediaSession.metadata = new window.MediaMetadata({
       title: current.name,
-      artist: `${current.frequency || 'WEB'} · Cabimas`,
-      album: 'cabiplay',
-      artwork: art
-        ? [96, 192, 512].map((s) => ({
-            src: `${BASE}${art}`,
-            sizes: `${s}x${s}`,
-            type: art.endsWith('.jpg') ? 'image/jpeg' : 'image/png',
-          }))
-        : [],
+      artist: `${current.frequency || 'Señal online'} · Cabimas`,
+      album: 'cabiplay · Radio en vivo',
+      artwork: [{ src, sizes: '512x512', type }],
     });
+  }, [current, coverUrl]);
+
+  useEffect(() => {
+    if (!('mediaSession' in navigator) || !current) return;
     navigator.mediaSession.playbackState = status === 'playing' ? 'playing' : 'paused';
     const set = (k, fn) => {
       try {
@@ -178,8 +203,14 @@ export function PlayerProvider({ children }) {
     };
     set('play', () => audioRef.current?.play().catch(() => {}));
     set('pause', () => audioRef.current?.pause());
+    set('stop', () => audioRef.current?.pause());
+    // Car steering-wheel and headphone skip buttons change station.
     set('previoustrack', () => step(-1));
     set('nexttrack', () => step(1));
+    // Live radio cannot seek; clearing these hides the scrubber.
+    set('seekbackward', null);
+    set('seekforward', null);
+    set('seekto', null);
   }, [current, status, step]);
 
   const value = useMemo(
@@ -188,15 +219,19 @@ export function PlayerProvider({ children }) {
       current,
       status,
       elapsed,
-      favorites,
+      recent,
+      stats,
+      liked,
+      like,
+      expanded,
+      setExpanded,
       play,
       toggle,
       step,
       shuffle,
-      toggleFavorite,
       audio: audioRef.current,
     }),
-    [stations, current, status, elapsed, favorites, play, toggle, step, shuffle, toggleFavorite],
+    [stations, current, status, elapsed, recent, stats, liked, like, expanded, play, toggle, step, shuffle],
   );
 
   return <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>;

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Artwork from '../components/Artwork.jsx';
 import { usePlayer } from '../lib/PlayerContext.jsx';
-import { useStats } from '../lib/useStats.js';
+import { useStoryShare } from '../lib/useStoryShare.js';
 import {
   Play, Pause, Heart, Share, Instagram, WhatsApp, Globe, Facebook, Back, Listeners, Spinner,
 } from '../lib/icons.jsx';
@@ -10,11 +10,11 @@ import {
 export default function Station() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { stations, current, status, play, toggle } = usePlayer();
-  const { stats, liked, like } = useStats(current?.slug);
+  const { stations, current, status, play, toggle, stats, liked, like } = usePlayer();
   const [copied, setCopied] = useState(false);
 
   const station = stations.find((s) => s.slug === slug);
+  const story = useStoryShare(station);
 
   // Deep links are the point of this page, so the title has to reflect the
   // station even before anyone presses play.
@@ -66,7 +66,7 @@ export default function Station() {
   };
 
   return (
-    <main className="page station">
+    <main className="page station" style={{ '--st': station.theme_color || '#1a2430' }}>
       <button type="button" className="icon-btn station__back" onClick={() => navigate(-1)} aria-label="Volver">
         <Back size={20} />
       </button>
@@ -102,17 +102,21 @@ export default function Station() {
           className={`icon-btn icon-btn--lg ${liked.includes(station.slug) ? 'is-liked' : ''}`}
           onClick={() => like(station.slug)}
           aria-pressed={liked.includes(station.slug)}
-          aria-label="Me gusta"
+          aria-label={liked.includes(station.slug) ? 'Quitar de favoritas' : 'Guardar en favoritas'}
         >
           <Heart size={20} active={liked.includes(station.slug)} />
         </button>
 
-        <button type="button" className="icon-btn icon-btn--lg" onClick={share} aria-label="Compartir">
+        <button type="button" className="icon-btn icon-btn--lg" onClick={share} aria-label="Compartir enlace">
           <Share size={20} />
+        </button>
+
+        <button type="button" className="icon-btn icon-btn--lg" onClick={story.share} aria-label="Compartir en tu historia de Instagram">
+          <Instagram size={20} />
         </button>
       </div>
 
-      {copied && <p className="toast">Enlace copiado</p>}
+      {(copied || story.note) && <p className="toast" role="status">{story.note || 'Enlace copiado'}</p>}
 
       {station.description && <p className="station__about">{station.description}</p>}
 

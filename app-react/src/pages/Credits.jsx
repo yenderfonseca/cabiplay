@@ -29,16 +29,16 @@ export default function Credits() {
         <li className="fact">
           <Globe size={18} />
           <span>
-            <b>{withLogo}</b> con logotipo original de la emisora
+            <b>{withLogo}</b> con logotipo original de la&nbsp;emisora
           </span>
         </li>
         <li className="fact">
           <Listeners size={18} />
-          <span>Oyentes en vivo estimados por sesiones activas</span>
+          <span>Oyentes en vivo estimados por sesiones&nbsp;activas</span>
         </li>
         <li className="fact">
           <Heart size={18} />
-          <span>Los me gusta son públicos y ordenan lo más escuchado</span>
+          <span>Los me gusta son públicos y ordenan lo más&nbsp;escuchado</span>
         </li>
       </ul>
 
@@ -93,7 +93,7 @@ export default function Credits() {
 
       <p className="credit">
         Hecho con <span className="credit__heart">&hearts;</span> por Yender, desde Cabimas
-        para el mundo.
+        para el&nbsp;mundo.
       </p>
     </main>
   );

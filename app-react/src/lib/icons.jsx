@@ -147,3 +147,23 @@ export const Spinner = (p) => (
     <path d="M21 12a9 9 0 1 1-6.22-8.56" />
   </Svg>
 );
+
+export const Home = ({ active = false, ...p }) => (
+  <Svg {...p} {...(active ? { fill: 'currentColor' } : {})}>
+    <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+  </Svg>
+);
+
+export const Search = ({ active, ...p }) => (
+  <Svg {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </Svg>
+);
+
+export const Library = ({ active, ...p }) => (
+  <Svg {...p}>
+    <path d="M4 4v16M9 4v16" />
+    <path d="m14 4.5 5.5 15" />
+  </Svg>
+);

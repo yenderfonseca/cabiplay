@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import Artwork from './Artwork.jsx';
-import { Play, Pause, Heart, Listeners } from '../lib/icons.jsx';
+import { Play, Pause, Listeners } from '../lib/icons.jsx';
 import { usePlayer } from '../lib/PlayerContext.jsx';
 
-export default function StationCard({ station, stats, liked, onLike }) {
-  const { current, status, play, toggle } = usePlayer();
+// Shelf card. Likes live in the player and the station sheet, not on every
+// cover: a heart on each tile competed with the play button for the thumb.
+export default function StationCard({ station }) {
+  const { current, status, play, toggle, stats } = usePlayer();
   const isCurrent = current?.slug === station.slug;
   const isPlaying = isCurrent && status === 'playing';
-  const listeners = stats?.listeners || 0;
+  const listeners = stats[station.slug]?.listeners || 0;
 
   return (
     <article className={`card ${isCurrent ? 'card--active' : ''}`}>
@@ -34,19 +36,8 @@ export default function StationCard({ station, stats, liked, onLike }) {
         <Link to={`/estacion/${station.slug}`} className="card__name">
           {station.name}
         </Link>
-        <span className="card__dial">{station.frequency || 'WEB'}</span>
+        <span className="card__dial">{station.frequency || 'Online'}</span>
       </div>
-
-      <button
-        type="button"
-        className={`card__like ${liked ? 'is-liked' : ''}`}
-        aria-label={liked ? `Quitar me gusta a ${station.name}` : `Me gusta ${station.name}`}
-        aria-pressed={liked}
-        onClick={() => onLike(station.slug)}
-      >
-        <Heart size={15} active={liked} />
-        {stats?.likes > 0 && <span>{stats.likes}</span>}
-      </button>
     </article>
   );
 }
